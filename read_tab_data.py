@@ -25,7 +25,7 @@ filename1 = "a_indresp.tab"
 filename2 = "b_indresp.tab"
 
 def wave_intercept(filename1, filename2):
-    # Check which individuals from a wave are present in the next wave.
+    """ Check which individuals from a wave are present in the next wave. """
      
     df1 = pd.read_csv(filename1, sep='\t')
     df2 = pd.read_csv(filename2, sep='\t')
@@ -47,7 +47,7 @@ filelist = ["a_indresp.tab", "b_indresp.tab", "c_indresp.tab",
 pidp = id_intercept[549]
 
 def household_id_list(filelist, pidp):
-    # For a set of waves, obtain a list of household IDs belonging to the same individual.
+    """ For a set of waves, obtain a list of household IDs belonging to the same individual. """
 
     hidp_list = []
     wave_list = []
