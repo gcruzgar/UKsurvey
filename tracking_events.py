@@ -2,7 +2,8 @@
 author: Gonzalo
 date started: 19/10/18
 
-This script tracks the evolution of an individual over time.
+This script creates a list of individuals that are present in all specified waves.
+It selects one of these individuals at random and tracks their evolution over time.
 It outputs their marital status at each wave.
 
 Things to do:
