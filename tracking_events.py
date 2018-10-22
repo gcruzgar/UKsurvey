@@ -48,3 +48,23 @@ def track_event(filename1, filename2, pidp = None):
     return m_evol
 
 m_evol = track_event(filename1, filename2)
+
+filelist = ["a_indresp.tab", "b_indresp.tab", "c_indresp.tab", 
+"d_indresp.tab", "e_indresp.tab", "f_indresp.tab", "g_indresp.tab"]
+
+def longevity(filelist):
+    """ List of individuals that are present in all waves """
+    pidp_dic = {}
+    wc=1
+    for name in filelist:
+        print("Loading wave %d data..." % wc)
+        df = pd.read_csv(name, sep='\t')
+        pidp_dic[str(wc)] = df['pidp']
+        wc+=1
+    
+    id_int = set(pidp_dic['2']).intersection(set(pidp_dic['1']))
+    for n in range(3,len(filelist)):
+        id_int = set(pidp_dic[str(n)]).intersection(id_int)
+    return id_int
+
+id_list = longevity(filelist)
