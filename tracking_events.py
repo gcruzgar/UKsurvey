@@ -6,7 +6,6 @@ This script tracks the evolution of an individual over time.
 It outputs their marital status at each wave.
 
 Things to do:
--add more waves and store output as timeseries.
 -try other variables.
 -see if a change in variable value results in any changes in the household. 
 """
@@ -46,25 +45,24 @@ else:
 def track_event(filename1, filename2, pidp = None):
     """ Compare the state of an individual at different times. 
     Will choose an individual at random if one is not specified. """
-
-    print("\nLoading data...")
-    df1 = pd.read_csv(filename1, sep='\t')
-    df2 = pd.read_csv(filename2, sep='\t')
-    print("Complete")
+    
     if pidp == None:
-        if 'id_list' in vars():
-            pidp = sample(id_list, 1)
-        else:
-            while pidp == None:
-                r = randint(0, len(df1))
-                if r in df2['pidp']:
-                    pidp = df1['pidp'][r]
+        if 'id_list' not in globals():
+            print("id_list not found. Generating list...")
+            id_list = longevity(filelist)
+        pidp = sample(id_list, 1)[0]
         print("Random individual chosen. Id: %d" % pidp)
 
-    mlstat_1 = df1.loc[df1['pidp'] == pidp, 'a_mlstat'].item()
-    mlstat_2 = df2.loc[df2['pidp'] == pidp, 'b_mlstat'].item()
-
-    m_evol = [mlstat_1, mlstat_2]
+    m_evol = []
+    wn = {1:'a', 2:'b', 3:'c', 4:'d', 5:'e', 6:'f', 7:'g'}
+    c=1
+    for name in filelist:
+        print("Loading wave %d data..." % c)
+        df = pd.read_csv(name, sep='\t') 
+        kword = wn[c]+'_mlstat'
+        mlstat = df.loc[df['pidp'] == pidp, kword].values
+        m_evol.append(mlstat)
+        c+=1
 
     marital_status = {1: "single, never married/in civil partnership", 2: "married",
         3: "civil partner", 4: "separated from spouse",
@@ -74,7 +72,7 @@ def track_event(filename1, filename2, pidp = None):
         -9: "missing", -8: "inapplicable",
         -7: "proxy", -2: "refusal"}
 
-    print("Individual %d went from %s to %s" % (pidp, marital_status[mlstat_1], marital_status[mlstat_2]))
+    print("Individual %d started as '%s' and finished as '%s'" % (pidp, marital_status[m_evol[0].item()], marital_status[m_evol[6].item()]))
     return m_evol
 
 m_evol = track_event(filename1, filename2)
