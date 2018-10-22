@@ -1,6 +1,14 @@
 """
 author: Gonzalo
 date started: 19/10/18
+
+This script tracks the evolution of an individual over time.
+It outputs their marital status at each wave.
+
+Things to do:
+-add more waves and store output as timeseries.
+-try other variables.
+-see if a change in variable value results in any changes in the household. 
 """
 
 import pandas as pd 
@@ -12,7 +20,9 @@ filename2 = "b_indresp.tab"
 #pidp = 
 
 def track_event(filename1, filename2, pidp = None):
-
+    """ Compare the state of an individual at different times. 
+    Will choose an individual at random if one is not specified. """
+    
     df1 = pd.read_csv(filename1, sep='\t')
     df2 = pd.read_csv(filename2, sep='\t')
 
