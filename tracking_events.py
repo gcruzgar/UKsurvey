@@ -4,7 +4,7 @@ date started: 19/10/18
 
 This script creates a list of individuals that are present in all specified waves.
 It selects one of these individuals at random and tracks their evolution over time.
-It outputs their marital status at each wave.
+It outputs the status of the chosen variable at each wave.
 
 Things to do:
 -see if a change in variable value results in any changes in the household. 
@@ -33,8 +33,8 @@ def longevity(filelist):
     return id_int
 
 if 'id_list' not in vars():
+    print("Generating id_list...")
     id_list = longevity(filelist)
-    print("id_list ready")
 else:
     print("id_list already present")
 
@@ -47,7 +47,7 @@ def track_event(filelist, var_key, possible_status, id_list = None, pidp = None)
             print("id_list not found. Generating list...")
             id_list = longevity(filelist)
         pidp = sample(id_list, 1)[0]
-        print("Random individual chosen. Id: %d" % pidp)
+        print("Random individual chosen. Id: %d\n" % pidp)
 
     var_evol = []
     wn = {1:'a', 2:'b', 3:'c', 4:'d', 5:'e', 6:'f', 7:'g'}
@@ -60,7 +60,7 @@ def track_event(filelist, var_key, possible_status, id_list = None, pidp = None)
         var_evol.extend(v)
         c+=1
 
-    print("Individual %d started as '%s' and finished as '%s'" % (pidp, possible_status[var_evol[0]], possible_status[var_evol[6]]))
+    print("\nIndividual %d started as '%s' and finished as '%s'" % (pidp, possible_status[var_evol[0]], possible_status[var_evol[6]]))
     return var_evol
 
 #var_key = '_mlstat'
