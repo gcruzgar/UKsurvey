@@ -7,17 +7,12 @@ It selects one of these individuals at random and tracks their evolution over ti
 It outputs their marital status at each wave.
 
 Things to do:
--try other variables.
 -see if a change in variable value results in any changes in the household. 
+-create dictionary with possible values for each variable.
 """
 
 import pandas as pd 
 from random import randint, sample
-
-filename1 = "a_indresp.tab"
-filename2 = "b_indresp.tab"
-
-#pidp = 
 
 filelist = ["a_indresp.tab", "b_indresp.tab", "c_indresp.tab", 
 "d_indresp.tab", "e_indresp.tab", "f_indresp.tab", "g_indresp.tab"]
