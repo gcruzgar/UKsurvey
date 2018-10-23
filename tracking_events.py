@@ -43,7 +43,7 @@ if 'id_list' not in vars():
 else:
     print("id_list already present")
 
-def track_event(filename1, filename2, pidp = None):
+def track_event(filelist, var_key, possible_status, id_list = None, pidp = None):
     """ Compare the state of an individual at different times. 
     Will choose an individual at random if one is not specified. """
     
@@ -54,26 +54,25 @@ def track_event(filename1, filename2, pidp = None):
         pidp = sample(id_list, 1)[0]
         print("Random individual chosen. Id: %d" % pidp)
 
-    m_evol = []
+    var_evol = []
     wn = {1:'a', 2:'b', 3:'c', 4:'d', 5:'e', 6:'f', 7:'g'}
     c=1
     for name in filelist:
         print("Loading wave %d data..." % c)
         df = pd.read_csv(name, sep='\t') 
-        kword = wn[c]+'_mlstat'
-        mlstat = df.loc[df['pidp'] == pidp, kword].values
-        m_evol.append(mlstat)
+        kword = wn[c] + var_key
+        v = df.loc[df['pidp'] == pidp, kword].values
+        var_evol.append(v)
         c+=1
 
-    marital_status = {1: "single, never married/in civil partnership", 2: "married",
-        3: "civil partner", 4: "separated from spouse",
-        5: "divorced", 6: "widowed",
-        7: "separated from civil partner", 8: "former civil partner",
-        9: "surviving civil partner", -1: "don't know",
-        -9: "missing", -8: "inapplicable",
-        -7: "proxy", -2: "refusal"}
+    print("Individual %d started as '%s' and finished as '%s'" % (pidp, possible_status[var_evol[0].item()], possible_status[var_evol[6].item()]))
+    return var_evol
 
-    print("Individual %d started as '%s' and finished as '%s'" % (pidp, marital_status[m_evol[0].item()], marital_status[m_evol[6].item()]))
-    return m_evol
+var_key = '_mlstat'
+possible_status = {1: "single, never married/in civil partnership", 2: "married",
+    3: "civil partner", 4: "separated from spouse", 5: "divorced", 6: "widowed",
+    7: "separated from civil partner", 8: "former civil partner", 
+    9: "surviving civil partner", -1: "don't know", -9: "missing", 
+    -8: "inapplicable", -7: "proxy", -2: "refusal"}
 
-m_evol = track_event(filename1, filename2)
+m_evol = track_event(filelist, var_key, possible_status, id_list)
