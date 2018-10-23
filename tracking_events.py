@@ -63,11 +63,18 @@ def track_event(filelist, var_key, possible_status, id_list = None, pidp = None)
     print("Individual %d started as '%s' and finished as '%s'" % (pidp, possible_status[var_evol[0].item()], possible_status[var_evol[6].item()]))
     return var_evol
 
-var_key = '_mlstat'
-possible_status = {1: "single, never married/in civil partnership", 2: "married",
-    3: "civil partner", 4: "separated from spouse", 5: "divorced", 6: "widowed",
-    7: "separated from civil partner", 8: "former civil partner", 
-    9: "surviving civil partner", -1: "don't know", -9: "missing", 
-    -8: "inapplicable", -7: "proxy", -2: "refusal"}
+#var_key = '_mlstat'
+#possible_status = {1: "single, never married/in civil partnership", 2: "married",
+#    3: "civil partner", 4: "separated from spouse", 5: "divorced", 6: "widowed",
+#    7: "separated from civil partner", 8: "former civil partner", 
+#    9: "surviving civil partner", -1: "don't know", -9: "missing", 
+#    -8: "inapplicable", -7: "proxy", -2: "refusal"}
 
-m_evol = track_event(filelist, var_key, possible_status, id_list)
+var_key = '_jbstat'
+possible_status = {1: "self employed", 2: "in paid employment",
+    3: "unemployed", 4: "retired", 5: "on maternity leave", 6: "looking after family or home",
+    7: "full-time student", 8: "long-term isck or disabled", 9: "on a government training scheme",
+    10: "unpaid worker in family business", 97: "doing something else", -1: "don't know", 
+    -9: "missing", -8: "inapplicable", -7: "proxy", -2: "refusal"}
+
+var_evol = track_event(filelist, var_key, possible_status, id_list)
