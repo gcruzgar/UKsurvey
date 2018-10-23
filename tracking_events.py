@@ -57,10 +57,10 @@ def track_event(filelist, var_key, possible_status, id_list = None, pidp = None)
         df = pd.read_csv(name, sep='\t') 
         kword = wn[c] + var_key
         v = df.loc[df['pidp'] == pidp, kword].values
-        var_evol.append(v)
+        var_evol.extend(v)
         c+=1
 
-    print("Individual %d started as '%s' and finished as '%s'" % (pidp, possible_status[var_evol[0].item()], possible_status[var_evol[6].item()]))
+    print("Individual %d started as '%s' and finished as '%s'" % (pidp, possible_status[var_evol[0]], possible_status[var_evol[6]]))
     return var_evol
 
 #var_key = '_mlstat'
