@@ -12,7 +12,7 @@ Things to do:
 """
 
 import pandas as pd 
-from random import randint, sample
+from random import sample
 
 filelist = ["a_indresp.tab", "b_indresp.tab", "c_indresp.tab", 
 "d_indresp.tab", "e_indresp.tab", "f_indresp.tab", "g_indresp.tab"]
