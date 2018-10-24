@@ -8,7 +8,7 @@ Note: it requires the data to be in the same folder as the path is not set.
 This script compares the individuals that took part in two waves of the Understanding Society Survey.
 It outputs a list of members that are in wave a and wave b.
 
-An individual is then chosen (could choose at random) and the script checks which waves they are a member of.
+An individual is then chosen at random and the script checks which waves they are a member of.
 A list of household IDs is produced for the individual.
 This does not mean that the individual belongs to more than one household.
 The household identifier is unique for every wave.  
@@ -18,7 +18,8 @@ Things to do:
 -can we identify when an event happens? and what triggers it?
 """
 
-import pandas as pd 
+import pandas as pd
+from random import sample
 
 # name of files/waves to compare
 filename1 = "a_indresp.tab"
@@ -44,7 +45,7 @@ id_intercept = wave_intercept(filename1,filename2)
 # list of files/waves to read through & id of individual to check
 filelist = ["a_indresp.tab", "b_indresp.tab", "c_indresp.tab", 
     "d_indresp.tab", "e_indresp.tab", "f_indresp.tab", "g_indresp.tab"]
-pidp = id_intercept[549]
+pidp = sample(id_intercept, 1)[0]
 
 def household_id_list(filelist, pidp):
     """ For a set of waves, obtain a list of household IDs belonging to the same individual. """
