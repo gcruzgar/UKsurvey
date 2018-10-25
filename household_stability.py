@@ -13,8 +13,8 @@ import pandas as pd
 from random import sample
 
 # name of files/waves to compare
-filelist = ["a_indresp.tab", "b_indresp.tab", "c_indresp.tab", 
-"d_indresp.tab", "e_indresp.tab", "f_indresp.tab", "g_indresp.tab"]
+filelist = ["a_indall.tab", "b_indall.tab", "c_indall.tab", 
+"d_indall.tab", "e_indall.tab", "f_indall.tab", "g_indall.tab"]
 
 def longevity(filelist):
     """ List of individuals that are present in all waves """
