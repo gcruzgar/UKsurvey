@@ -27,7 +27,7 @@ def longevity(filelist):
         wc+=1
     
     id_int = set(pidp_dic['2']).intersection(set(pidp_dic['1']))
-    for n in range(3,len(filelist)):
+    for n in range(3,len(filelist)+1):
         id_int = set(pidp_dic[str(n)]).intersection(id_int)
     return id_int
 
