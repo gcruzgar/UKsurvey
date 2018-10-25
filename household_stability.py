@@ -60,3 +60,8 @@ for pidp in id_list:
     else:
         house_dic[str(pidp)] = household_id_list(filelist, pidp)
         print("Individual %d ... done" % pidp)
+
+# Save output to csv
+# first row is pidp, rest are the hidps
+house_df = pd.DataFrame(house_dic)
+house_df.to_csv('household_dataframe.csv')
