@@ -56,6 +56,7 @@ def household_distribution(filelist, var_key):
 
         hh_dist = Counter(v)  # or use df[kword].value_counts()
         hh_dist_waves[wn[c]] = hh_dist
+        c+=1
     return hh_dist_waves
 
 hh_dist_waves = household_distribution(filelist, var_key)
