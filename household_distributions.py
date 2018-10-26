@@ -41,13 +41,21 @@ possible_status = {
     -1: "don't know" 
 }
 
-hh_dist_waves = {}
-for name in filelist:
+def household_distribution(filelist, var_key):
+
+    hh_dist_waves = {}
     wn = {1:'a', 2:'b', 3:'c', 4:'d', 5:'e', 6:'f', 7:'g'}
     c=1
-    def hh_distribution():
+
+    for name in filelist:        
+        
         df = pd.read_csv(name, sep='\t')
+
         kword = wn[c] + var_key
         v = df[kword]
+
         hh_dist = Counter(v)  # or use df[kword].value_counts()
         hh_dist_waves[wn[c]] = hh_dist
+    return hh_dist_waves
+
+hh_dist_waves = household_distribution(filelist, var_key)
