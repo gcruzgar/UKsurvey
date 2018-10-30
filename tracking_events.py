@@ -73,7 +73,7 @@ def track_event(filelist, var_key, possible_status, id_list = None, pidp = None)
 var_key = '_jbstat'
 possible_status = {1: "self employed", 2: "in paid employment",
     3: "unemployed", 4: "retired", 5: "on maternity leave", 6: "looking after family or home",
-    7: "full-time student", 8: "long-term isck or disabled", 9: "on a government training scheme",
+    7: "full-time student", 8: "long-term sick or disabled", 9: "on a government training scheme",
     10: "unpaid worker in family business", 97: "doing something else", -1: "don't know", 
     -9: "missing", -8: "inapplicable", -7: "proxy", -2: "refusal"}
 
