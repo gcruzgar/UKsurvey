@@ -14,7 +14,6 @@ filelist = ["a_hhresp.tab", "b_hhresp.tab", "c_hhresp.tab",
 "d_hhresp.tab", "e_hhresp.tab", "f_hhresp.tab", "g_hhresp.tab"]
 
 var_key = '_hhtype_dv'
-
 possible_status = {
     1: "1 male, aged 65+, no children",
     2: "1 female, age 60+, no children",
@@ -40,6 +39,34 @@ possible_status = {
     -7: "proxy",
     -1: "don't know" 
 }
+
+#var_key = '_tenure_dv'
+#possible_status = {
+#    1: "Owned outright",
+#    2: "Owned with mortgage",
+#    3: "Local authority rent",
+#    4: "Housing assoc rented",
+#    5: "Rented from employer",
+#    6: "Rented private unfurnished",
+#    7: "Rented private furnished",
+#    8: "Other",
+#    -2: "refusal",
+#    -9: "missing",
+#    -8: "inapplicable",
+#    -7: "proxy",
+#    -1: "don't know" 
+#}
+
+#var_key = '_urban_dv'
+#possible_status = {
+#    1: "urban area",
+#    2: "rural area",   
+#    -2: "refusal",
+#    -9: "missing",
+#    -8: "inapplicable",
+#    -7: "proxy",
+#    -1: "don't know" 
+#}
 
 def household_distribution(filelist, var_key):
 
