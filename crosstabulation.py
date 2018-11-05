@@ -21,10 +21,22 @@ def contingency_table(wave):
 
     return ctab, ctab_us
 
-wn = {1:'a', 2:'b', 3:'c', 4:'d', 5:'e', 6:'f', 7:'g'}
+""" data processing """
+def data_filter(wave, filename = None):
+    if filename == None:
+        filename = "Unstacked cross tabulation - wave "+wave+".csv"
+    wave_df = pd.read_csv(filename)
+    wave_df = wave_df[wave_df['count']!=0]
+    wave_df = wave_df[wave_df[wave+'_tenure_dv']>0]
+    wave_df = wave_df[wave_df[wave+'_hsbeds']>0]
+    wave_df = wave_df[wave_df[wave+'_hsrooms']>0].reset_index()
+    return wave_df
 
-wave = wn[3]
-ctab, ctab_us = contingency_table(wave)
+wn = {1:'a', 2:'b', 3:'c', 4:'d', 5:'e', 6:'f', 7:'g'}
+wave = wn[3] # select wave
+
+ctab, ctab_us = contingency_table(wave) # create contingency table
+wave_df = data_filter(wave) # filter table
 
 """ to save output: """
 # ctab.to_csv("contingency table 2011.csv")
