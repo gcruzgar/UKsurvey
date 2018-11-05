@@ -22,10 +22,13 @@ def contingency_table(wave):
     return ctab, ctab_us
 
 """ data processing """
-def data_filter(wave, filename = None):
+def data_filter(wave, use_ctab_us = False, filename = None):
     if filename == None:
         filename = "Unstacked cross tabulation - wave "+wave+".csv"
-    wave_df = pd.read_csv(filename)
+    if use_ctab_us == False:
+        wave_df = pd.read_csv(filename)
+    else:
+        wave_df = ctab_us
     wave_df = wave_df[wave_df['count']!=0]
     wave_df = wave_df[wave_df[wave+'_tenure_dv']>0]
     wave_df = wave_df[wave_df[wave+'_hsbeds']>0]
