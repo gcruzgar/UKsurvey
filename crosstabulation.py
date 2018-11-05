@@ -8,11 +8,11 @@ def contingency_table(wave):
 
     data_2011 = pd.read_csv(wave + '_hhresp.tab', sep = '\t')
 
-    a = data_2011['wave_hhtype_dv']
-    b = data_2011['wave_tenure_dv']
-    c = data_2011['wave_hsbeds']
-    d = data_2011['wave_hsrooms']
-    e = data_2011['wave_hhsize']
+    a = data_2011[wave+'_hhtype_dv']
+    b = data_2011[wave+'_tenure_dv']
+    c = data_2011[wave+'_hsbeds']
+    d = data_2011[wave+'_hsrooms']
+    e = data_2011[wave+'_hhsize']
 
     ctab = pd.crosstab(a, [b, c, d, e])
     """ indexing requires unstacking """
