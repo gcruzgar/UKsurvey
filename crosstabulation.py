@@ -6,13 +6,13 @@ cols = ['type', 'tenure', 'beds', 'rooms', 'size', 'count']
 
 def contingency_table(wave):
 
-    data_2011 = pd.read_csv(wave + '_hhresp.tab', sep = '\t')
+    data = pd.read_csv(wave + '_hhresp.tab', sep = '\t')
 
-    a = data_2011[wave+'_hhtype_dv']
-    b = data_2011[wave+'_tenure_dv']
-    c = data_2011[wave+'_hsbeds']
-    d = data_2011[wave+'_hsrooms']
-    e = data_2011[wave+'_hhsize']
+    a = data[wave+'_hhtype_dv']
+    b = data[wave+'_tenure_dv']
+    c = data[wave+'_hsbeds']
+    d = data[wave+'_hsrooms']
+    e = data[wave+'_hhsize']
 
     ctab = pd.crosstab(a, [b, c, d, e])
     """ indexing requires unstacking """
@@ -42,4 +42,4 @@ ctab, ctab_us = contingency_table(wave) # create contingency table
 wave_df = data_filter(wave) # filter table
 
 """ to save output: """
-# ctab.to_csv("contingency table 2011.csv")
+# ctab.to_csv("test.csv")
