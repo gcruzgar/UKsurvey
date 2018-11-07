@@ -13,7 +13,9 @@ from collections import Counter
 
 def total_rooms(wave):
     df = pd.read_csv(wave+"_hhresp.tab", sep = '\t')
-
+    df = df[df[wave+'_hsbeds']>=0]
+    df = df[df[wave+'_hsrooms']>=0]
+    
     bedrooms = df[wave+'_hsbeds']
     rooms = df[wave+'_hsrooms']
 
