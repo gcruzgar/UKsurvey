@@ -8,6 +8,7 @@ Note: takes a long time to run.
 
 Things to do:
 -load hidp file and compare number of members in hh
+-open a wave file and go through every pidp rather than open all files for every pidp
 """
 import pandas as pd 
 from random import sample
