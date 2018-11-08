@@ -26,7 +26,7 @@ However, there is a set of common files:
 
 - **_w_callrec.tab_**
 - **_w_child.tab_**
-- **_w_ego_alt.tab_**
+- __*w_ego_alt.tab*__
 - **_w_hhresp.tab**
 - **_w_hhsamp.tab_**
 - **_w_income.tab_**
