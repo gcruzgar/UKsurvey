@@ -38,3 +38,24 @@ There is considerable attrition in this survey, this is partailly compensated by
 
 More information on the survey can be found here: https://www.understandingsociety.ac.uk
 
+### Census
+
+
+
+
+### Household microsimulation
+
+Possible changes to a household:
+- Aging
+- Marriage / civil partnership
+- Birth of a child / adoption
+- Divorce / separation
+- Death of a member
+- Child moving out due to higher education / employment
+- Member returning from higher study
+- Changes in employment / retirement status
+- Household location movement (internal migration)
+- Leaving system (external migration)
+- Leaving study (attrition)
+- New household (external migration)
+- New household (study recruitment)
