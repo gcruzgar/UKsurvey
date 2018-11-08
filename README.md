@@ -6,8 +6,9 @@ Understanding Society data is used to complement ONS census data.
 For now, the repository is a list of scripts I am using for analysis.
 
 Things to do:
-- update Readme
+- keep Readme updated
 - could use ukcensusapi module to obtain census data
+- give examples for every script?
 - create python module 
 
 ### Understanding Society Dataset
@@ -34,6 +35,8 @@ However, there is a set of common files:
 
 Where w_ is a prefix denoting the wave. The first wave is denoted a, second wave is b etc.    
 Individuals have a unique ID (*pidp*), which is persistent throughout the study. Households also have their own ID (*w_hidp*), nonetheless this is wave specific, thus cannot be used to link informationa cross waves. This mean it an individual's evolution can be tracked over time, but household transitions have another layer of complexity. 
+
+The largest files are the individual survey responses (**_w_indresp.tab_**). The other group of files of interest are the household response files (**_w_hhresp.tab_**).
 
 There is considerable attrition in this survey, this is partailly compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years.
 
