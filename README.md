@@ -59,7 +59,7 @@ See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for `python` and `R
 ### Household microsimulation
 
 Possible changes to a household:
-- Aging
+- Ageing
 - Marriage / civil partnership
 - Birth of a child / adoption
 - Divorce / separation
