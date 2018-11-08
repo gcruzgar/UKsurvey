@@ -10,12 +10,11 @@ Things to do:
 - could use ukcensusapi module to obtain census data
 - create python module 
 
-
 ### Understanding Society Dataset
 
 Longitudinal study of the behaviour of ~40,000 households across the UK.
 
-Data can be downloaded from [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/series/series?id=2000053)
+Data can be downloaded from [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/series/series?id=2000053).
     
 Downloading the survey yields two folders: mrdoc and tab, the former contains documentation (including data dictionaries) and the latter the survey response data.
 
@@ -33,17 +32,17 @@ However, there is a set of common files:
 - **_w_indresp.tab_**
 - **_w_youth.tab_**
 
-Where w_ is a prefix denoting the wave (a_, b_, c_ ...)
+Where w_ is a prefix denoting the wave. The first wave is denoted a, second wave is b etc.    
+Individuals have a unique ID (*pidp*), which is persistent throughout the study. Households also have their own ID (*w_hidp*), nonetheless this is wave specific, thus cannot be used to link informationa cross waves.
 
 There is considerable attrition in this survey, this is partailly compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years.
 
-More information on the survey can be found here: https://www.understandingsociety.ac.uk
+More information on the survey can be found here: https://www.understandingsociety.ac.uk.
 
 ### Census
 
-Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk)    
+Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk).    
 See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for `python` and `R` wrapper.
-
 
 ### Household microsimulation
 
