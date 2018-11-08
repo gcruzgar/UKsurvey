@@ -13,6 +13,8 @@ Things to do:
 
 ### Understanding Society Dataset
 
+Longitudinal study of the behaviour of ~40,000 households across the UK.
+
 Data can be downloaded from [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/series/series?id=2000053)
     
 Downloading the survey yields two folders: mrdoc and tab, the former contains documentation (including data dictionaries) and the latter the survey response data.
@@ -59,3 +61,6 @@ Possible changes to a household:
 - Leaving study (attrition)
 - New household (external migration)
 - New household (study recruitment)
+
+
+Combining survey and census data is cahllenging due to the many ways variables can be defined, especailly those relating to behaviours or to household composition.  
