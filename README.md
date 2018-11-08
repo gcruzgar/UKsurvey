@@ -14,7 +14,6 @@ Things to do:
 ### Understanding Society Dataset
 
 Data can be downloaded from [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/series/series?id=2000053)
-    Requires registration in the UK Data Service website. 
     
 Downloading the survey yields two folders: mrdoc and tab, the former contains documentation (including data dictionaries) and the latter the survey response data.
 
@@ -41,7 +40,7 @@ More information on the survey can be found here: https://www.understandingsocie
 ### Census
 
 Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk)
-See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for downloads to python or R
+    See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for `python` and `R` wrapper.
 
 
 ### Household microsimulation
