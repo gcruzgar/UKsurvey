@@ -39,8 +39,8 @@ More information on the survey can be found here: https://www.understandingsocie
 
 ### Census
 
-Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk)
-    See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for `python` and `R` wrapper.
+Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk)    
+See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for `python` and `R` wrapper.
 
 
 ### Household microsimulation
