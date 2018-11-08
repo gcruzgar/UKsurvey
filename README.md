@@ -38,6 +38,15 @@ Individuals have a unique ID (*pidp*), which is persistent throughout the study.
 
 The largest files are the individual survey responses (**_w_indresp.tab_**). The other group of files of interest are the household response files (**_w_hhresp.tab_**).
 
+|File name |Number of variables*|Description |
+|----------|--------------------|------------|
+|w_indall  |100-200             |            |
+|w_indresp |1300-2900           |            |
+|w_hhresp  |200-550             |            |
+|w_hhsamp  |50-200              |            |
+
+<nowiki>*<nowiki>Questions asked in the survey changed every year, so the number of variables is inconsistent.
+
 There is considerable attrition in this survey, this is partailly compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years.
 
 More information on the survey can be found here: https://www.understandingsociety.ac.uk.
