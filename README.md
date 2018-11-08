@@ -22,4 +22,16 @@ Downloading the survey yields two folders: mrdoc and tab, the former contains do
 
 Data is divided into years or waves, each saved in its own subfolder.
 The survey changes over time so each folder will contain a different amount of files.
-However, there is a set of common files. These share filename except for a prefix denoting the wave (w_):
+However, there is a set of common files:
+
+-**_w_callrec.tab_**
+-**_w_child.tab_**
+-**_w_ego_alt.tab_**
+-**_w_hhresp.tab**
+-**_w_hhsamp.tab_**
+-**_w_income.tab_**
+-**_w_indall.tab_**
+-**_w_indresp.tab_**
+-**_w_youth.tab_**
+
+Where w_ is a prefix denoting the wave (a_, b_, c_ ...)
