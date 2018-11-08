@@ -14,3 +14,12 @@ Things to do:
 - update Readme
 - could use ukcensusapi module to obtain census data
 - create python module 
+
+
+### Understanding Society Dataset
+
+Downloading the survey yields two folders: mrdoc and tab, the former contains documentation (including data dictionaries) and the latter the survey response data.
+
+Data is divided into years or waves, each saved in its own subfolder.
+The survey changes over time so each folder will contain a different amount of files.
+However, there is a set of common files. These share filename except for a prefix denoting the wave (w_):
