@@ -33,7 +33,7 @@ However, there is a set of common files:
 - **_w_youth.tab_**
 
 Where w_ is a prefix denoting the wave. The first wave is denoted a, second wave is b etc.    
-Individuals have a unique ID (*pidp*), which is persistent throughout the study. Households also have their own ID (*w_hidp*), nonetheless this is wave specific, thus cannot be used to link informationa cross waves.
+Individuals have a unique ID (*pidp*), which is persistent throughout the study. Households also have their own ID (*w_hidp*), nonetheless this is wave specific, thus cannot be used to link informationa cross waves. This mean it an individual's evolution can be tracked over time, but household transitions have another layer of complexity. 
 
 There is considerable attrition in this survey, this is partailly compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years.
 
