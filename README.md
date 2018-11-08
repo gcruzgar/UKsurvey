@@ -34,5 +34,7 @@ However, there is a set of common files:
 
 Where w_ is a prefix denoting the wave (a_, b_, c_ ...)
 
+There is considerable attrition in this survey, this is partailly compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years.
 
 More information on the survey can be found here: https://www.understandingsociety.ac.uk
+
