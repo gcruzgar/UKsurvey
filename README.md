@@ -40,13 +40,13 @@ The largest files are the individual survey responses (**_w_indresp.tab_**). The
 
 |File name |Number of variables*|Description                                           |
 |----------|--------------------|------------------------------------------------------|
-|w_hhresp  |200-550             | Substantive data from responding households          |
-|w_indresp |1300-2900           | Substantive data from responding adults (16+)        |
-|w_youth   |120-170             | Substantive data from youth questionnaire (10-15)    |
-|w_hhsamp  |50-200              | Data from Address Record File for issued households  |
-|w_indall  |100-200             | Household grid data for all persons in household, including children and non responents|
-|w_child   |130-350             |Childcare, consents and school information of all children in the household |
-|w_egoalt  |13-21               |Kin and other relationships between pairs of individuals in the household|
+|w_hhresp  |200-550             | Substantive data from responding households          
+|w_indresp |1300-2900           | Substantive data from responding adults (16+)        
+|w_youth   |120-170             | Substantive data from youth questionnaire (10-15)    
+|w_hhsamp  |50-200              | Data from Address Record File for issued households  
+|w_indall  |100-200             | Household grid data for all persons in household, including children and non responents
+|w_child   |130-350             |Childcare, consents and school information of all children in the household 
+|w_egoalt  |13-21               |Kin and other relationships between pairs of individuals in the household
 
 <sub><nowiki>*<nowiki>Questions asked in the survey changed every year, so the number of variables is inconsistent.<sub>
 
