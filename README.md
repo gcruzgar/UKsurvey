@@ -25,7 +25,7 @@ However, there is a set of common files:
 
 - **_w_callrec.tab_**
 - **_w_child.tab_**
-- **_w_ego_alt.tab_**
+- **_w_egoalt.tab_**
 - **_w_hhresp.tab_**
 - **_w_hhsamp.tab_**
 - **_w_income.tab_**
@@ -46,7 +46,7 @@ The largest files are the individual survey responses (**_w_indresp.tab_**). The
 |w_hhsamp  |50-200              | Data from Address Record File for issued households  |
 |w_indall  |100-200             | Household grid data for all persons in household, including children and non responents|
 |w_child   |130-350             |Childcare, consents and school information of all children in the household |
-|w_ego_alt |  |Kin and other relationships between pairs of individuals in the household|
+|w_egoalt  |13-21               |Kin and other relationships between pairs of individuals in the household|
 
 <nowiki>*<nowiki>Questions asked in the survey changed every year, so the number of variables is inconsistent.
 
