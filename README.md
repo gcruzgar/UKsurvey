@@ -42,7 +42,7 @@ The largest files are the individual survey responses (**_w_indresp.tab_**). The
 |----------|--------------------|------------------------------------------------------|
 |w_hhresp  |200-550             | Substantive data from responding households          |
 |w_indresp |1300-2900           | Substantive data from responding adults (16+)        |
-|w_youth   |            | Substantive data from youth questionnaire (10-15)     |
+|w_youth   |120-170             | Substantive data from youth questionnaire (10-15)    |
 |w_hhsamp  |50-200              | Data from Address Record File for issued households  |
 |w_indall  |100-200             | Household grid data for all persons in household, including children and non responents|
 |w_child   |  |Childcare, consents and school information of all children in the household |
