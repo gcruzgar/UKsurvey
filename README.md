@@ -48,7 +48,7 @@ The largest files are the individual survey responses (**_w_indresp.tab_**). The
 |w_child   |130-350             |Childcare, consents and school information of all children in the household |
 |w_egoalt  |13-21               |Kin and other relationships between pairs of individuals in the household|
 
-<nowiki>*<nowiki>Questions asked in the survey changed every year, so the number of variables is inconsistent.
+<sub><nowiki>*<nowiki>Questions asked in the survey changed every year, so the number of variables is inconsistent.<sub>
 
 There is another folder with cross wave data. It consists of three files:
 
