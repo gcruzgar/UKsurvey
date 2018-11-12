@@ -7,8 +7,7 @@ Things to do:
 - create python module 
 
 ## Introduction
-The objective of this project is to visualise the transitions that occur in the microsynthesis of population. This is part of a bigger project aiming to create a framework for customisable population estimates.     
-Here, understanding Society data is used to complement ONS census data. In the future, other datasets will be added (consumer data, information on migration etc.).
+The objective of this project is to visualise the transitions that occur in the microsynthesis of population. This is part of a bigger project aiming to create a framework for customisable population estimates. Here, understanding Society data is used to complement ONS census data. In the future, other datasets will be added (consumer data, information on migration etc.).
 
 For now, the repository is a list of scripts I am using for analysis.
 
