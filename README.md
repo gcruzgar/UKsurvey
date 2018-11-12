@@ -1,16 +1,16 @@
 # UKsurvey
 
-## Introduction
-The objective of this project is to visualise the transitions that occur in the microsynthesis of population.  
-Understanding Society data is used to complement ONS census data.
-
-For now, the repository is a list of scripts I am using for analysis.
-
 Things to do:
 - keep Readme updated
 - could use ukcensusapi module to obtain census data
 - give examples for every script?
 - create python module 
+
+## Introduction
+The objective of this project is to visualise the transitions that occur in the microsynthesis of population.  
+Understanding Society data is used to complement ONS census data.
+
+For now, the repository is a list of scripts I am using for analysis.
 
 ## Data
 ### Understanding Society Dataset
