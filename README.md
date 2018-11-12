@@ -64,7 +64,7 @@ More information on the survey can be found here: https://www.understandingsocie
 
 ### Census
 
-The Office for National Statistics produces a national census every 10 years.
+The Office for National Statistics produces a national population census every 10 years.    
 ONS gives free access to the latest one - currently 2011.    
 Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk).    
 See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for `python` and `R` wrapper.
