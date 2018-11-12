@@ -87,4 +87,4 @@ Possible changes to a household:
 - New household (study recruitment)
 
 
-Combining survey and census data is cahllenging due to the many ways variables can be defined, especailly those relating to behaviours or to household composition.  
+Combining survey and census data is challenging due to the many ways variables can be defined, especially those relating to behaviours or to household composition.  
