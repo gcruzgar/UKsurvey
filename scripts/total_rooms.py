@@ -4,9 +4,6 @@ date started: 07/11/18
 
 This script generates the total number of rooms in each household.
 Then outputs frequency distribution.
-
-To do:
--filter data before sum (remove -9, -8, -1 values)
 """
 import pandas as pd 
 from collections import Counter
