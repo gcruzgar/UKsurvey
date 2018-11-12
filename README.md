@@ -1,5 +1,6 @@
 # UKsurvey
 
+## Introduction
 The objective of this project is to visualise the transitions that occur in the microsynthesis of population.  
 Understanding Society data is used to complement ONS census data.
 
@@ -11,6 +12,7 @@ Things to do:
 - give examples for every script?
 - create python module 
 
+## Data
 ### Understanding Society Dataset
 
 Longitudinal study of the behaviour of ~40,000 households across the UK.
@@ -69,7 +71,7 @@ ONS gives free access to the latest one - currently 2011.
 Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk).    
 See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for `python` and `R` wrapper.
 
-### Household microsimulation
+## Household microsimulation
 
 Possible changes to a household:
 - Ageing
