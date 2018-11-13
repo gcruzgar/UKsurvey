@@ -9,6 +9,8 @@ import pandas as pd
 from pathlib import Path
 from collections import Counter
 
+data_root_dir = Path("./data")
+
 dim_keys = ['_hhtype_dv', '_tenure_dv', '_hsbeds', '_hsrooms','_hhsize']
 cols = ['type', 'tenure', 'beds', 'rooms', 'size', 'count']
 
