@@ -6,6 +6,7 @@ This script creates 5-dimensional contingency tables.
 Also includes the option to unstack the tables and filter the data.
 """
 import pandas as pd 
+from pathlib import Path
 from collections import Counter
 
 dim_keys = ['_hhtype_dv', '_tenure_dv', '_hsbeds', '_hsrooms','_hhsize']
@@ -13,40 +14,36 @@ cols = ['type', 'tenure', 'beds', 'rooms', 'size', 'count']
 
 def contingency_table(wave):
 
-    data = pd.read_csv(wave + '_hhresp.tab', sep = '\t')
+    waveletter = chr(96+wave) # 1 -> "a" etc
+    data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
 
-    a = data[wave+'_hhtype_dv']
-    b = data[wave+'_tenure_dv']
-    c = data[wave+'_hsbeds']
-    d = data[wave+'_hsrooms']
-    e = data[wave+'_hhsize']
+    a = data[waveletter+'_hhtype_dv']
+    b = data[waveletter+'_tenure_dv']
+    c = data[waveletter+'_hsbeds']
+    d = data[waveletter+'_hsrooms']
+    e = data[waveletter+'_hhsize']
 
     ctab = pd.crosstab(a, [b, c, d, e])
     """ indexing requires unstacking """
-    ctab_us = ctab.unstack()
-    # print(ctab_us.loc[2,3,4,1,3])
+    # unstack returns a multiindex Series not a dataframe
+    # so construct a dataframe and make the multiindex into columns so we can filter
+    ctab_us = pd.DataFrame({"count": ctab.unstack()}).reset_index()
 
     return ctab, ctab_us
-
 """ data processing """
-def data_filter(wave, use_ctab_us = False, filename = None):
-    if filename == None:
-        filename = "Unstacked cross tabulation - wave "+wave+".csv"
-    if use_ctab_us == False:
-        wave_df = pd.read_csv(filename)
-    else:
-        wave_df = ctab_us
-    wave_df = wave_df[wave_df['count']!=0]
-    wave_df = wave_df[wave_df[wave+'_tenure_dv']>0]
-    wave_df = wave_df[wave_df[wave+'_hsbeds']>0]
-    wave_df = wave_df[wave_df[wave+'_hsrooms']>0].reset_index()
+def data_filter(wave, wave_df):
+    waveletter = chr(wave + 96) # 1 -> 'a' etc
+    wave_df = wave_df[(wave_df['count']!=0) 
+                    & (wave_df[waveletter+'_tenure_dv']>0) 
+                    & (wave_df[waveletter+'_hsbeds']>0) 
+                    & (wave_df[waveletter+'_hsrooms']>0)]
     return wave_df
 
-wn = {1:'a', 2:'b', 3:'c', 4:'d', 5:'e', 6:'f', 7:'g'}
-wave = wn[3] # select wave
+wave = 3 # select wave
 
 ctab, ctab_us = contingency_table(wave) # create contingency table
 wave_df = data_filter(wave) # filter table
 
 """ to save output: """
 # ctab.to_csv("test.csv")
+# ctab_us.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
