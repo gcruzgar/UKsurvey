@@ -44,7 +44,7 @@ def data_filter(wave, wave_df):
 wave = 3 # select wave
 
 ctab, ctab_us = contingency_table(wave) # create contingency table
-wave_df = data_filter(wave) # filter table
+wave_df = data_filter(wave, ctab_us) # filter table
 
 """ to save output: """
 # ctab.to_csv("test.csv")
