@@ -7,9 +7,12 @@ Things to do:
 - create python module 
 
 ## Introduction
-The objective of this project is to visualise the transitions that occur in the microsynthesis of population. This is part of a bigger project aiming to create a framework for customisable population estimates. Here, understanding Society data is used to complement ONS census data. In the future, other datasets will be added. (consumer data, information on migration etc.)
+The objective of this project is to visualise the transitions that occur in the microsynthesis of population. This is part of a bigger project aiming to create a framework for customisable population estimates (see SPENSER). Here, understanding Society data is used to complement ONS census data. In the future, other datasets will be added. (consumer data, information on migration etc.)
 
 For now, the repository is a list of scripts I am using for analysis.
+
+### SPENSER 
+Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a synthetic population estimation and projection model which uses dynamic microsimulation. It provides the framework for estimates of population which are dynamic and high resolution (at household level). This project is in development by the University of Leeds.
 
 ## Data
 ### Understanding Society Dataset
