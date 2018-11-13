@@ -51,3 +51,10 @@ wave_df = data_filter(ctab_us) # filter table
 """ to save output: """
 # ctab.to_csv("test.csv")
 # ctab_us.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
+
+""" automated """
+# for wave in range(1,8):
+#     print("Processing wave %d ...")
+#     ctab, ctab_us = contingency_table(wave) # create contingency table
+#     wave_df = data_filter(ctab_us) # filter table 
+#     ctab_us.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
