@@ -37,8 +37,8 @@ def constrain(table, column, minval, maxval, shift=0):
 def contingency_table(wave):
 
     waveletter = chr(96+wave) # 1 -> "a" etc
-    #data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
-    data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
+    data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
+    #data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
     # hhsamp = pd.read_csv(data_root_dir / (waveletter+'_hhsamp.tab'), sep ='\t')
 
     # mapping to census category values
