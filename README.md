@@ -54,7 +54,7 @@ The largest files are the individual survey responses (**_w_indresp.tab_**). The
 
 <sub><nowiki>*<nowiki>Questions asked in the survey changed every year, so the number of variables is inconsistent.<sub>
 
-There is another folder with cross wave data. It consists of three files:
+There is another subfolder with cross wave data. It consists of three files:
 
 |File name |Description                                           |
 |----------|------------------------------------------------------|
