@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 author: Gonzalo
 date started: 01/11/18
