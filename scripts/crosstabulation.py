@@ -37,8 +37,8 @@ def constrain(table, column, minval, maxval, shift=0):
 def contingency_table(wave):
 
     waveletter = chr(96+wave) # 1 -> "a" etc
-    #data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
-    data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
+    data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
+    #data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
     # hhsamp = pd.read_csv(data_root_dir / (waveletter+'_hhsamp.tab'), sep ='\t')
 
     # Rooms excl. bedrooms -> to rooms incl. beds, i.e. total 
@@ -105,7 +105,7 @@ def main():
     for wave in range(1,8):
         ctab_us = contingency_table(wave) # create contingency table
         wave_df = data_filter(ctab_us) # filter table 
-        wave_df.to_csv(data_root_dir / ("test-crosstab_wave" + str(wave) + ".csv"), index=False)
+        wave_df.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
         print("Processed wave %d: %d households" % (wave, np.sum(wave_df["count"])))
 
 if __name__ == "__main__":
