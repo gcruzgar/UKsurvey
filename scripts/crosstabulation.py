@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 author: Gonzalo
 date started: 01/11/18
@@ -9,7 +8,6 @@ Also includes the option to unstack the tables and filter the data.
 """
 import pandas as pd 
 from pathlib import Path
-from collections import Counter
 
 data_root_dir = Path("./data")
 
