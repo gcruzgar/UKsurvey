@@ -12,7 +12,7 @@ The objective of this project is to visualise the transitions that occur in the 
 For now, the repository is a list of scripts I am using for analysis.
 
 ### SPENSER 
-Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a synthetic population estimation and projection model which uses dynamic microsimulation. It provides the framework for estimates of population which are dynamic and high resolution (at household level). This project is in development by the University of Leeds.
+Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a synthetic population estimation and projection model which uses dynamic microsimulation. It provides the framework for estimates of population which are dynamic and high resolution (at household level); and a comprehensive set of tools for user customisable scenario projections. This project is in development by the University of Leeds.
 
 ## Data
 ### Understanding Society Dataset
