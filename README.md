@@ -62,6 +62,8 @@ There is another subfolder with cross wave data. It consists of three files:
 |xivdata   | Substantive data from responding adults (16+)        |
 |xwaveid   | Individual and household identifiers across all waves|
 
+Cross wave files contain data from every wave, however, the files are small compared to __indresp__ and don't seem to have anything useful for microsynthesis - other than the identifiers in __xwaveid__.
+
 There is considerable attrition in this survey, this is partially compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years.
 
 More information on the survey can be found here: https://www.understandingsociety.ac.uk.
