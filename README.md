@@ -2,6 +2,7 @@
 
 Things to do:
 - keep Readme updated
+- map survey to census
 - could use ukcensusapi module to obtain census data
 - give examples for every script?
 - create python module 
