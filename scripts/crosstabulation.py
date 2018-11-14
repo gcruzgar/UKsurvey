@@ -20,7 +20,6 @@ def remap(table, column, mapping):
     table = table[table[column].isin(mapping.keys())]
     # now map the values
     table[column].replace(mapping, inplace=True)
-    #table[column] = ffs
     return table
 
 def constrain(table, column, minval, maxval, shift=0):
