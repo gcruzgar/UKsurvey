@@ -8,6 +8,7 @@ Also includes the option to unstack the tables and filter the data.
 Maps survey data to census definitions before unstacking.
 """
 import pandas as pd 
+import numpy as np
 from pathlib import Path
 
 data_root_dir = Path("./data")
@@ -39,6 +40,11 @@ def contingency_table(wave):
     data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
     #data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
     # hhsamp = pd.read_csv(data_root_dir / (waveletter+'_hhsamp.tab'), sep ='\t')
+
+    # Rooms excl. bedrooms -> to rooms incl. beds, i.e. total 
+    data[waveletter+'_hsrooms'] = data[waveletter+'_hsrooms'] + data[waveletter+'_hsbeds']
+    # Census automatically turns 0 beds into 1 bed (do this without impacting total)
+    data[waveletter+'_hsbeds'] = np.maximum(data[waveletter+'_hsbeds'], 1)
 
     # mapping to census category values
     tenure_map = { 1: 0, # 2 (owned) in census
@@ -97,10 +103,10 @@ def main():
 
     """ automated """
     for wave in range(1,8):
-        print("Processing wave %d ..." % wave)
         ctab_us = contingency_table(wave) # create contingency table
         wave_df = data_filter(ctab_us) # filter table 
         wave_df.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
+        print("Processed wave %d: %d households" % (wave, np.sum(wave_df["count"])))
 
 if __name__ == "__main__":
     main()
