@@ -80,15 +80,15 @@ def contingency_table(wave):
     """ indexing requires unstacking """
     # unstack returns a multiindex Series not a dataframe
     # so construct a dataframe and make the multiindex into columns so we can filter
-    ctab_us = pd.DataFrame({"count": ctab.unstack()}).reset_index()
+    ctab_us = pd.DataFrame({"count_value": ctab.unstack()}).reset_index()
 
     """ rename columns so they are consistent between files """
-    ctab_us.columns = ['tenure', 'beds', 'rooms', 'size', 'hhtype', 'count'] # add 'dwelling' after size if included in data
+    ctab_us.columns = ['tenure', 'beds', 'rooms', 'occupants', 'hhtype', 'count_value'] # add 'dwelling' after size if included in data
     return ctab_us
 
 """ data processing """
 def data_filter(wave_df):
-    return wave_df.loc[(wave_df['count']!=0)]
+    return wave_df.loc[(wave_df['count_value']!=0)]
                     # & (wave_df.loc['dwelling']>0]
 
 def main():
