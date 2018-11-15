@@ -7,6 +7,7 @@ This script creates 5-dimensional contingency tables.
 Also includes the option to unstack the tables and filter the data.
 Maps survey data to census definitions before unstacking.
 """
+import argparse
 import pandas as pd 
 import numpy as np
 from pathlib import Path
@@ -109,4 +110,8 @@ def main():
         print("Processed wave %d: %d households" % (wave, np.sum(wave_df["count"])))
 
 if __name__ == "__main__":
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("", type=str, help="")
+    # args = parser.parse_args()
+
     main()
