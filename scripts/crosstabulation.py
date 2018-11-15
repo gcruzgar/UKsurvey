@@ -93,25 +93,26 @@ def data_filter(wave_df):
 
 def main():
 
-    wave = 3 # select wave
+    wave = args.wave # select wave
 
     ctab_us = contingency_table(wave) # create contingency table
     wave_df = data_filter(ctab_us) # filter table
+    wave_df.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
 
     """ to save output: """
     # ctab.to_csv("test.csv")
     # ctab_us.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
 
     """ automated """
-    for wave in range(1,8):
-        ctab_us = contingency_table(wave) # create contingency table
-        wave_df = data_filter(ctab_us) # filter table 
-        wave_df.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
-        print("Processed wave %d: %d households" % (wave, np.sum(wave_df["count_value"])))
+    # for wave in range(1,8):
+    #     ctab_us = contingency_table(wave) # create contingency table
+    #     wave_df = data_filter(ctab_us) # filter table 
+    #     wave_df.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
+    #     print("Processed wave %d: %d households" % (wave, np.sum(wave_df["count_value"])))
 
 if __name__ == "__main__":
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("", type=str, help="")
-    # args = parser.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("wave", type=int, help="wave number")
+    args = parser.parse_args()
 
     main()
