@@ -38,8 +38,8 @@ def constrain(table, column, minval, maxval, shift=0):
 def contingency_table(wave):
 
     waveletter = chr(96+wave) # 1 -> "a" etc
-    #data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
-    data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
+    data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
+    #data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
     # hhsamp = pd.read_csv(data_root_dir / (waveletter+'_hhsamp.tab'), sep ='\t')
 
     # Rooms excl. bedrooms -> to rooms incl. beds, i.e. total 
@@ -94,11 +94,6 @@ def data_filter(wave_df):
 
 def main():
 
-    # # select wave
-    # if "wave" in args:
-    #     wave = args.wave 
-    # else:
-    #     wave = 3
     wave = args.wave
 
     ctab_us = contingency_table(wave) # create contingency table
@@ -118,7 +113,7 @@ def main():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("wave", type=int, help="wave number to process")
+    parser.add_argument("wave", type=int, help="wave number to process", nargs='?', default=3)
     args = parser.parse_args()
 
     main()
