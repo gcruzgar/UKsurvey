@@ -38,8 +38,8 @@ def constrain(table, column, minval, maxval, shift=0):
 def contingency_table(wave):
 
     waveletter = chr(96+wave) # 1 -> "a" etc
-    data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
-    #data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
+    #data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
+    data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
     # hhsamp = pd.read_csv(data_root_dir / (waveletter+'_hhsamp.tab'), sep ='\t')
 
     # Rooms excl. bedrooms -> to rooms incl. beds, i.e. total 
@@ -71,29 +71,35 @@ def contingency_table(wave):
 
     a = data[waveletter+'_hhtype_dv']
     b = data[waveletter+'_tenure_dv']
-    c = data[waveletter+'_hsbeds']
-    d = data[waveletter+'_hsrooms']
-    e = data[waveletter+'_hhsize']
+    c = data[waveletter+'_hsrooms']
+    d = data[waveletter+'_hhsize']
+    e = data[waveletter+'_hsbeds']
+    
     # f = hhsamp[waveletter+'_dweltyp']
 
     ctab = pd.crosstab(a, [b, c, d, e]) #add ',f' after 'e' too include dwelling 
     """ indexing requires unstacking """
     # unstack returns a multiindex Series not a dataframe
     # so construct a dataframe and make the multiindex into columns so we can filter
-    ctab_us = pd.DataFrame({"count_value": ctab.unstack()}).reset_index()
+    ctab_us = pd.DataFrame({"frequency": ctab.unstack()}).reset_index()
 
     """ rename columns so they are consistent between files """
-    ctab_us.columns = ['tenure', 'beds', 'rooms', 'occupants', 'hhtype', 'count_value'] # add 'dwelling' after size if included in data
+    ctab_us.columns = ['tenure', 'beds', 'rooms', 'occupants', 'hhtype', 'frequency'] # add 'dwelling' after size if included in data
     return ctab_us
 
 """ data processing """
 def data_filter(wave_df):
-    return wave_df.loc[(wave_df['count_value']!=0)]
+    return wave_df.loc[(wave_df['frequency']!=0)]
                     # & (wave_df['dwelling']>0]
 
 def main():
 
-    wave = args.wave # select wave
+    # # select wave
+    # if "wave" in args:
+    #     wave = args.wave 
+    # else:
+    #     wave = 3
+    wave = args.wave
 
     ctab_us = contingency_table(wave) # create contingency table
     wave_df = data_filter(ctab_us) # filter table
@@ -108,11 +114,11 @@ def main():
     #     ctab_us = contingency_table(wave) # create contingency table
     #     wave_df = data_filter(ctab_us) # filter table 
     #     wave_df.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
-    #     print("Processed wave %d: %d households" % (wave, np.sum(wave_df["count_value"])))
+    #     print("Processed wave %d: %d households" % (wave, np.sum(wave_df["frequency"])))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("wave", type=int, help="wave number")
+    parser.add_argument("wave", type=int, help="wave number to process")
     args = parser.parse_args()
 
     main()
