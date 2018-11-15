@@ -38,8 +38,8 @@ def constrain(table, column, minval, maxval, shift=0):
 def contingency_table(wave):
 
     waveletter = chr(96+wave) # 1 -> "a" etc
-    data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
-    #data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
+    #data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
+    data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
     # hhsamp = pd.read_csv(data_root_dir / (waveletter+'_hhsamp.tab'), sep ='\t')
 
     # Rooms excl. bedrooms -> to rooms incl. beds, i.e. total 
@@ -94,26 +94,19 @@ def data_filter(wave_df):
 
 def main():
 
-    wave = args.wave
-
-    ctab_us = contingency_table(wave) # create contingency table
-    wave_df = data_filter(ctab_us) # filter table
-    wave_df.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
-
-    """ to save output: """
-    # ctab.to_csv("test.csv")
-    # ctab_us.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
+    if isinstance(args.wave, int):
+        args.wave = [args.wave]
 
     """ automated """
-    # for wave in range(1,8):
-    #     ctab_us = contingency_table(wave) # create contingency table
-    #     wave_df = data_filter(ctab_us) # filter table 
-    #     wave_df.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False)
-    #     print("Processed wave %d: %d households" % (wave, np.sum(wave_df["frequency"])))
+    for wave in args.wave:
+        ctab_us = contingency_table(wave) # create contingency table
+        wave_df = data_filter(ctab_us) # filter table 
+        wave_df.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False) #save output
+        print("Processed wave %d: %d households" % (wave, np.sum(wave_df["frequency"])))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("wave", type=int, help="wave number to process", nargs='?', default=3)
+    parser.add_argument("wave", type=int, help="wave number(s) to process, defaults to wave 3 if no argument is provided", nargs='*', default=3)
     args = parser.parse_args()
 
     main()
