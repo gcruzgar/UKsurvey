@@ -84,7 +84,7 @@ def contingency_table(wave):
     ctab_us = pd.DataFrame({"frequency": ctab.unstack()}).reset_index()
 
     """ rename columns so they are consistent between files """
-    ctab_us.columns = ['tenure', 'beds', 'rooms', 'occupants', 'hhtype', 'frequency'] # add 'dwelling' after size if included in data
+    ctab_us.columns = ['tenure', 'rooms', 'occupants', 'bedrooms', 'hhtype', 'frequency'] # add 'dwelling' after size if included in data
     return ctab_us
 
 """ data processing """
