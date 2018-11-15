@@ -89,7 +89,7 @@ def contingency_table(wave):
 """ data processing """
 def data_filter(wave_df):
     return wave_df.loc[(wave_df['count_value']!=0)]
-                    # & (wave_df.loc['dwelling']>0]
+                    # & (wave_df['dwelling']>0]
 
 def main():
 
