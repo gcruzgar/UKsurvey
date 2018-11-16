@@ -148,6 +148,9 @@ column names changed for hhsize and counts to avoid problems when calling due to
 
 ### Mapping Survey to Census
 
+The categories and definitions used to describe households differ between survey and census data. This means it a remapping of data is needed in order to compare between both sources, as well as to use programmes initially made for census inputs.
+
+The first step is to 
     hhtype_map = {
         1: 0, 2: 0, 3: 0, # single occ
         4: 3, 5: 3, # single parent
