@@ -42,6 +42,11 @@ def contingency_table(wave):
     #data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
     # hhsamp = pd.read_csv(data_root_dir / (waveletter+'_hhsamp.tab'), sep ='\t')
 
+    # need to remove cases with one or more missing rooms/beds values *before* aggregating rooms
+    data = data[(data[waveletter+'_hsrooms'] > 0) & (data[waveletter+'_hsbeds'] >= 0)]
+    assert len(data[(data[waveletter+'_hsrooms'] > 0) & (data[waveletter+'_hsbeds'] < 0)]) == 0
+    assert len(data[(data[waveletter+'_hsrooms'] < 1) & (data[waveletter+'_hsbeds'] >= 0)]) == 0
+
     # Rooms excl. bedrooms -> to rooms incl. beds, i.e. total 
     data[waveletter+'_hsrooms'] = data[waveletter+'_hsrooms'] + data[waveletter+'_hsbeds']
     # Census automatically turns 0 beds into 1 bed (do this without impacting total)
