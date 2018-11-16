@@ -7,6 +7,12 @@ Things to do:
 - give examples for every script?
 - create python module 
 
+## Table of contents
+1. [Introduction](#introduction)
+2. [Data](#data)
+3. [Household Microsynthesis](#household-microsynthesis)
+4. [Method](#method)
+
 ## Introduction
 The objective of this project is to visualise the transitions that occur in the microsynthesis of population. This is part of a bigger project aiming to create a framework for customisable population estimates (see SPENSER). Here, understanding Society data is used to complement ONS census data. In the future, other datasets will be added. (consumer data, information on migration etc.)
 
@@ -132,7 +138,7 @@ Counts of each 5-dimensional state using 'crosstabulation.py'. One table per wav
 Definitions of variables are different to those in census so need to remap the data.    
 note: reading in wave f produces a pandas warning due to mixed types in columns (395,396,399,400), these columns are dates and are not used in the crosstabulation so just ignore. 
 
-There is still a diference between rooms in survey and census even after mapping. Perhaps the rempa is not possible as it requires information we do not have, however, the distributions are quite close. It is just important to keep the different definitions in mind when look at any outputs produced by the data. 
+There is still a diference between rooms in survey and census even after mapping. Perhaps the remap is not possible as it requires information we do not have, however, the distributions are quite close. It is just important to keep the different definitions in mind when look at any outputs produced by the data. 
 
 Constraints: make it impossible to occupy non-sensical states such as 3 people living in a 1 person household.    
 This is different from inprobable states. There is a high number of unoccupied states in the seed. Need to give these states a small occupation to differentitate from impossible states. 
