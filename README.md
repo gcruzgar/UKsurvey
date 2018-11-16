@@ -151,6 +151,7 @@ column names changed for hhsize and counts to avoid problems when calling due to
 The categories and definitions used to describe households differ between survey and census data. This means it a remapping of data is needed in order to compare between both sources, as well as to use programmes initially made for census inputs.
 
 The first step is to 
+
     hhtype_map = {
         1: 0, 2: 0, 3: 0, # single occ
         4: 3, 5: 3, # single parent
@@ -168,4 +169,6 @@ rooms cap at 6
 bedrooms cap at 4   
 occupants cap at 4   
 
-filter 'missing' and 'inapplicable' values.
+filter 'missing' and 'inapplicable' values.     
+rooms = hsrooms+hsbeds <>*<>    
+<>*<>note data has to be filtered before adding as there are a few cases where either of rooms and bedrooms are negative (indicating missing or inapplicable values) whilst the other is positive, essentially reuslting in a false value.
