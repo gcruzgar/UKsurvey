@@ -128,11 +128,11 @@ It is hard to compare certain variables because of the definitions - see [mappin
 
 5 dimensions required to create a population seed:
 
--tenure
--number of rooms
--number of occupants
--number of bedrooms
--household composition
+-tenure     
+-number of rooms    
+-number of occupants    
+-number of bedrooms     
+-household composition      
 
 Counts of each 5-dimensional state using 'crosstabulation.py'. One table per wave.    
 Definitions of variables are different to those in census so need to remap the data.    
