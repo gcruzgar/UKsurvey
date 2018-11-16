@@ -118,7 +118,7 @@ All distributions seem to remain constant over time within a small error (<1%).
 Compare survey to census data.
 Download census data from [Nomisweb](https://www.nomisweb.co.uk).
 Distributions are the same for survey and census for the variables tested.
-It is hard to compare certain variables because of the definitions - see [mapping](### Mapping Survey to Census)
+It is hard to compare certain variables because of the definitions - see [mapping](#mapping-survey-to-census)
 
 5 dimensions required to create a population seed:
 
