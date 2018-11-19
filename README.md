@@ -88,7 +88,9 @@ Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk).
 See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for a `python` and `R` wrapper.
 
 ### Comparing Survey and Census Data
-
+![Number of Bedrooms](img/bedrooms.png)
+![Number of Rooms](img/rooms.png)
+![Number of Occupants](img/occupants.png)
 
 ## Household Microsynthesis
 
