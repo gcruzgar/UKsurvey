@@ -7,10 +7,14 @@ Things to do:
 - create python module 
 
 ## Table of contents
-1. [Introduction](#introduction)
-2. [Data](#data)
+1. [Introduction](#introduction)    
+    1.1. [SPENSER](#spenser)
+2. [Data](#data)    
+    2.1.[Understanding Society](#understanding-society)    
+    2.2.[Census](#census)
 3. [Household Microsynthesis](#household-microsynthesis)
-4. [Method](#method)
+4. [Method](#method)    
+    4.1.[Mapping Survey to Census](#mapping-survey-to-census)
 
 ## Introduction
 The objective of this project is to visualise the transitions that occur in the microsynthesis of population. This is part of a bigger project aiming to create a framework for customisable population estimates (see SPENSER). Here, understanding Society data is used to complement ONS census data. In the future, other datasets will be added. (consumer data, information on migration etc.)
@@ -21,7 +25,7 @@ For now, the repository is a list of scripts I am using for analysis.
 Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a synthetic population estimation and projection model which uses dynamic microsimulation. It provides the framework for estimates of population which are dynamic and high resolution (at household level); and a comprehensive set of tools for user customisable scenario projections. This project is in development by the University of Leeds.
 
 ## Data
-### Understanding Society Dataset
+### Understanding Society
 
 Longitudinal study of the behaviour of ~40,000 households across the UK.
 
@@ -81,7 +85,7 @@ ONS gives free access to the latest one - currently 2011.
 Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk).    
 See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for a `python` and `R` wrapper.
 
-## Household microsimulation
+## Household Microsynthesis
 
 Possible changes to a household:
 - Ageing
