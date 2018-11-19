@@ -174,13 +174,6 @@ A more complex mapping is needed for household composition as the categories don
 |Mixed              | 2 adults, not a couple, one or more over pensionable age, no children; 2 adults, not a couple, 1 or more children; 2 adults, not a couple, 1 or more children; 3 or more adults, no children, excl. any couples; 3 or more adults, 1 or more children, excl any couples
 
 <sub><nowiki>*<nowiki> Understanding Society doesn't differentiate between married and cohabiting couples in the _hhtype_ variable thus not possible to match accurately. Could combine and reduce categories by one.
-
-    hhtype_map = {
-        1: 0, 2: 0, 3: 0, # single occ
-        4: 3, 5: 3, # single parent
-        6: 1, 7: 2, 8: 1, 9: 2, 10: 1, 11: 2, 12: 1, 19: 2, 20: 1, 21: 2, # couples (alternating between married/cohabiting)
-        16: 4, 17:4, 18: 4, 22: 4, 23: 4 # mixed
-    }
     
 The survey gives values for each individual but the census gives distributions. In the case of sizes, these are capped, thus the same needs to be done to survey data, with the final number n being interpreted as n or more:
 
