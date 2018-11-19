@@ -95,11 +95,11 @@ All tested variables were highly correlated. The weakest associacion was with to
 
 The following graphs compare the distribution of census (blue) and survey (orange) data for 2011. 
 
-![Number of Bedrooms](img/bedrooms.png)
+![Number of Bedrooms](img/bedrooms.png)     
 **Figure 1.** Percentage distribution of number of bedrooms in each household.          
-![Number of Rooms](img/rooms.png)
+![Number of Rooms](img/rooms.png)     
 **Figure 2.** Percentage distribution of total number of rooms in each household.        
-![Number of Occupants](img/occupants.png)
+![Number of Occupants](img/occupants.png)     
 **Figure 3.** Percentage distribution of number of occupants in each household.         
 
 ## Household Microsynthesis
