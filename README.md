@@ -88,6 +88,11 @@ Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk).
 See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for a `python` and `R` wrapper.
 
 ### Comparing Survey and Census Data
+
+Overall, the distributions obtained by Understanding Society match census data. There are some differences, mainly because the survey is much smaller than the census, but also because both are just samples of the true population. 
+
+All tested variables were highly correlated. The weakest associacion was with total number of rooms. This is most likely due to the mismatch in definitions for this variable on each dataset. However, there was still significant correlation, r=0.738. 
+
 ![Number of Bedrooms](img/bedrooms.png)
 ![Number of Rooms](img/rooms.png)
 ![Number of Occupants](img/occupants.png)
