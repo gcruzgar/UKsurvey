@@ -7,14 +7,14 @@ Things to do:
 - create python module 
 
 ## Table of contents
-**1.** [Introduction](#introduction)     
+**1.** [Introduction](#introduction) 
     **1.1.** [SPENSER](#spenser)      
-**2.** [Data](#data)       
+**2.** [Data](#data)
     **2.1.**[Understanding Society](#understanding-society)       
     **2.2.**[Census](#census)       
     **2.3.**[Comparing Survey and Census Data](#comparing-survey-and-census-data)     
-**3.** [Household Microsynthesis](#household-microsynthesis)        
-**4.** [Method](#method)       
+**3.** [Household Microsynthesis](#household-microsynthesis) 
+**4.** [Method](#method)
     **4.1.**[Mapping Survey to Census](#mapping-survey-to-census)   
 
 ## Introduction
