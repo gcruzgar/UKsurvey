@@ -163,6 +163,18 @@ Only four categories of tenure are used in [household_microsynth](https://github
 |Rented social       | Local authority rent + Housing associated rent |
 |Rented private      | Rented private Unfurnished + Furnished + Other |
 
+A more complex mapping is needed for household composition as the categories don't exactly match:
+
+|Census             | Understanding Society                                              |
+|-------------------|--------------------------------------------------------------------|
+|Single occupancy   | 1 male, aged 65+; 1 female, age 60+; 1 adult under pensionable age |
+|Single parent      | 1 adult, 1 child; 1 adult, 2 or more children                      |
+|Married couple*    | Couple under pensionable age, no children; Couple 1 or more over pensionable age, no children; Couple with 1 child; Couple with 3 or more children; 3 or more adults, 1-2 children, incl. at least one couple
+|Cohabiting couple* | Couple with 2 children; 3 or more adults, no children, incl. at least one couple; 3 or more adults, >2 children, incl. at least one couple
+|Mixed              | 2 adults, not a couple, one or more over pensionable age, no children; 2 adults, not a couple, 1 or more children; 2 adults, not a couple, 1 or more children; 3 or more adults, no children, excl. any couples; 3 or more adults, 1 or more children, excl any couples
+
+<sub><nowiki>*<nowiki> Understanding Society doesn't differentiate between married and cohabiting couples in the _hhtype_ variable thus not possible to match accurately. Could combine and reduce categories by one.
+
     hhtype_map = {
         1: 0, 2: 0, 3: 0, # single occ
         4: 3, 5: 3, # single parent
