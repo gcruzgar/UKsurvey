@@ -82,7 +82,8 @@ More information on the survey can be found here: https://www.understandingsocie
 ### Census
 
 The Office for National Statistics produces a national population census every 10 years.    
-ONS gives free access to the latest one - currently 2011.    
+ONS gives free access to the latest one - currently 2011. The census is the most accurate representation of population data available, thus is often used for population microsynthesis. However, it only occurs once every 10 years and lacks behavioural and consumer data. This is why it is important to complement census with other datasets.   
+
 Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk).    
 See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for a `python` and `R` wrapper.
 
