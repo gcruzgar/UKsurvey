@@ -93,9 +93,14 @@ Overall, the distributions obtained by Understanding Society match census data. 
 
 All tested variables were highly correlated. The weakest associacion was with total number of rooms. This is most likely due to the mismatch in definitions for this variable on each dataset. However, there was still significant correlation, r=0.738. 
 
+The following graphs compare the distribution of census (blue) and survey (orange) data for 2011. 
+
 ![Number of Bedrooms](img/bedrooms.png)
+**Figure 1.** Percentage distribution of number of bedrooms in each household.          
 ![Number of Rooms](img/rooms.png)
+**Figure 2.** Percentage distribution of total number of rooms in each household.        
 ![Number of Occupants](img/occupants.png)
+**Figure 3.** Percentage distribution of number of occupants in each household.         
 
 ## Household Microsynthesis
 
