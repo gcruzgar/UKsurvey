@@ -11,7 +11,8 @@ Things to do:
     1.1. [SPENSER](#spenser)
 2. [Data](#data)    
     2.1.[Understanding Society](#understanding-society)    
-    2.2.[Census](#census)
+    2.2.[Census](#census)    
+    2.3.[Comparing Survey and Census Data](#comparing-survey-and-census-data)
 3. [Household Microsynthesis](#household-microsynthesis)
 4. [Method](#method)    
     4.1.[Mapping Survey to Census](#mapping-survey-to-census)
@@ -84,6 +85,9 @@ The Office for National Statistics produces a national population census every 1
 ONS gives free access to the latest one - currently 2011.    
 Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk).    
 See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for a `python` and `R` wrapper.
+
+### Comparing Survey and Census Data
+
 
 ## Household Microsynthesis
 
