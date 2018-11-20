@@ -144,8 +144,7 @@ I initially did an overview of files present in the survey. Data is available fo
 Check how many households are present during the entire survey   
 List of household ids for each individual (unnecessary as this already exists in cross wave data files)    
 
-Tracking an individual over time (e.g. employment status) 
-The first attempt at tracking an individual over time can be seen here: [Tracking Events](scripts/tracking_events.py). 
+The first attempt at tracking an individual over time can be seen here: [tracking events](scripts/tracking_events.py). 
 This includes a function for obtaining a list of individuals that are present in all waves. The script selects an individual from the list of those present in all waves. It then prints the personal ID (pidp) and the status evolution for a given variable such as employment.
 
 List of useful variables in each file      
@@ -153,13 +152,12 @@ No location variable other than region
 What are the triggers that change a household?    
 What is the stability of households over time? (how many remain the same)    
 Computationally intensive to check all individual transitions -> look at distributions for now    
-
-Use 'household_distributions.py' to obtain counts of the required variable    
+Use [household distributions](scripts/household_distributions.py) to obtain counts of the required variable    
 I then save these counts on excel, normalise to account for decrease in total housholds, and plot the distributions.   
 Also added correlations between each variable. Household size and composition is the pair with the highest correlation, r=0.72, folowed by number of bedrooms and rooms (that aren't bedrooms), r=0.55.
 
 All distributions seem to remain constant over time within a small error (<1%).    
-Compare survey to census data.
+Compare survey to census data - see [comparing](# comparing-survey-and-census-data).
 Download census data from [Nomisweb](https://www.nomisweb.co.uk).
 Distributions are the same for survey and census for the variables tested.
 It is hard to compare certain variables because of the definitions - see [mapping](#mapping-survey-to-census)
@@ -172,9 +170,10 @@ It is hard to compare certain variables because of the definitions - see [mappin
 - number of bedrooms     
 - household composition      
 
-Counts of each 5-dimensional state using 'crosstabulation.py'. One table per wave.    
-Definitions of variables are different to those in census so need to remap the data.    
-note: reading in wave f produces a pandas warning due to mixed types in columns (395,396,399,400), these columns are dates and are not used in the crosstabulation so just ignore. 
+Counts of each 5-dimensional state using [crosstabulation](scripts/crosstabulation.py). One table per wave.    
+Definitions of variables are different to those in census so need to remap the data.
+
+Note: reading in wave f produces a pandas warning due to mixed types in columns (395,396,399,400), these columns are dates and are not used in the crosstabulation so just ignore. 
 
 There is still a diference between rooms in survey and census even after mapping. Perhaps the remap is not possible as it requires information we do not have, however, the distributions are quite close. It is just important to keep the different definitions in mind when look at any outputs produced by the data. 
 
