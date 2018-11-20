@@ -143,7 +143,11 @@ I initially did an overview of files present in the survey. Data is available fo
 
 Check how many households are present during the entire survey   
 List of household ids for each individual (unnecessary as this already exists in cross wave data files)    
-Tracking an individual over time (e.g. employment status)    
+
+Tracking an individual over time (e.g. employment status) 
+The first attempt at tracking an individual over time can be seen here: [Tracking Events](scripts/tracking_events.py). 
+This includes a function for obtaining a list of individuals that are present in all waves. The script selects an individual from the list of those present in all waves. It then prints the personal ID (pidp) and the status evolution for a given variable such as employment.
+
 List of useful variables in each file      
 No location variable other than region    
 What are the triggers that change a household?    
