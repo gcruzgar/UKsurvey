@@ -141,8 +141,9 @@ Although the data can be accessed by anyone, it is technically safeguarded - req
 
 I initially did an overview of files present in the survey. Data is available for the previous British Household Panel Survey (BHPS), however, I have focused on Understanding Society waves only.
 
-Check how many households are present during the entire survey   
-Can obtain a list of household IDs for each individual using [household stability](scripts/household_stability.py), however, this is not essential as something similar already exists in cross wave data files (xwaveid). It might still be useful to improve computational speed as the list produced is smaller - 2.4MB compared to 22.7MB from the xwaveid file.  
+As with any longitudinal study, members drop out every year. A list of individuals present throughout the entire study can be obtained with the 'longevity' function in 'tracking_events.py'.
+
+It is also possible to obtain a list of household IDs corresponding to each individual using [household stability](scripts/household_stability.py), however, this is not essential as something similar already exists in cross wave data files (xwaveid). It might still be useful to improve computational speed as the list produced is smaller - 2.4MB compared to 22.7MB from the xwaveid file. WARNING: the code is very slow, it needs rewriting, takes over a day to run. The code can be altered to obtain household IDs for a given list of individuals (takes approximately 4 seconds per individual).  
 
 The first attempt at tracking an individual over time can be seen here: [tracking events](scripts/tracking_events.py). 
 This includes a function for obtaining a list of individuals that are present in all waves. The script selects an individual from the list of those present in all waves. It then prints the personal ID (pidp) and the status evolution for a given variable such as employment.
