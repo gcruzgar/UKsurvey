@@ -67,11 +67,17 @@ def contingency_table(wave):
     hhtype_map = {
         1: 0, 2: 0, 3: 0, # single occ
         4: 3, 5: 3, # single parent
-        6: 1, 7: 2, 8: 1, 9: 2, 10: 1, 11: 2, 12: 1, 19: 2, 20: 1, 21: 2, # couples (alternating between married/cohabiting)
+        6: 1, 8: 1, 10: 1, 11: 1, 12: 1, 19: 1, 20: 1, 21: 1, # couples (alternating between married/cohabiting)
         16: 4, 17:4, 18: 4, 22: 4, 23: 4 # mixed
     }
     data = remap(data, waveletter+'_hhtype_dv', hhtype_map)
 
+    """ randomly assigning couples to married or cohabiting couples """
+    couples = data.index[data[waveletter+'_hhtype_dv'] == 1].tolist()
+    to_change = np.random.choice(couples, size = round(0.5*len(couples)), replace=False)
+    for i in to_change:
+        data.loc[i, waveletter+'_hhtype_dv'] = 2
+        
     #data[waveletter+'_tenure_dv'].replace(tenure_map, inplace=True)
 
     a = data[waveletter+'_hhtype_dv']
