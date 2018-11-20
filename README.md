@@ -104,11 +104,13 @@ The following graphs compare the distribution of census (blue) and survey (orang
 ![Number of Occupants](img/occupants.png)     
 **Figure 3.** Percentage distribution of number of occupants in each household.         
 
-Note that the number of categories has been expaned here compared to what is used in population microsynthesis. This is to give a better view of the distributions and because the data is available to this degree of accuracy. Comparing Household composition and tenure is also possible but the limited amount of categories makes the correlations less reliable.
+Note that the number of categories has been expaned here compared to what is used in population microsynthesis. This is to give a better view of the distributions and because the data is available to this degree of accuracy. Comparing household composition and tenure is also possible but the limited amount of categories makes the correlations less reliable.
 
-Household Tenure
+![Tenure](img/tenure.png)
+**Figure 4.** Percentage distribution of tenure type in each household.
 
-Household Composition
+![Household Composition](img/composition.png)
+**Figure 5.** Percentage distribution of household composition.
 
 ## Household Microsynthesis
 
