@@ -38,8 +38,8 @@ def constrain(table, column, minval, maxval, shift=0):
 def contingency_table(wave):
 
     waveletter = chr(96+wave) # 1 -> "a" etc
-    data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
-    #data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
+    #data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_hhresp.tab'), sep = '\t')
+    data = pd.read_csv(data_root_dir / (waveletter+'_hhresp.tab'), sep ='\t')
     # hhsamp = pd.read_csv(data_root_dir / (waveletter+'_hhsamp.tab'), sep ='\t')
 
     # need to remove cases with one or more missing rooms/beds values *before* aggregating rooms
@@ -75,7 +75,7 @@ def contingency_table(wave):
     """ randomly assigning couples to married or cohabiting couples """
     couples = data.index[data[waveletter+'_hhtype_dv'] == 1].tolist()
     np.random.seed(9238456) # set seed to always get the same "random" numbers
-    to_change = np.random.choice(couples, size = round(0.5*len(couples)), replace=False)
+    to_change = np.random.choice(couples, size = round(0.25*len(couples)), replace=False)
     data.loc[to_change, waveletter+'_hhtype_dv'] = 2
         
     #data[waveletter+'_tenure_dv'].replace(tenure_map, inplace=True)
