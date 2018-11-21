@@ -77,6 +77,9 @@ Cross wave files contain data from every wave, however, the files are small comp
 
 There is considerable attrition in this survey, this is partially compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years.
 
+![Urban-Rural Split](img/urban.png)
+**Figure 1.** Number of households in urban or rural areas. The number of houses decreases as the study goes on. The average split is 76% urban and 24% rural - standard deviation = 1.5%. 
+
 More information on the survey can be found here: https://www.understandingsociety.ac.uk.
 
 ### Census
@@ -96,21 +99,21 @@ All tested variables were highly correlated. The weakest associacion was with to
 The following graphs compare the distribution of census (blue) and survey (orange) data for 2011. 
 
 ![Number of Bedrooms](img/bedrooms.png)     
-**Figure 1.** Percentage distribution of number of bedrooms in each household.
+**Figure 2.** Percentage distribution of number of bedrooms in each household.
 
 ![Number of Rooms](img/rooms.png)     
-**Figure 2.** Percentage distribution of total number of rooms in each household.
+**Figure 3.** Percentage distribution of total number of rooms in each household.
 
 ![Number of Occupants](img/occupants.png)     
-**Figure 3.** Percentage distribution of number of occupants in each household.         
+**Figure 4.** Percentage distribution of number of occupants in each household.         
 
 Note that the number of categories has been expaned here compared to what is used in population microsynthesis. This is to give a better view of the distributions and because the data is available to this degree of accuracy. Comparing household composition and tenure is also possible but the limited amount of categories makes the correlations less reliable.
 
 ![Tenure](img/tenure.png)
-**Figure 4.** Percentage distribution of tenure type in each household.
+**Figure 5.** Percentage distribution of tenure type in each household.
 
 ![Household Composition](img/composition.png)
-**Figure 5.** Percentage distribution of household composition.
+**Figure 6.** Percentage distribution of household composition.
 
 ## Household Microsynthesis
 
