@@ -115,6 +115,7 @@ def main():
         wave_df = data_filter(ctab_us) # filter table 
         wave_df.to_csv(data_root_dir / ("crosstab_wave" + str(wave) + ".csv"), index=False) #save output
         print("Processed wave %d: %d households" % (wave, np.sum(wave_df["frequency"])))
+        print("Number of occupied states: %d\n" % len(wave_df))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
