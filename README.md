@@ -77,8 +77,8 @@ Cross wave files contain data from every wave, however, the files are small comp
 
 There is considerable attrition in this survey, this is partially compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years.
 
-![Urban-Rural Split](img/urban.png)
-**Figure 1.** Number of households in urban or rural areas. The number of houses decreases as the study goes on. The average split is 76% urban and 24% rural - standard deviation = 1.5%. 
+![Urban-Rural Split](img/urban.png)    
+**Figure 1.** Number of households in urban or rural areas. The number of houses decreases as the study goes on. The average split is 76% urban and 24% rural - standard deviation ~ 1.5%. 
 
 More information on the survey can be found here: https://www.understandingsociety.ac.uk.
 
