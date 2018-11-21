@@ -186,7 +186,7 @@ make sure column order is same as that in household_microsynth
 column names changed for hhsize and counts to avoid problems when calling due to pre existing functions 'size' and 'count'.    
 
 assigning couples in survey to either married or cohabiting in census randomly (50/50). In the England and Wales census, 77% of couples are married whilst only 23% are cohabiting. Using this doesnt make much difference compared to 50/50 split - 1% loss of states. 
-changing the order of crosstabultion seems to make no change to the number of occupied states. 
+changing the order of crosstabultion seems to make no change to the number of occupied states. The number of states will vary slightly on every run due to the random splitting of couples. I have set a seed for the sake of reproducibility.
 
 ### Mapping Survey to Census
 
