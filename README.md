@@ -208,11 +208,10 @@ A more complex mapping is needed for household composition as the categories don
 |-------------------|--------------------------------------------------------------------|
 |Single occupancy   | 1 male, aged 65+; 1 female, age 60+; 1 adult under pensionable age |
 |Single parent      | 1 adult, 1 child; 1 adult, 2 or more children                      |
-|Married couple*    | Couple under pensionable age, no children; Couple 1 or more over pensionable age, no children; Couple with 1 child; Couple with 3 or more children; 3 or more adults, 1-2 children, incl. at least one couple
-|Cohabiting couple* | Couple with 2 children; 3 or more adults, no children, incl. at least one couple; 3 or more adults, >2 children, incl. at least one couple
+|Married or Cohabiting couple*    | Couple under pensionable age, no children; Couple 1 or more over pensionable age, no children; Couple with 1 child; Couple with 3 or more children; 3 or more adults, 1-2 children, incl. at least one couple; Couple with 2 children; 3 or more adults, no children, incl. at least one couple; 3 or more adults, >2 children, incl. at least one couple
 |Mixed              | 2 adults, not a couple, one or more over pensionable age, no children; 2 adults, not a couple, 1 or more children; 2 adults, not a couple, 1 or more children; 3 or more adults, no children, excl. any couples; 3 or more adults, 1 or more children, excl any couples
 
-<sub><nowiki>*<nowiki> Understanding Society doesn't differentiate between married and cohabiting couples in the _hhtype_ variable thus not possible to match accurately. Could combine and reduce categories by one. A random 50-50 split yields a number of occupied states 3% higher the current alternating split.
+<nowiki>*<nowiki> Understanding Society doesn't differentiate between married and cohabiting couples in the _hhtype_ variable thus not possible to match accurately. Could combine and reduce categories by one. A random 50-50 split yields a number of occupied states ~2% higher the assigning half the categories to married and half to cohabiting couples. The actual split on England and Wales is around 77% married or same sex civil partnership and 23% cohabiting couples, however, this will vary from one local authority to the next. 
     
 The survey gives values for each individual but the census gives distributions. In the case of sizes, these are capped, thus the same needs to be done to survey data, with the final number n being interpreted as n or more:
 
