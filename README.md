@@ -222,8 +222,8 @@ A more complex mapping is needed for household composition as the categories don
     
 The survey gives values for each individual but the census gives distributions. In the case of sizes, these are capped, thus the same needs to be done to survey data, with the final number n being interpreted as n or more:
 
--rooms cap at 6   
--bedrooms cap at 4   
--occupants cap at 4   
+- rooms cap at 6   
+- bedrooms cap at 4   
+- occupants cap at 4   
 
 Room and bedroom sizes are also shifted by subtracting one from all values bigger than 1. This is because the census considers values of zero bedrooms to be equal to one bedrooms. 
