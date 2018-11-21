@@ -185,6 +185,9 @@ option to add dwelling type but variable is stored in a different file (hhsamp i
 make sure column order is same as that in household_microsynth    
 column names changed for hhsize and counts to avoid problems when calling due to pre existing functions 'size' and 'count'.    
 
+assigning couples in survey to either married or cohabiting in census randomly (50/50). In the England and Wales census, 77% of couples are married whilst only 23% are cohabiting. Using this doesnt make much difference compared to 50/50 split - 1% loss of states. 
+changing the order of crosstabultion seems to make no change to the number of occupied states. 
+
 ### Mapping Survey to Census
 
 The categories and definitions used to describe households differ between survey and census data. This means it a remapping of data is needed in order to compare between both sources, as well as to use programmes initially made for census inputs.
