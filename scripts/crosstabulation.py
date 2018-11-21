@@ -76,8 +76,7 @@ def contingency_table(wave):
     couples = data.index[data[waveletter+'_hhtype_dv'] == 1].tolist()
     np.random.seed(9238456) # set seed to always get the same "random" numbers
     to_change = np.random.choice(couples, size = round(0.5*len(couples)), replace=False)
-    for i in to_change:
-        data.loc[i, waveletter+'_hhtype_dv'] = 2
+    data.loc[to_change, waveletter+'_hhtype_dv'] = 2
         
     #data[waveletter+'_tenure_dv'].replace(tenure_map, inplace=True)
 
