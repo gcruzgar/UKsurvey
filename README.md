@@ -97,7 +97,7 @@ The following graphs compare the distribution of census (blue) and survey (orang
 **Figure 2.** Percentage distribution of number of bedrooms in each household. r-squared = 0.971.
 
 ![Number of Rooms](img/rooms.png)     
-**Figure 3.** Percentage distribution of total number of rooms in each household. r-squared = 0.738.
+**Figure 3.** Percentage distribution of total number of rooms in each household. r-squared = 0.738. There seems to be a shift in survey data compared to census data. This apparent systematic error could be due to the difference in definitions on what counts as a room.
 
 ![Number of Occupants](img/occupants.png)     
 **Figure 4.** Percentage distribution of number of occupants in each household. r-squared = 0.978.         
