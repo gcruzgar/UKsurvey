@@ -89,26 +89,26 @@ See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for a `python` and 
 
 Overall, the distributions obtained by Understanding Society match census data. There are some differences, mainly because the survey is much smaller than the census, but also because both are just samples of the true population. In order to compare both datasets, normalisation is required. All the graphs shown below display data as a percentage of the total for that year. 
 
-All tested variables (tenure, bedrooms, rooms, occupants and composition) were highly correlated. The weakest associacion was with total number of rooms. This is most likely due to the mismatch in definitions for this variable on each dataset. However, there was still significant correlation, r=0.738.  
+All tested variables (tenure, bedrooms, rooms, occupants and composition) were highly correlated. The weakest associacion was with total number of rooms. This is most likely due to the mismatch in definitions for this variable on each dataset. However, there was still significant correlation, r-squared=0.738.  
 
 The following graphs compare the distribution of census (blue) and survey (orange) data for 2011. 
 
 ![Number of Bedrooms](img/bedrooms.png)     
-**Figure 2.** Percentage distribution of number of bedrooms in each household. 
+**Figure 2.** Percentage distribution of number of bedrooms in each household. r-squared = 0.971.
 
 ![Number of Rooms](img/rooms.png)     
-**Figure 3.** Percentage distribution of total number of rooms in each household.
+**Figure 3.** Percentage distribution of total number of rooms in each household. r-squared = 0.738.
 
 ![Number of Occupants](img/occupants.png)     
-**Figure 4.** Percentage distribution of number of occupants in each household.         
+**Figure 4.** Percentage distribution of number of occupants in each household. r-squared = 0.978.         
 
 Note that the number of categories has been expaned here compared to what is used in population microsynthesis. This is to give a better view of the distributions and because the data is available to this degree of accuracy. Comparing household composition and tenure is also possible but the limited amount of categories makes the correlations less reliable.
 
 ![Tenure](img/tenure.png)
-**Figure 5.** Percentage distribution of tenure type in each household.
+**Figure 5.** Percentage distribution of tenure type in each household. r-squared = 0.978.
 
 ![Household Composition](img/composition.png)
-**Figure 6.** Percentage distribution of household composition.
+**Figure 6.** Percentage distribution of household composition. r-squared = 0.931.
 
 Although the number of households is large (order 10,000s for survey and 10,000,000s for census), the coefficients of determination shown are based on the number of categories, which is quite small, so the values might be inflated.
 
