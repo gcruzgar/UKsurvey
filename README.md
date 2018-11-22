@@ -28,15 +28,11 @@ Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a syn
 ## Data
 ### Understanding Society
 
-Longitudinal study of the behaviour of ~40,000 households across the UK.
+Understanding Society is a longitudinal study of the behaviour of ~40,000 households across the UK.
 
-Data can be downloaded from [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/series/series?id=2000053).
-    
-Downloading the survey yields two folders: mrdoc and tab, the former contains documentation (including data dictionaries) and the latter the survey response data.
+Data can be downloaded from [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/series/series?id=2000053). It is available in several formats (SPSS, STATA, TAB). Downloading the TAB survey yields two folders: mrdoc and tab, the former contains documentation (including data dictionaries) and the latter the survey response data.
 
-Data is divided into years or waves, each saved in its own subfolder.
-The survey changes over time so each folder will contain a different amount of files.
-However, there is a set of common files:
+Data is divided into years or waves, each saved in its own subfolder. The survey changes over time so each folder will contain a different amount of files. However, there is a set of common files:
 
 - **_w_callrec.tab_**
 - **_w_child.tab_**
