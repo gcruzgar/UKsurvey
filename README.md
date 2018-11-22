@@ -105,15 +105,15 @@ There is a clear systematic error when comparing the total number of rooms in ce
 **Figure 4.** Difference between the distribution of total number of rooms in each household shown in the census to that in the survey.
 <br><br>
 ![Number of Occupants](img/occupants.png)     
-**Figure 4.** Percentage distribution of number of occupants in each household. r-squared = 0.978.         
+**Figure 5.** Percentage distribution of number of occupants in each household. r-squared = 0.978.         
 
 Note that the number of categories has been expaned here compared to what is used in population microsynthesis. This is to give a better view of the distributions and because the data is available to this degree of accuracy. Comparing household composition and tenure is also possible but the limited amount of categories makes the correlations less reliable.
 
 ![Tenure](img/tenure.png)     
-**Figure 5.** Percentage distribution of tenure type in each household. r-squared = 0.978.
+**Figure 6.** Percentage distribution of tenure type in each household. r-squared = 0.978.
 <br><br>
 ![Household Composition](img/composition.png)
-**Figure 6.** Percentage distribution of household composition. r-squared = 0.931.
+**Figure 7.** Percentage distribution of household composition. r-squared = 0.931.
 
 Although the number of households is large (order 10,000s for survey and 10,000,000s for census), the coefficients of determination shown are based on the number of categories, which is quite small, so the values might be inflated.
 
