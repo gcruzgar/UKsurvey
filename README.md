@@ -95,18 +95,18 @@ The following graphs compare the distribution of census (blue) and survey (orang
 
 ![Number of Bedrooms](img/bedrooms.png)     
 **Figure 2.** Percentage distribution of number of bedrooms in each household. r-squared = 0.971.
-
-![Number of Rooms](img/rooms.png)     
+<br><br>
+![Number of Rooms](img/rooms.png)         
 **Figure 3.** Percentage distribution of total number of rooms in each household. r-squared = 0.738. There seems to be a shift in survey data compared to census data. This apparent systematic error could be due to the difference in definitions on what counts as a room.
-
+<br><br>
 ![Number of Occupants](img/occupants.png)     
 **Figure 4.** Percentage distribution of number of occupants in each household. r-squared = 0.978.         
 
 Note that the number of categories has been expaned here compared to what is used in population microsynthesis. This is to give a better view of the distributions and because the data is available to this degree of accuracy. Comparing household composition and tenure is also possible but the limited amount of categories makes the correlations less reliable.
 
-![Tenure](img/tenure.png)
+![Tenure](img/tenure.png)     
 **Figure 5.** Percentage distribution of tenure type in each household. r-squared = 0.978.
-
+<br><br>
 ![Household Composition](img/composition.png)
 **Figure 6.** Percentage distribution of household composition. r-squared = 0.931.
 
