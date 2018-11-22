@@ -219,12 +219,12 @@ A more complex mapping is needed for household composition as the categories don
 |Married or Cohabiting couple*    | Couple under pensionable age, no children; Couple 1 or more over pensionable age, no children; Couple with 1 child; Couple with 3 or more children; 3 or more adults, 1-2 children, incl. at least one couple; Couple with 2 children; 3 or more adults, no children, incl. at least one couple; 3 or more adults, >2 children, incl. at least one couple
 |Mixed              | 2 adults, not a couple, one or more over pensionable age, no children; 2 adults, not a couple, 1 or more children; 2 adults, not a couple, 1 or more children; 3 or more adults, no children, excl. any couples; 3 or more adults, 1 or more children, excl any couples
 
-<nowiki>*<nowiki> Understanding Society doesn't differentiate between married and cohabiting couples in the _hhtype_ variable thus not possible to match accurately. Could combine and reduce categories by one. A random 50-50 split yields a number of occupied states ~2% higher the assigning half the categories to married and half to cohabiting couples. The actual split in England and Wales is around 77% married or same sex civil partnership and 23% cohabiting couples, however, this will vary from one local authority to the next. 
+<nowiki>*<nowiki> Understanding Society doesn't differentiate between married and cohabiting couples in the _hhtype_ variable, thus it is not possible to match accurately. A random 50-50 split yields a number of occupied states ~2% higher the assigning half the categories to married and half to cohabiting couples. The actual split in England and Wales is around 77% married or same sex civil partnership and 23% cohabiting couples, however, this will vary from one local authority to the next. Could also combine "Couples" into a single category.
     
-The survey gives values for each individual but the census gives distributions. In the case of sizes, these are capped, thus the same needs to be done to survey data, with the final number n being interpreted as n or more:
+The survey gives values for each individual but the census gives distributions. In the case of sizes, these are capped, thus the same needs to be done to survey data, with the final number, _n_, being interpreted as _n_ or more:
 
 - rooms cap at 6   
 - bedrooms cap at 4   
 - occupants cap at 4   
 
-Room and bedroom sizes are also shifted by subtracting one from all values bigger than 1. This is because the census considers values of zero bedrooms to be equal to one bedrooms. 
+Room and bedroom sizes are also shifted by subtracting one from all sizes bigger than 1. This is because the census considers values of zero bedrooms to be equal to one bedrooms. So all _n_ > 1 are changed to _n-1_ whilst _n=0_ is unchanged, resulting in a final value of _n=0_ being a sum of intial zero bedroom and one bedroom households.
