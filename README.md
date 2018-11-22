@@ -87,14 +87,14 @@ See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for a `python` and 
 
 ### Comparing Survey and Census Data
 
-Overall, the distributions obtained by Understanding Society match census data. There are some differences, mainly because the survey is much smaller than the census, but also because both are just samples of the true population. 
+Overall, the distributions obtained by Understanding Society match census data. There are some differences, mainly because the survey is much smaller than the census, but also because both are just samples of the true population. In order to compare both datasets, normalisation is required. All the graphs shown below display data as a percentage of the total for that year. 
 
-All tested variables were highly correlated. The weakest associacion was with total number of rooms. This is most likely due to the mismatch in definitions for this variable on each dataset. However, there was still significant correlation, r=0.738. 
+All tested variables (tenure, bedrooms, rooms, occupants and composition) were highly correlated. The weakest associacion was with total number of rooms. This is most likely due to the mismatch in definitions for this variable on each dataset. However, there was still significant correlation, r=0.738.  
 
 The following graphs compare the distribution of census (blue) and survey (orange) data for 2011. 
 
 ![Number of Bedrooms](img/bedrooms.png)     
-**Figure 2.** Percentage distribution of number of bedrooms in each household.
+**Figure 2.** Percentage distribution of number of bedrooms in each household. 
 
 ![Number of Rooms](img/rooms.png)     
 **Figure 3.** Percentage distribution of total number of rooms in each household.
@@ -109,6 +109,8 @@ Note that the number of categories has been expaned here compared to what is use
 
 ![Household Composition](img/composition.png)
 **Figure 6.** Percentage distribution of household composition.
+
+Although the number of households is large (order 10,000s for survey and 10,000,000s for census), the coefficients of determination shown are based on the number of categories, which is quite small, so the values might be inflated.
 
 ## Household Microsynthesis
 
