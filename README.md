@@ -161,9 +161,9 @@ Some key questions to ask are:
 It is computationally intensive to check all individual transitions. This is more so for households as _hipd_ is wave independent. Therefore, I looked at the overall distributions. I used [household distributions](scripts/household_distributions.py) to obtain counts of the required variable - could be anything from household composition to whether the house is in an urban or rural area. I then save these counts on excel, normalise to account for decrease in total housholds, and plot the distributions. This process could be automised on python but I find it easier to track on Excel. Also added correlations between each variable. Household size and composition is the pair with the highest correlation, r=0.72, folowed by number of bedrooms and rooms (that aren't bedrooms), r=0.55. In theory, having enough information about a household could lead to infering some other unknown characteristic about it. 
 
 All distributions seem to remain constant over time within a small error (<1%). __ADD DISTRIBUTION GRAPHS TO [Data](#data) SECTION?__    
-See [comparing](# comparing-survey-and-census-data) section to see the correlation between survey and census data.
+See [comparing](#comparing-survey-and-census-data) section to see the correlation between survey and census data.
 Download census data from [Nomisweb](https://www.nomisweb.co.uk).
-Distributions are the same for survey and census for the variables tested.
+Distributions are the same for survey and census, for the variables tested.
 It is hard to compare certain variables because of the definitions - see [mapping](#mapping-survey-to-census)
 
 5 dimensions are required to create a population seed:
@@ -174,9 +174,7 @@ It is hard to compare certain variables because of the definitions - see [mappin
 - number of bedrooms     
 - household composition      
 
-A table with the frequency of each possible 5-dimensional state can be obtained using [crosstabulation](scripts/crosstabulation.py). The program can take any number of waves as input and outputs one table per wave (in CSV format).
-
-Definitions of variables are different to those in census so need to remap the data.
+A table with the frequency of each possible 5-dimensional state can be obtained using [crosstabulation](scripts/crosstabulation.py). The program can take any number of waves as input and outputs one table per wave (in CSV format). The outputs of this script can be used as the seed in household_microsynth.
 
 Note: reading in wave f produces a pandas warning due to mixed types in columns (395,396,399,400), these columns are dates and are not used in the crosstabulation so just ignore. Whenever you read in the file for wave f, this error will appear unless you specify the column types dtype={'column_name': dtype}. (Note: setting dtype=object will silence the warning, but will not make it more memory efficient.)
 
