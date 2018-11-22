@@ -4,7 +4,7 @@ date started: 24/10/18
 
 This script generates a list of households for every individual present in all waves.
 
-Note: takes a long time to run.
+Note: takes a long time to run. Use only if you have no access to xwaveid.tab 
 
 Things to do:
 -load hidp file and compare number of members in hh

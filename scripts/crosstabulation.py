@@ -14,8 +14,6 @@ from pathlib import Path
 
 data_root_dir = Path("./data")
 
-dim_keys = ['_hhtype_dv', '_tenure_dv', '_hsbeds', '_hsrooms','_hhsize']
-
 def remap(table, column, mapping):
     """ Remaps to values in mapping and discards unmapped values """
     # first remove any values that are not keys in the mapping
