@@ -71,7 +71,7 @@ There is another subfolder with cross wave data. It consists of three files:
 
 Cross wave files contain data from every wave, however, the files are small compared to __indresp__ and don't seem to have anything useful for microsynthesis - other than the identifiers in __xwaveid__.
 
-There is considerable attrition in this survey, this is partially compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years.
+There is considerable attrition in this survey, this is partially compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years. This decrease is shown in figure 1, as well as an example of data available in the survey, in this case whether a household is in an urban or rual area. 
 
 ![Urban-Rural Split](img/urban.png)    
 **Figure 1.** Number of households in urban or rural areas. The number of houses decreases as the study goes on. The average split is 76% urban and 24% rural - standard deviation ~ 1.5%. 
