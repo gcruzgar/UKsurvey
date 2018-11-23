@@ -6,6 +6,7 @@ date started: 01/11/18
 This script creates 5-dimensional contingency tables.
 Also includes the option to unstack the tables and filter the data.
 Maps survey data to census definitions before unstacking.
+It saves a dataframe with the counts of this 5-dimensional table to CSV.
 """
 import argparse
 import pandas as pd 
@@ -65,7 +66,7 @@ def contingency_table(wave):
     hhtype_map = {
         1: 0, 2: 0, 3: 0, # single occ
         4: 3, 5: 3, # single parent
-        6: 1, 8: 1, 10: 1, 11: 1, 12: 1, 19: 1, 20: 1, 21: 1, # couples (alternating between married/cohabiting)
+        6: 1, 8: 1, 10: 1, 11: 1, 12: 1, 19: 1, 20: 1, 21: 1, # couples
         16: 4, 17:4, 18: 4, 22: 4, 23: 4 # mixed
     }
     data = remap(data, waveletter+'_hhtype_dv', hhtype_map)
