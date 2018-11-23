@@ -142,7 +142,7 @@ Combining survey and census data is challenging due to the many ways variables c
 ## Method
 The overall aim of this work is to gain insights on the Understanding Society data, it's strengths and limitations and how it could be incorporated to a microsimulation of people or households.
 
-Most data processing and analysis was done using Python3. All output files are saved as either tab separated or as CSV. Excel was used for plotting and correlation, although this could also be done in Python (check [quick_stats](scripts/quick_stats.py) for an example.
+Most data processing and analysis was done using Python3. All output files are saved as either tab separated or as CSV. Excel was used for plotting and correlation, although this could also be done in Python (check [quick_stats](scripts/quick_stats.py) for an example).
 
 To start, download [Understanding Society data](https://beta.ukdataservice.ac.uk/datacatalogue/series/series?id=2000053).
 Although the data can be accessed by anyone, it is technically safeguarded - requires registering in ukdataservice website - so it can not be included in this report. See [Understanding Society](#understanding-society) section for details about the data.
