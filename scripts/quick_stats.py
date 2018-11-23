@@ -14,9 +14,8 @@ df = pd.read_csv("data/ssm_hh_E06000047_OA11_2011.csv")
 dim_df = df[['LC4402_C_TENHUK11', 'LC4408_C_AHTHUK11', 'LC4404EW_C_SIZHUK11', 
     'LC4404EW_C_ROOMS', 'LC4405EW_C_BEDROOMS']]
 
+def plot_dist(dim):
 
-for dim in dim_df.columns:
-    
     dim_counts = dim_df[dim].value_counts()
     print("\nfrequency: \n{}".format(dim_counts))
     total = sum(dim_counts)
@@ -29,3 +28,6 @@ for dim in dim_df.columns:
     plt.title(dim)
     plt.show() # use block=False to see all 5 plots at the same time 
         # block doesnt work on bash, it will close all graphs.
+
+for dim in dim_df.columns:
+    plot_dist(dim)
