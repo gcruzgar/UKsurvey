@@ -55,7 +55,7 @@ for wave in waves:
     val_df = hh_var_dict[wave] #variable values for a given wave
     w_val = val_df.loc[val_df[waveletter+'_hidp'] == hh_row[waveletter+'_hidp'].item(), waveletter+'_hhsize'].values #extract value for the hh at that wave
     if w_val.size == 0:
-       w_val = nan
+       w_val = -9
     track_vals.extend(w_val)
     #print(track_vals)
 
