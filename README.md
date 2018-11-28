@@ -139,6 +139,8 @@ Another thing to consider is that population microsynthesis requires an initial 
 
 Combining survey and census data is challenging due to the many ways variables can be defined, especially those relating to behaviours or to household composition. Even the definition of what a room is differs. These differences shouldn't affect microsynthesis, however, it is important to keep in mind that the results displayed will have slightly different interpretations.
 
+An example of [household microsynthesis software](https://github.com/nismod/household_microsynth).
+
 ## Method
 The overall aim of this work is to gain insights on the Understanding Society data, it's strengths and limitations and how it could be incorporated to a microsimulation of people or households.
 
