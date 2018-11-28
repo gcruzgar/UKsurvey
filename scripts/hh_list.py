@@ -10,6 +10,7 @@ for any given variable:
          |100 |1    |1    |1    |2    |2    |2    |
 """
 import pandas as pd 
+import numpy as np 
 
 def hh_list():
 
@@ -47,7 +48,20 @@ for wave in waves:
 pidp = 280165 #individual
 hh_row = hh_list.loc[hh_list['pidp'] == pidp] #household individual is a member off in each wave 
 
-# for each wave
-val_df = hh_var_dict[2] #variable values for a given wave
-b_val = val_df.loc[val_df['b_hidp'] == hh_row['b_hidp'].item(), 'b_hhsize'].item() #extract value for the hh at that wave
-#track_vals = [pidp, a_val, b_val ...] #concatenate values
+track_vals = []
+for wave in waves:
+    waveletter = chr(96+wave) # 1 -> "a" etc
+    #print(waveletter)
+    val_df = hh_var_dict[wave] #variable values for a given wave
+    w_val = val_df.loc[val_df[waveletter+'_hidp'] == hh_row[waveletter+'_hidp'].item(), waveletter+'_hhsize'].values #extract value for the hh at that wave
+    if w_val.size == 0:
+       w_val = nan
+    track_vals.extend(w_val)
+    #print(track_vals)
+
+first_appearance = next(i for i, v in enumerate(track_vals) if v != -9)
+#last_appearance = next(i for i, v in enumerate(track_vals.reverse) if v != -9) # FIX!
+print("Household first present in wave %d." % (first_appearance+1))
+#print("Household last present in wave %d." % (last_appearance+1))
+print("Initial household value: %d" % track_vals[first_appearance])
+#print("Final household value: %d" % track_vals[last_appearance])
