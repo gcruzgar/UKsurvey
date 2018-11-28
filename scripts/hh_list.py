@@ -13,7 +13,7 @@ def extract_var(wave, var_name):
 
     waveletter = chr(96+wave) # 1 -> "a" etc
     data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
-    hh_var = data[waveletter+var_name]
+    hh_var = data[[waveletter+'_hidp', waveletter+var_name]]
     return hh_var
 
 def track_hh():
@@ -21,3 +21,14 @@ def track_hh():
     # obtain a dataframe with values of the chosen variable for every household
     # read the hidps for a hh and extract their corresponding values of hh_var
     pass
+
+hidp_list = hh_list()  #.dropna(how='any') to obtain list of individuals in all waves
+
+waves = [1,2,3,4,5,6,7]
+var_name = '_hhsize'
+
+print("Extracting %s..." % var_name)
+hh_var_dict = {}
+for wave in waves:
+    hh_var = extract_var(wave, var_name)
+    hh_var_dict[wave] = hh_var
