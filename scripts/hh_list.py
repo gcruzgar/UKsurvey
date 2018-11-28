@@ -43,8 +43,9 @@ for wave in waves:
     hh_var = extract_var(wave, var_name)  #.set_index(waveletter+'_hidp')
     hh_var_dict[wave] = hh_var
 
-pidp = 280165
-hh_row = hh_list.loc[hh_list['pidp'] == pidp]
+pidp = 280165 #individual
+hh_row = hh_list.loc[hh_list['pidp'] == pidp] #household individual is a member off in each wave 
+val_df = hh_var_dict[2] #variable values for a given wave
 
-b_val = hh_var_dict[2].loc[hh_var_dict[2]['b_hidp'] == hh_row['b_hidp'].item(), 'b_hhsize'].item() 
-#track_vals = [pidp, a_val, b_val ...]
+b_val = val_df.loc[val_df['b_hidp'] == hh_row['b_hidp'].item(), 'b_hhsize'].item() #extract value for the hh at that wave
+#track_vals = [pidp, a_val, b_val ...] #concatenate values
