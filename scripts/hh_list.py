@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""
+Objectives:
+for any given variable:
+    the final result should either print the evolution of a household over time, similar to that in tracking_events.py
+    e.g. print("\nHousehold %d started as '%s' and finished as '%s'")
+
+    or create a dataframe with pidp (one individual per household) and the value of the variable at each year
+    e.g. |pidp|a_var|b_var|c_var|d_var|e_var|f_var|
+         |100 |1    |1    |1    |2    |2    |2    |
+"""
 import pandas as pd 
 
 def hh_list():
