@@ -28,7 +28,7 @@ waves = [1,2,3,4,5,6,7]
 var_name = '_hhsize'
 
 print("Extracting %s..." % var_name)
-hh_var_dict = {}
+hh_var_dict = {}    #pd.DataFrame()
 for wave in waves:
-    hh_var = extract_var(wave, var_name)
+    hh_var = extract_var(wave, var_name)  #.set_index(waveletter+'_hidp')
     hh_var_dict[wave] = hh_var
