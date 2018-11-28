@@ -14,10 +14,10 @@ import pandas as pd
 def hh_list():
 
     data = pd.read_csv('data/xwaveid.tab', sep ='\t')
-    hidp_list = data[['pidp', 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']]
+    hh_list = data[['pidp', 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']]
 
-    hidp_list.to_csv('data/xwave_hh_list.csv')
-    return hidp_list
+    hh_list.to_csv('data/xwave_hh_list.csv')
+    return hh_list
 
 def extract_var(wave, var_name):
 
@@ -32,7 +32,7 @@ def track_hh():
     # read the hidps for a hh and extract their corresponding values of hh_var
     pass
 
-hidp_list = hh_list()  #.dropna(how='any') to obtain list of individuals in all waves
+hh_list = hh_list()  #.dropna(how='any') to obtain list of individuals in all waves
 
 waves = [1,2,3,4,5,6,7]
 var_name = '_hhsize'
@@ -42,3 +42,9 @@ hh_var_dict = {}    #pd.DataFrame()
 for wave in waves:
     hh_var = extract_var(wave, var_name)  #.set_index(waveletter+'_hidp')
     hh_var_dict[wave] = hh_var
+
+pidp = 280165
+hh_row = hh_list.loc[hh_list['pidp'] == pidp]
+
+b_val = hh_var_dict[2].loc[hh_var_dict[2]['b_hidp'] == hh_row['b_hidp'].item(), 'b_hhsize'].item() 
+#track_vals = [pidp, a_val, b_val ...]
