@@ -37,16 +37,12 @@ def track_hh(pidp):
 
     track_vals = []
     for wave in waves:
-        waveletter = chr(96+wave) # 1 -> "a" etc   
-        print(waveletter)     
+        waveletter = chr(96+wave) # 1 -> "a" etc       
         val_df = hh_var_dict[wave] #variable values for a given wave
         w_val = val_df.loc[val_df[waveletter+'_hidp'] == hh_row[waveletter+'_hidp'].item(), waveletter+'_hhsize'].values #extract value for the hh at that wave
-        print(w_val.size)
         if w_val.size == 0:
-            w_val = -9
-        print(w_val)
-        track_vals.extend(w_val)
-        print(track_vals)   
+            w_val = [-9]
+        track_vals.extend(w_val)  
     first_appearance = next(i for i, v in enumerate(track_vals) if v != -9)
     #last_appearance = next(i for i, v in enumerate(track_vals.reverse) if v != -9) # FIX!
     print("Household first present in wave %d." % (first_appearance+1))
@@ -69,3 +65,4 @@ for wave in waves:
 # for each individual
 pidp = 280165 #individual
 track_vals = track_hh(pidp)
+print(track_vals)
