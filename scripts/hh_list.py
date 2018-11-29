@@ -68,4 +68,8 @@ for wave in waves:
 # for each individual
 pidp = 280165 #individual
 track_vals = track_hh(pidp)
-print(track_vals)
+track_df = pd.DataFrame(data=[pidp], columns=['pidp'])
+for wave in waves:
+    waveletter = chr(96+wave) # 1 -> "a" etc
+    track_df[waveletter+var_name] = track_vals[wave-1]
+print(track_df)
