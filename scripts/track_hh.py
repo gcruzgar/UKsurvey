@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 This script generates a dataframe with the value of a chosen parameter of any given household over time.
-There is the option to save a list of households IDs to CSV, this will generate a file where each row is the IDs of a household at every wave.
+There is the option to save a list of households IDs to CSV. 
+This will generate a file where each row is the IDs of a household at every wave.
 """
 import pandas as pd 
 import numpy as np 
