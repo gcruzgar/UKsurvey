@@ -43,12 +43,15 @@ def track_hh(pidp):
         if w_val.size == 0:
             w_val = [-9]
         track_vals.extend(w_val)  
+
     first_appearance = next(i for i, v in enumerate(track_vals) if v != -9)
-    #last_appearance = next(i for i, v in enumerate(track_vals.reverse) if v != -9) # FIX!
+    last_appearance = next(i for i, v in enumerate(reversed(track_vals)) if v != -9)
+
     print("Household first present in wave %d." % (first_appearance+1))
-    #print("Household last present in wave %d." % (last_appearance+1))
+    print("Household last present in wave %d." % (len(track_vals)-last_appearance))
     print("Initial household value: %d" % track_vals[first_appearance])
-    #print("Final household value: %d" % track_vals[last_appearance])
+    print("Final household value: %d" % track_vals[len(track_vals)-(last_appearance+1)])
+    
     return track_vals
 
 hh_list = hh_list()  #.dropna(how='any') to obtain list of individuals in all waves
