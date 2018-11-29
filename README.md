@@ -154,7 +154,7 @@ I initially did an overview of files present in the survey. Data is available fo
 As with any longitudinal study, members drop out every year. A list of individuals present throughout the entire study can be obtained with the 'longevity' function in [tracking events](scripts/tracking_events.py). The script selects an individual from the list of those present in all waves. It then prints the personal ID (pidp) and the status evolution for a given variable, such as employment.
 In general, we are interested in distributions but a consistent list of individuals is handy when tracking individual events. The idea would be to relate changes to a household with events on an individual level, and whether certain events trigger certain changes.
 
-It is also possible to obtain a list of household IDs (hidp) corresponding to each individual using [household stability](scripts/household_stability.py), however, this is not essential as something similar already exists in cross wave data files (xwaveid). It might still be useful, if looking to improve computational speed, as the list produced is smaller - 2.4MB (for individuals only present in all waves) compared to 22.7MB from the xwaveid file. WARNING: the code is very slow, it needs rewriting, takes over a day to run. The code can be altered to obtain household IDs for a given list of individuals (takes approximately 4 seconds per individual). A better solution is to use [hh_list.py](scripts/hh_list.py), which creates a CSV file (9MB for all individuals) by reading pidp and w_hidp columns from xwaveid.  
+It is also possible to obtain a list of household IDs (hidp) corresponding to each individual using [household stability](scripts/household_stability.py), however, this is not essential as something similar already exists in cross wave data files (xwaveid). It might still be useful, if looking to improve computational speed, as the list produced is smaller - 2.4MB (for individuals only present in all waves) compared to 22.7MB from the xwaveid file. WARNING: the code is very slow, it needs rewriting, takes over a day to run. The code can be altered to obtain household IDs for a given list of individuals (takes approximately 4 seconds per individual). A better solution is to use the [hh_list](scripts/track_hh.py) function, which creates a CSV file (9MB for all individuals) by reading pidp and w_hidp columns from xwaveid.  
 
 There is quite an extensive documentation on the [Understanding Society](https://www.understandingsociety.ac.uk.) website, including data dictionaries.
 I compiled a list of useful variables in each file. __NEED TO ADD THIS TO GITHUB + METADATA?__      
@@ -198,7 +198,7 @@ Column names changed for hhsize and counts to avoid problems when calling due to
 Assigning couples in survey to either married or cohabiting in census randomly (50/50). In the England and Wales census, 77% of couples are married whilst only 23% are cohabiting. Using this doesnt make much difference compared to 50/50 split - 1% loss of states. 
 Additionally, changing the order of crosstabulation seems to make no change to the number of occupied states. The number of states will vary slightly on every run due to the random splitting of couples. I have set a seed for the sake of reproducibility.
 
-Working on tracking households over time using [hh_list](scripts/hh_list.py).
+Can track households over time using [track_hh.py](scripts/track_hh.py). This tracks the evolution of any chosen variable 
 
 ### Mapping Survey to Census
 
