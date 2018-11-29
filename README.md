@@ -198,7 +198,21 @@ Column names changed for hhsize and counts to avoid problems when calling due to
 Assigning couples in survey to either married or cohabiting in census randomly (50/50). In the England and Wales census, 77% of couples are married whilst only 23% are cohabiting. Using this doesnt make much difference compared to 50/50 split - 1% loss of states. 
 Additionally, changing the order of crosstabulation seems to make no change to the number of occupied states. The number of states will vary slightly on every run due to the random splitting of couples. I have set a seed for the sake of reproducibility.
 
-Can track households over time using [track_hh.py](scripts/track_hh.py). This tracks the evolution of any chosen variable 
+Can track households over time using [track_hh.py](scripts/track_hh.py). This tracks the evolution of any chosen variable:
+
+```bash
+$ scripts/track_hh.py
+Generating household list...
+Extracting _hhsize...
+scripts/track_hh.py:77: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import or set low_memory=False.
+  main()
+Household first present in wave 2.
+Household last present in wave 7.
+Initial household value: 3
+Final household value: 4
+     pidp  a_hhsize  b_hhsize  c_hhsize  d_hhsize  e_hhsize  f_hhsize  g_hhsize
+0  280165        -9         3         3         3         3         4         4
+```
 
 ### Mapping Survey to Census
 
