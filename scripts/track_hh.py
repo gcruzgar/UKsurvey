@@ -60,8 +60,11 @@ def track_hh(pidp, waves, var_name):
 
 def main(): 
 
-    pidp = args.pidp         # individual (needed to match households)
-    var_name = args.var_name    # variable to extract
+    pidp = args.pidp    # individual (needed to match households)
+    if args.var_name.startswith("_"): # variable to extract
+        var_name = args.var_name    
+    else:
+        var_name = '_'+args.var_name
     waves = [1,2,3,4,5,6,7] # waves to include
 
     print("pidp: %d" % pidp)
