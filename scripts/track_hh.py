@@ -6,6 +6,7 @@ This will generate a file where each row is the IDs of a household at every wave
 """
 import pandas as pd 
 import numpy as np 
+import argparse
 
 def hh_list():
 
@@ -59,7 +60,7 @@ def track_hh(pidp, waves, var_name):
 
 def main(): 
 
-    pidp = 280165           # individual (needed to match households)
+    pidp = args.pidp         # individual (needed to match households)
     waves = [1,2,3,4,5,6,7] # waves to include
     var_name = '_hhsize'    # variable to extract
     
@@ -73,5 +74,9 @@ def main():
     print(track_df)
 
 if __name__ == "__main__":
-    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("pidp", type=int, help="personal identifier to process, use the pidp of any member of the household of interest.", 
+        nargs='?', default=280165)
+    args = parser.parse_args()
+
     main()
