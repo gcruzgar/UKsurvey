@@ -51,19 +51,22 @@ def track_hh(pidp, waves, var_name):
     first_appearance = next(i for i, v in enumerate(track_vals) if v != -9)
     last_appearance = next(i for i, v in enumerate(reversed(track_vals)) if v != -9)
 
-    print("Household first present in wave %d." % (first_appearance+1))
+    print("\nHousehold first present in wave %d." % (first_appearance+1))
     print("Household last present in wave %d." % (len(track_vals)-last_appearance))
     print("Initial household value: %d" % track_vals[first_appearance])
-    print("Final household value: %d" % track_vals[len(track_vals)-(last_appearance+1)])
+    print("Final household value: %d\n" % track_vals[len(track_vals)-(last_appearance+1)])
     
     return track_vals
 
 def main(): 
 
     pidp = args.pidp         # individual (needed to match households)
+    var_name = args.var_name    # variable to extract
     waves = [1,2,3,4,5,6,7] # waves to include
-    var_name = '_hhsize'    # variable to extract
-    
+
+    print("pidp: %d" % pidp)
+    print("variable: %s\n" % var_name)
+
     track_vals = track_hh(pidp, waves, var_name)
 
     # generate dataframe for easier data handling
@@ -74,9 +77,12 @@ def main():
     print(track_df)
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser()
     parser.add_argument("pidp", type=int, help="personal identifier to process, use the pidp of any member of the household of interest.", 
         nargs='?', default=280165)
+    parser.add_argument("var_name", type=str, help="variable to extract, e.g. hhsize.", 
+        nargs='?', default='_hhsize')        
     args = parser.parse_args()
 
     main()
