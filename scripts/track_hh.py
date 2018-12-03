@@ -19,7 +19,7 @@ def hh_list():
 
     hidp_list.to_csv('data/xwave_hh_list.csv')
     hidp_list_unique.to_csv('data/xwave_hh_list_unique.csv')
-    return hidp_list, hidp_list_unique
+    return hidp_list
 
 def extract_var(wave, var_name):
 
