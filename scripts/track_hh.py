@@ -47,7 +47,7 @@ def track_hh(pidp, waves, var_name):
     for wave in waves:
         waveletter = chr(96+wave) # 1 -> "a" etc       
         val_df = hh_var_dict[wave] #variable values for a given wave
-        w_val = val_df.loc[val_df[waveletter+'_hidp'] == hh_row[waveletter+'_hidp'].item(), waveletter+'_hhsize'].values #extract value for the hh at that wave
+        w_val = val_df.loc[val_df[waveletter+'_hidp'] == hh_row[waveletter+'_hidp'].item(), waveletter+var_name].values #extract value for the hh at that wave
         if w_val.size == 0: #if the household wasn't present in a wave, set it's value to '-9'
             w_val = [-9]
         track_vals.extend(w_val)  
