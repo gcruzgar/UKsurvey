@@ -14,6 +14,9 @@ def hh_list():
     data = pd.read_csv('data/xwaveid.tab', sep ='\t')
     hidp_list = data[['pidp', 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']]
 
+    # only need one row per household. Drop duplicates caused by multiple members sharing a household.
+    hidp_list_unique = hidp_list.drop_duplicates(subset=['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
+
     #hidp_list.to_csv('data/xwave_hh_list.csv')
     return hidp_list
 
