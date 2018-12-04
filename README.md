@@ -158,7 +158,7 @@ It is also possible to obtain a list of household IDs (hidp) corresponding to ea
 
 There is quite an extensive documentation on the [Understanding Society](https://www.understandingsociety.ac.uk.) website, including data dictionaries.
 I compiled a list of useful variables in each file. __NEED TO ADD THIS TO GITHUB + METADATA?__      
-It is important to note that there is no location variable like the local authorities in census data. The highest resolution available is the region.   
+It is important to note that there is no location variable like the local authorities in census data. The highest resolution available is the region. There is more information, such as [output area classification](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6674), but this requires special licence access.     
 
 Some key questions to ask are:
    - What are the triggers that cause a household to change?    
