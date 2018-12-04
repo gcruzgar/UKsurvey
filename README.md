@@ -216,6 +216,8 @@ Final household value: 4
 ```
 So in the example above, the household was recruited in wave 2 and stayed for the rest of the study. The household size increased between wave 5 and wave 6. The same can be done for any household number and any variable in __hhsresp.tab__.
 
+Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.
+
 ### Mapping Survey to Census
 
 The categories and definitions used to describe households differ between survey and census data. This means a remapping of data is needed in order to compare between both sources, as well as to use programs, such as [household_microsynth](https://github.com/nismod/household_microsynth), initially made for census inputs.
