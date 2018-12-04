@@ -11,6 +11,7 @@ Variables included:
 - number of occupants
 - urban/rural split
 
+Each variable has a set of plots. Most include a stacked bar chart displaying the contribution of each category to the total. Each colour is a category and each column is a wave. There are also clustered column charts showing the same information as the bar charts but in a different way so that comparing between years is easier. In this case, each cluster of columns is a category and each colour represents a wave. The sum of same-coloured bars is teh total for that year (100 as it is a percentage).         
 It also has the correlations between said variables (only first rooms variable).
 
 ### Comparing Census and Survey data
