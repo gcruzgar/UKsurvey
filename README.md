@@ -167,7 +167,7 @@ Some key questions to ask are:
 
 It is computationally intensive to check all individual transitions. This is more so for households as _hipd_ is wave independent. Therefore, I looked at the overall distributions. I used [household distributions](scripts/household_distributions.py) to obtain counts of the required variable - could be anything from household composition to whether the house is in an urban or rural area. I then save these counts on excel, normalise to account for decrease in total housholds, and plot the distributions. This process could be automised on python but I find it easier to track on Excel. Also added correlations between each variable. Household size and composition is the pair with the highest correlation, r=0.72, folowed by number of bedrooms and rooms (that aren't bedrooms), r=0.55. In theory, having enough information about a household could lead to infering some other unknown characteristic about it. 
 
-All [distributions](docs/household_distributions.xlx) seem to remain constant over time within a small error (<1%).
+All [distributions](docs/household_distributions.xlsx) seem to remain constant over time within a small error (<1%).
 
 See [comparing](#comparing-survey-and-census-data) section to see the correlation between survey and census data.
 Download census data from [Nomisweb](https://www.nomisweb.co.uk).
