@@ -24,17 +24,21 @@ def extract_var(wave, var_name):
     hh_var = data[[waveletter+'_hidp', waveletter+var_name]]
     return hh_var
 
-def track_hh(sex, waves, var_name):
+def track_hh(sex, waves, var_name, hidp_list):
 
-    hidp_list = hh_list() # obtain list of household ids to match each hh
+    hh_row = hidp_list.loc[hidp_list['sex'] == sex] # household the individual is a member off in each wave 
 
     print("Extracting %s..." % var_name)
-    hh_var_dict = {}    #pd.DataFrame()
+    
+    track_vals = []
     for wave in waves:
-        hh_var = extract_var(wave, var_name)  #.set_index(waveletter+'_hidp')
-        hh_var_dict[wave] = hh_var
+        waveletter = chr(96+wave) # 1 -> "a" etc    
 
-    hh_rows = hidp_list.loc[hidp_list['sex'] == sex] # households within a given demographic
-
+        hh_var = extract_var(wave, var_name)
+           
+        w_val = hh_var.loc[hh_var[waveletter+'_hidp'] == hh_row[waveletter+'_hidp'].item(), waveletter+var_name].values #extract value for the hh at that wave
+        if w_val.size == 0: #if the household wasn't present in a wave, set it's value to '-9'
+            w_val = [-9]
+        track_vals.extend(w_val)  
     
     return track_vals
