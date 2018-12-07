@@ -28,20 +28,19 @@ def extract_var(wave, var_name):
     hh_var = data[[waveletter+'_hidp', waveletter+var_name]]
     return hh_var
 
-def track_hh(pidp, waves, var_name):
+def track_hh(pidp, waves, var_name, hidp_list):
     """ 
     Track households over time. Read the hidps for a hh and extract their corresponding values of hh_var.
     Outputs the values for the chosen variable for any given number of waves. 
     """
-    hidp_list = hh_list() # obtain list of household ids to match each hh
+
+    hh_row = hidp_list.loc[hidp_list['pidp'] == pidp] # household the individual is a member off in each wave 
 
     print("Extracting %s..." % var_name)
     hh_var_dict = {}    #pd.DataFrame()
     for wave in waves:
         hh_var = extract_var(wave, var_name)  #.set_index(waveletter+'_hidp')
         hh_var_dict[wave] = hh_var
-
-    hh_row = hidp_list.loc[hidp_list['pidp'] == pidp] # household the individual is a member off in each wave 
 
     track_vals = []
     for wave in waves:
@@ -74,7 +73,9 @@ def main():
     print("pidp: %d" % pidp)
     print("variable: %s\n" % var_name)
 
-    track_vals = track_hh(pidp, waves, var_name)
+    hidp_list = hh_list() # obtain list of household ids to match each hh
+
+    track_vals = track_hh(pidp, waves, var_name, hidp_list)
 
     # generate dataframe for easier data handling
     track_df = pd.DataFrame(data=[pidp], columns=['pidp']) 
