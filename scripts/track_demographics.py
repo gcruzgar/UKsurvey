@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import pandas as pd 
-import numpy as np 
+import argparse
 
 def hh_list(filter_var):
 
@@ -36,11 +36,15 @@ def track_hh(pidp, waves, var_name, hidp_list, var_dict):
 
 def main():
 
-    filter_var = 'sex'  # demographic variable to filter on
-    filter_val = 1      # value of filter variable
+    filter_var = args.filter_var  # demographic variable to filter on
+    filter_val = args.filter_val      # value of filter variable
+
+    print("\nfilter: %s" % filter_var)
+    print("value: %d\n" % filter_val)
+
     hidp_list = hh_list(filter_var) # obtain list of household ids to match each hh
 
-    pidp_list = hidp_list.loc[hidp_list[filter_var] == filter_val, 'pidp'].head(20) # individuals (needed to match households)
+    pidp_list = hidp_list.loc[hidp_list[filter_var] == filter_val, 'pidp'].head(10) # individuals (needed to match households)
     waves = [1,2,3,4,5,6,7]                      # waves to include
     var_name = '_hhsize'                         # variable to extract  
 
@@ -63,4 +67,11 @@ def main():
 
 if __name__ == "__main__":
     
+    parser = argparse.ArgumentParser()
+    parser.add_argument("filter_var", type=str, help="demographic variable to filter on. the chosen variable must be in xwaveid.tab", 
+        nargs='?', default='sex')
+    parser.add_argument("filter_val", type=int, help="value of filter variable", 
+        nargs='?', default=1)        
+    args = parser.parse_args()
+
     main()
