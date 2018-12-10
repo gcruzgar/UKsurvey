@@ -17,8 +17,8 @@ def hh_list():
     # only need one row per household. Drop duplicates caused by multiple members sharing a household.
     hidp_list_unique = hidp_list.drop_duplicates(subset=['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
 
-    hidp_list.to_csv('data/xwave_hh_list.csv')
-    hidp_list_unique.to_csv('data/xwave_hh_list_unique.csv')
+    hidp_list.to_csv('data/xwave_hh_list.csv', index='False')
+    hidp_list_unique.to_csv('data/xwave_hh_list_unique.csv', index='False')
     return hidp_list
 
 def extract_var(wave, var_name):
