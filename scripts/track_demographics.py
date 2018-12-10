@@ -26,6 +26,7 @@ def track_hh(pidp, waves, var_name, hidp_list, var_dict):
     return track_vals
 
 def main():
+
     hidp_list = pd.read_csv('data/xwave_hh_list_unique.csv') # obtain list of household ids to match each hh
 
     pidp_list = list(hidp_list['pidp'].head(10))          # individuals (needed to match households)
@@ -43,11 +44,11 @@ def main():
     for pidp in pidp_list:
 
         track_dict[pidp]  = track_hh(pidp, waves, var_name, hidp_list, var_dict)    
-        print(track_dict[pidp])
 
     #convert to dataframe for easier visualisation
     track_df = pd.DataFrame.from_dict(track_dict, orient='index', columns = ['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
     print(track_df)
 
 if __name__ == "__main__":
+    
     main()
