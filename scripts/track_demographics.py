@@ -36,17 +36,21 @@ def track_hh(pidp, waves, var_name, hidp_list, var_dict):
 
 def main():
 
-    filter_var = args.filter_var  # demographic variable to filter on
+    filter_var = args.filter_var      # demographic variable to filter on
     filter_val = args.filter_val      # value of filter variable
-
+    if args.var_name.startswith("_"): # variable to extract
+        var_name = args.var_name    
+    else:                             # catch variables without underscore
+        var_name = '_'+args.var_name
+    
     print("\nfilter: %s" % filter_var)
-    print("value: %d\n" % filter_val)
+    print("value: %d" % filter_val)
+    print("variable: %s\n" % var_name)
 
     hidp_list = hh_list(filter_var) # obtain list of household ids to match each hh
 
     pidp_list = hidp_list.loc[hidp_list[filter_var] == filter_val, 'pidp'].head(10) # individuals (needed to match households)
     waves = [1,2,3,4,5,6,7]                      # waves to include
-    var_name = '_hhsize'                         # variable to extract  
 
     print("Extracting variable data...")
     var_dict = {}
@@ -71,7 +75,9 @@ if __name__ == "__main__":
     parser.add_argument("filter_var", type=str, help="demographic variable to filter on. the chosen variable must be in xwaveid.tab", 
         nargs='?', default='sex')
     parser.add_argument("filter_val", type=int, help="value of filter variable", 
-        nargs='?', default=1)        
+        nargs='?', default=1)
+    parser.add_argument("var_name", type=str, help="variable of interest to extract. must be in hhresp.tab. type without wave prefix", 
+        nargs='?', default='_hhsize')        
     args = parser.parse_args()
 
     main()
