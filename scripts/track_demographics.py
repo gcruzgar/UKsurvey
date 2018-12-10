@@ -2,6 +2,17 @@
 import pandas as pd 
 import numpy as np 
 
+def hh_list(filter_var):
+
+    print("Generating household list...")
+    data = pd.read_csv('data/xwaveid.tab', sep ='\t')
+    data = data.loc[data['fwintvd_dv'] != -8.0]  # drop any BHPS households not present in UKHLS, i.e. if first wave interview (UKHLS) is inapplicable. 
+    hidp_list = data[['pidp', filter_var, 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']] # only save households ids and filter variable
+    
+    # only need one row per household. Drop duplicates caused by multiple members sharing a household.
+    hidp_list = hidp_list.drop_duplicates(subset=['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
+    return hidp_list
+
 def track_hh(pidp, waves, var_name, hidp_list, var_dict):
     """ 
     Track households over time. Read the hidps for a hh and extract their corresponding values of hh_var.
@@ -25,20 +36,21 @@ def track_hh(pidp, waves, var_name, hidp_list, var_dict):
 
 def main():
 
-    hidp_list = pd.read_csv('data/xwave_hh_list_unique.csv') # obtain list of household ids to match each hh
+    filter_var = 'sex'  # demographic variable to filter on
+    filter_val = 1      # value of filter variable
+    hidp_list = hh_list(filter_var) # obtain list of household ids to match each hh
 
-    pidp_list = list(hidp_list['pidp'].head(10)) # individuals (needed to match households)
+    pidp_list = hidp_list.loc[hidp_list[filter_var] == filter_val, 'pidp'].head(20) # individuals (needed to match households)
     waves = [1,2,3,4,5,6,7]                      # waves to include
     var_name = '_hhsize'                         # variable to extract  
 
-    print("\nExtracting variable data...")
+    print("Extracting variable data...")
     var_dict = {}
     for wave in waves:
         waveletter = chr(96+wave) # 1 -> "a" etc
         data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
         var_dict[wave] = data[[waveletter+'_hidp', waveletter+var_name]]
 
-    print("Tracking households...")
     track_dict = {}
     for pidp in pidp_list:
 
@@ -46,6 +58,7 @@ def main():
 
     #convert to dataframe for easier visualisation
     track_df = pd.DataFrame.from_dict(track_dict, orient='index', columns = ['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
+    print("\n")
     print(track_df)
 
 if __name__ == "__main__":
