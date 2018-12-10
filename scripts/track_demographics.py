@@ -9,8 +9,6 @@ def track_hh(pidp, waves, var_name, hidp_list, var_dict):
     """
 
     hh_row = hidp_list.loc[hidp_list['pidp'] == pidp] # household the individual is a member off in each wave 
-
-    print("Extracting %s..." % var_name)
     
     track_vals = []
     for wave in waves:
@@ -29,17 +27,18 @@ def main():
 
     hidp_list = pd.read_csv('data/xwave_hh_list_unique.csv') # obtain list of household ids to match each hh
 
-    pidp_list = list(hidp_list['pidp'].head(10))          # individuals (needed to match households)
-    waves = [1,2,3,4,5,6,7] # waves to include
-    var_name = '_hhsize'    # variable to extract  
+    pidp_list = list(hidp_list['pidp'].head(10)) # individuals (needed to match households)
+    waves = [1,2,3,4,5,6,7]                      # waves to include
+    var_name = '_hhsize'                         # variable to extract  
 
-    print("Extracting variable data...")
+    print("\nExtracting variable data...")
     var_dict = {}
     for wave in waves:
         waveletter = chr(96+wave) # 1 -> "a" etc
         data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
         var_dict[wave] = data[[waveletter+'_hidp', waveletter+var_name]]
 
+    print("Tracking households...")
     track_dict = {}
     for pidp in pidp_list:
 
