@@ -12,7 +12,7 @@ def hh_list():
 
     print("Generating household list...")
     data = pd.read_csv('data/xwaveid.tab', sep ='\t')
-    hidp_list = data[['pidp', 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']]
+    hidp_list = data[['pidp', 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']].set_index('pidp')
 
     # only need one row per household. Drop duplicates caused by multiple members sharing a household.
     hidp_list_unique = hidp_list.drop_duplicates(subset=['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
@@ -34,7 +34,7 @@ def track_hh(pidp, waves, var_name, hidp_list):
     Outputs the values for the chosen variable for any given number of waves. 
     """
 
-    hh_row = hidp_list.loc[hidp_list['pidp'] == pidp] # household the individual is a member off in each wave 
+    hh_row = hidp_list.loc[hidp_list.index == pidp] # household the individual is a member off in each wave 
 
     print("Extracting %s..." % var_name)
     
