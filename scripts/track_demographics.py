@@ -49,7 +49,7 @@ def main():
 
     hidp_list = hh_list(filter_var) # obtain list of household ids to match each hh
 
-    pidp_list = hidp_list.loc[hidp_list[filter_var] == filter_val, 'pidp'].head(10) # individuals (needed to match households)
+    pidp_list = hidp_list.loc[hidp_list[filter_var] == filter_val, 'pidp'].head(500) # individuals (needed to match households)
     waves = [1,2,3,4,5,6,7]                      # waves to include
 
     print("Extracting variable data...")
@@ -67,7 +67,7 @@ def main():
     #convert to dataframe for easier visualisation
     track_df = pd.DataFrame.from_dict(track_dict, orient='index', columns = ['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
     print("\n")
-    print(track_df)
+    print(track_df.head(10))
 
 if __name__ == "__main__":
     
