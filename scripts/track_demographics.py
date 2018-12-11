@@ -2,12 +2,13 @@
 import pandas as pd 
 import argparse
 
-def hh_list(filter_var):
+def hh_list():
 
     print("Generating household list...")
     data = pd.read_csv('data/xwaveid.tab', sep ='\t')
     data = data.loc[data['fwintvd_dv'] != -21.0]  # drop any entries with no data from UKHLS. 
-    hidp_list = data[['pidp', filter_var, 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']] # only save households ids and filter variable
+    # only save households ids and variables needed for filtering
+    hidp_list = data[['pidp', 'sex', 'birthy', 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']]
     
     # only need one row per household. Drop duplicates caused by multiple members sharing a household.
     hidp_list = hidp_list.drop_duplicates(subset=['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
@@ -36,21 +37,23 @@ def track_hh(pidp, waves, var_name, hidp_list, var_dict):
 
 def main():
 
-    filter_var = args.filter_var      # demographic variable to filter on
-    filter_val = args.filter_val      # value of filter variable
+    waves = [1,2,3,4,5,6,7]           # waves to include
+
+    s_val = args.s                    # demographic variable to filter on
+    b_val = args.b                    # value of filter variable
     if args.var_name.startswith("_"): # variable to extract
         var_name = args.var_name    
     else:                             # catch variables without underscore
         var_name = '_'+args.var_name
     
-    print("\nfilter: %s" % filter_var)
-    print("value: %d" % filter_val)
+    print("\nsex: %s" % s_val)
+    print("year of birth: %d" % b_val)
     print("variable: %s\n" % var_name)
 
-    hidp_list = hh_list(filter_var) # obtain list of household ids to match each hh
+    hidp_list = hh_list() # obtain list of household ids to match each hh
 
-    pidp_list = hidp_list.loc[hidp_list[filter_var] == filter_val, 'pidp'].head(500) # individuals (needed to match households)
-    waves = [1,2,3,4,5,6,7]                      # waves to include
+    # individuals (needed to match households)
+    pidp_list = hidp_list.loc[(hidp_list['sex'] == s_val) & (hidp_list['birthy'] == b_val), 'pidp'] 
 
     print("Extracting variable data...")
     var_dict = {}
@@ -74,10 +77,8 @@ def main():
 if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("filter_var", type=str, nargs='?', default='sex',
-        help="demographic variable to filter on. the chosen variable must be in xwaveid.tab, e.g. sex or birthy")
-    parser.add_argument("filter_val", type=int, nargs='?', default=1,
-        help="value of filter variable")
+    parser.add_argument("s", type=int, nargs='?', default=1, help="sex, 1 for male or 2 for female")
+    parser.add_argument("b", type=int, nargs='?', default=1990, help="year of birth")
     parser.add_argument("var_name", type=str, nargs='?', default='_hhsize',
         help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhsize")        
     args = parser.parse_args()
