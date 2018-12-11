@@ -65,7 +65,9 @@ def main():
         track_dict[pidp]  = track_hh(pidp, waves, var_name, hidp_list, var_dict)    
 
     #convert to dataframe for easier visualisation
-    track_df = pd.DataFrame.from_dict(track_dict, orient='index', columns = ['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
+    track_df = pd.DataFrame.from_dict(track_dict, orient='index', columns = ['a'+var_name,  'b'+var_name, 'c'+var_name, 
+        'd'+var_name, 'e'+var_name, 'f'+var_name, 'g'+var_name])
+    track_df.index.name = 'pidp'  
     print("\n")
     print(track_df.head(10))
 
