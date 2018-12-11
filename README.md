@@ -216,6 +216,8 @@ Final household value: 4
 ```
 So in the example above, the household was recruited in wave 2 and stayed for the rest of the study. The household size increased between wave 5 and wave 6. The same can be done for any household number and any variable in __hhsresp.tab__.
 
+Updated [tracking](scripts/track_demographics.py) to display several households at the same time and option to filter through demographics, such as gender.
+
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.
 
 ### Mapping Survey to Census
