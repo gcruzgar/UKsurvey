@@ -62,7 +62,7 @@ def track_hh(pidp, waves, var_name, hidp_list):
 
 def main(): 
 
-    pidp = args.pidp    # individual (needed to match households)
+    pidp = args.p    # individual (needed to match households)
     if args.var_name.startswith("_"): # variable to extract
         var_name = args.var_name    
     else:
@@ -86,7 +86,7 @@ def main():
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("pidp", type=int, help="personal identifier to process, use the pidp of any member of the household of interest.", 
+    parser.add_argument("-p", type=int, help="personal identifier to process, use the pidp of any member of the household of interest.", 
         nargs='?', default=280165)
     parser.add_argument("var_name", type=str, help="variable to extract, e.g. hhsize.", 
         nargs='?', default='_hhsize')        
