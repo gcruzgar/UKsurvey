@@ -6,7 +6,7 @@ def hh_list(filter_var):
 
     print("Generating household list...")
     data = pd.read_csv('data/xwaveid.tab', sep ='\t')
-    data = data.loc[data['fwintvd_dv'] != -8.0]  # drop any BHPS households not present in UKHLS, i.e. if first wave interview (UKHLS) is inapplicable. 
+    data = data.loc[data['fwintvd_dv'] != -21.0]  # drop any entries with no data from UKHLS. 
     hidp_list = data[['pidp', filter_var, 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']] # only save households ids and filter variable
     
     # only need one row per household. Drop duplicates caused by multiple members sharing a household.
