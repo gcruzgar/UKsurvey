@@ -74,12 +74,12 @@ def main():
 if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("filter_var", type=str, help="demographic variable to filter on. the chosen variable must be in xwaveid.tab", 
-        nargs='?', default='sex')
-    parser.add_argument("filter_val", type=int, help="value of filter variable", 
-        nargs='?', default=1)
-    parser.add_argument("var_name", type=str, help="variable of interest to extract. must be in hhresp.tab. type without wave prefix", 
-        nargs='?', default='_hhsize')        
+    parser.add_argument("filter_var", type=str, nargs='?', default='sex',
+        help="demographic variable to filter on. the chosen variable must be in xwaveid.tab, e.g. sex or birthy")
+    parser.add_argument("filter_val", type=int, nargs='?', default=1,
+        help="value of filter variable")
+    parser.add_argument("var_name", type=str, nargs='?', default='_hhsize',
+        help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhsize")        
     args = parser.parse_args()
 
     main()
