@@ -218,6 +218,9 @@ So in the example above, the household was recruited in wave 2 and stayed for th
 
 Updated tracking to display several households at the same time and option to filter through demographics, such as gender. Use track_hh.py if interested in a specific household and [track_demographics.py](scripts/track_demographics.py) for groups of households with similar characteristics. 
 
+Changed track_hh so that -p is an optional argument to specify the pidp.
+Track_demogtaphics.py takes two optional arguments -s and -b to specify a given sex or year of birth. It also has a positional argument to chose a variable of interest (write without the wave prefix 'w').
+
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.
 
 ### Mapping Survey to Census
