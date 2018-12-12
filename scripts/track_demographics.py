@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
+"""
+This script generates a dataframe with person identifiers as rows and a variable, such as w_hhsize, as columns.
+The variable of interest can be specified as well as whether to filter results by age or gender.
+"""
 import pandas as pd 
 import argparse
 
 def hh_list():
-
+    """
+    Generate a dataframe with the w_hidp corresponding to each pidp, 
+    as well as the sex and year of birth for filtering purposes.
+    """
     print("Generating household list...")
     data = pd.read_csv('data/xwaveid.tab', sep ='\t')
     data = data.loc[data['fwintvd_dv'] != -21.0]  # drop any entries with no data from UKHLS. 
