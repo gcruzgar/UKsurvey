@@ -44,25 +44,27 @@ def track_hh(pidp, waves, var_name, hidp_list, var_dict):
 
 def main():
 
-    waves = [1,2,3,4,5,6,7]           # waves to include
+    hidp_list = hh_list()             # obtain list of household ids to match each hh
 
-    s_val = args.s                    # demographic variable to filter on
-    b_val = args.b                    # value of filter variable
+    waves = [1,2,3,4,5,6,7]           # waves to include
     if args.var_name.startswith("_"): # variable to extract
         var_name = args.var_name    
     else:                             # catch variables without underscore
         var_name = '_'+args.var_name
-    
-    print("\nsex: %s" % s_val)
-    print("year of birth: %d" % b_val)
-    print("variable: %s\n" % var_name)
+    print("\nvariable: %s" % var_name)
+    if args.s:
+        s_val = args.s                # sex
+        print("sex: %s" % s_val)
+        hidp_list = hidp_list.loc[(hidp_list['sex'] == s_val)]
+    if args.b:
+        b_val = args.b                # year of birth
+        print("year of birth: %d" % b_val) 
+        hidp_list = hidp_list.loc[(hidp_list['birthy'] == b_val)]
 
-    hidp_list = hh_list() # obtain list of household ids to match each hh
+    # Individuals (needed to match households). Only process for first 100 values.
+    pidp_list = hidp_list['pidp'].head(100) 
 
-    # individuals (needed to match households)
-    pidp_list = hidp_list.loc[(hidp_list['sex'] == s_val) & (hidp_list['birthy'] == b_val), 'pidp'] 
-
-    print("Extracting variable data...")
+    print("\nExtracting variable data...")
     var_dict = {}
     for wave in waves:
         waveletter = chr(96+wave) # 1 -> "a" etc
@@ -84,8 +86,8 @@ def main():
 if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("-s", type=int, nargs='?', default=1, help="sex, 1 for male or 2 for female")
-    parser.add_argument("-b", type=int, nargs='?', default=1990, help="year of birth [YYYY]")
+    parser.add_argument("-s", type=int, nargs='?', help="sex, 1 for male or 2 for female")
+    parser.add_argument("-b", type=int, nargs='?', help="year of birth [YYYY]")
     parser.add_argument("var_name", type=str, nargs='?', default='_hhsize',
         help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhsize")        
     args = parser.parse_args()
