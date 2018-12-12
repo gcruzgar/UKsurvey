@@ -14,11 +14,18 @@ def hh_list():
     print("Generating household list...")
     data = pd.read_csv('data/xwaveid.tab', sep ='\t')
     data = data.loc[data['fwintvd_dv'] != -21.0]  # drop any entries with no data from UKHLS. 
+
     # only save households ids and variables needed for filtering
     hidp_list = data[['pidp', 'sex', 'birthy', 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']]
-    
+  
     # only need one row per household. Drop duplicates caused by multiple members sharing a household.
     hidp_list = hidp_list.drop_duplicates(subset=['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
+
+    # drop any households that were only present for 2 waves or less
+    drop_index = hidp_list.index[(hidp_list == -9).sum(axis=1) >= 0.50*hidp_list.shape[1]]
+
+    hidp_list.drop(drop_index, axis=0, inplace=True)
+
     return hidp_list
 
 def track_hh(pidp, waves, var_name, hidp_list, var_dict):
@@ -61,8 +68,8 @@ def main():
         print("year of birth: %d" % b_val) 
         hidp_list = hidp_list.loc[(hidp_list['birthy'] == b_val)]
 
-    # Individuals (needed to match households). Only process for first 100 values.
-    pidp_list = hidp_list['pidp'].head(100) 
+    # Individuals (needed to match households). Only process for first 200 values.
+    pidp_list = hidp_list['pidp'].head(200) 
 
     print("\nExtracting variable data...")
     var_dict = {}
