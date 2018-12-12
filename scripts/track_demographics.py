@@ -78,7 +78,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", type=int, nargs='?', default=1, help="sex, 1 for male or 2 for female")
-    parser.add_argument("-b", type=int, nargs='?', default=1990, help="year of birth")
+    parser.add_argument("-b", type=int, nargs='?', default=1990, help="year of birth [YYYY]")
     parser.add_argument("var_name", type=str, nargs='?', default='_hhsize',
         help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhsize")        
     args = parser.parse_args()
