@@ -23,7 +23,6 @@ def hh_list():
 
     # drop any households that were only present for 2 waves or less
     drop_index = hidp_list.index[(hidp_list == -9).sum(axis=1) >= 0.50*hidp_list.shape[1]]
-
     hidp_list.drop(drop_index, axis=0, inplace=True)
 
     return hidp_list
@@ -88,7 +87,7 @@ def main():
         'd'+var_name, 'e'+var_name, 'f'+var_name, 'g'+var_name])
     track_df.index.name = 'pidp'  
     print("\n")
-    print(track_df.head(10))
+    print(track_df.sample(n=10, random_state=97439256)) #print a random sample of the dataframe. (set random_state for reproducibility)
 
 if __name__ == "__main__":
     
