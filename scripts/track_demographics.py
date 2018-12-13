@@ -21,10 +21,6 @@ def hh_list():
     # only need one row per household. Drop duplicates caused by multiple members sharing a household.
     hidp_list = hidp_list.drop_duplicates(subset=['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
 
-    # drop any households that were only present for 2 waves or less
-    drop_index = hidp_list.index[(hidp_list == -9).sum(axis=1) >= 0.50*hidp_list.shape[1]]
-    hidp_list.drop(drop_index, axis=0, inplace=True)
-
     return hidp_list
 
 def track_hh(pidp, waves, var_name, hidp_list, var_dict):
@@ -85,9 +81,12 @@ def main():
     #convert to dataframe for easier visualisation
     track_df = pd.DataFrame.from_dict(track_dict, orient='index', columns = ['a'+var_name,  'b'+var_name, 'c'+var_name, 
         'd'+var_name, 'e'+var_name, 'f'+var_name, 'g'+var_name])
-    track_df.index.name = 'pidp'  
-    print("\n")
-    print(track_df.sample(n=10, random_state=97439256)) #print a random sample of the dataframe. (set random_state for reproducibility)
+    track_df.index.name = 'pidp'
+
+    # drop any households that were only present for 2 waves or less
+    drop_index = track_df.index[(track_df == -9).sum(axis=1) >= 0.70*track_df.shape[1]]
+    track_df.drop(drop_index, axis=0, inplace=True)
+    print(track_df.head(10))
 
 if __name__ == "__main__":
     
