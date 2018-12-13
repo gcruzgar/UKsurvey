@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import pandas as pd 
+import argparse
 
 def track_hh(pidp, waves, var_name, hidp_df, var_dict):
     """ 
@@ -26,7 +27,11 @@ def track_hh(pidp, waves, var_name, hidp_df, var_dict):
 def main ():
 
     waves = [1,2,3,4,5,6,7]
-    var_name = '_hhsize'
+    if args.var_name.startswith("_"): # variable to extract
+        var_name = args.var_name    
+    else:                             # catch variables without underscore
+        var_name = '_'+args.var_name
+    print("\nvariable: %s" % var_name)
 
     print("\nGenerating household list...")
 
@@ -45,7 +50,7 @@ def main ():
     # dataframe with reference person for each household only
     hidp_df = hidp_df.loc[hidp_df['pidp'].isin(hrpid_df['a_hrpid'].values)]
 
-    print("Extracting variable data...")
+    print("Extracting variable data...\n")
 
     track_df = pd.DataFrame()
     for pidp in hidp_df['pidp'].head(100):
@@ -61,5 +66,10 @@ def main ():
     print(track_df.head(10))
 
 if __name__ == "__main__":
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("var_name", type=str, nargs='?', default='_hhsize',
+        help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhsize")        
+    args = parser.parse_args()
 
     main()
