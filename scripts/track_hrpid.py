@@ -44,11 +44,17 @@ def main ():
 
     # household ids
     hidp_df = pd.read_csv("data/xwaveid.tab", sep='\t')
-    hidp_df = hidp_df[['pidp', 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']]
+    hidp_df = hidp_df[['pidp', 'sex', 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']]
     hrpid_df = var_dict[1][['a_hidp', 'a_hrpid']]
 
     # dataframe with reference person for each household only
     hidp_df = hidp_df.loc[hidp_df['pidp'].isin(hrpid_df['a_hrpid'].values)]
+
+    # option to filter by gender
+    if args.s:
+        s_val = args.s                
+        print("sex: %s" % s_val)
+        hidp_df = hidp_df.loc[(hidp_df['sex'] == s_val)]
 
     print("Extracting variable data...\n")
 
@@ -68,6 +74,7 @@ def main ():
 if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
+    parser.add_argument("-s", type=int, nargs='?', help="sex, 1 for male or 2 for female")
     parser.add_argument("var_name", type=str, nargs='?', default='_hhsize',
         help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhsize")        
     args = parser.parse_args()
