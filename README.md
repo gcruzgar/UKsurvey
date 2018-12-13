@@ -216,10 +216,12 @@ Final household value: 4
 ```
 So in the example above, the household was recruited in wave 2 and stayed for the rest of the study. The household size increased between wave 5 and wave 6. The same can be done for any household number and any variable in __hhsresp.tab__.
 
-Updated tracking to display several households at the same time and option to filter through demographics, such as gender. Use track_hh.py if interested in a specific household and [track_demographics.py](scripts/track_demographics.py) for groups of households with similar characteristics. 
+Updated tracking to display several households at the same time and option to filter through demographics, such as gender. Use track_hh.py if interested in a specific household and [track_households.py](scripts/track_households.py) for groups of individuals with similar characteristics. 
 
 Changed track_hh so that -p is an optional argument to specify the pidp.
-Track_demogtaphics.py takes two optional arguments -s and -b to specify a given sex or year of birth. It also has a positional argument to chose a variable of interest (write without the wave prefix 'w').
+Track_households.py takes two optional arguments -s and -b to specify a given sex or year of birth. It also has a positional argument to chose a variable of interest (write without the wave prefix 'w').
+
+Use [track_hrpid](scripts/track_hrpid.py) to track the reference person of each household. This is a more stable approach to tracking households as track_households.py might track a member that leaves the household.
 
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.
 
