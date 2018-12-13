@@ -2,6 +2,7 @@
 
 import pandas as pd 
 import argparse
+import sys
 
 def track_hh(pidp, waves, var_name, hidp_df, var_dict):
     """ 
@@ -63,7 +64,11 @@ def main ():
         print("\nage band: %d-%d" % (l_band, u_band))
         hidp_df = hidp_df.loc[(hidp_df['birthy'] < (2009 - l_band))
             & (hidp_df['birthy'] > (2009 - u_band))]
-        print("households inside age band: %d" % len(hidp_df))
+        if len(hidp_df) != 0:
+            print("households inside age band: %d" % len(hidp_df))
+        else:
+            print("No data available, try a larger age band.")
+            sys.exit()
 
     print("\nExtracting variable data...")
 
