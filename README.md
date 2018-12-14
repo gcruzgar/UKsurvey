@@ -165,14 +165,14 @@ Some key questions to ask are:
    - What is the stability of households over time? (how many remain the same)  
    - Can we track an individual or a household over time?
 
-It is computationally intensive to check all individual transitions. This is more so for households as _hipd_ is wave independent. Therefore, I looked at the overall distributions. I used [household distributions](scripts/household_distributions.py) to obtain counts of the required variable - could be anything from household composition to whether the house is in an urban or rural area. I then save these counts on excel, normalise to account for decrease in total housholds, and plot the distributions. This process could be automised on python but I find it easier to track on Excel. Also added correlations between each variable. Household size and composition is the pair with the highest correlation, r=0.72, folowed by number of bedrooms and rooms (that aren't bedrooms), r=0.55. In theory, having enough information about a household could lead to infering some other unknown characteristic about it. 
+It is computationally intensive to check all individual transitions. This is more so for households as _hipd_ is wave independent. Therefore, I looked at the overall distributions. I used [household distributions](scripts/household_distributions.py) to obtain counts of the required variable - could be anything from household composition to whether the house is in an urban or rural area. I then save these counts on excel, normalise to account for decrease in total housholds, and plot the distributions. This process could be automised on python but I find it easier to track on Excel. Also added correlations between each variable. Household size and composition is the pair with the highest correlation, r=0.72, followed by number of bedrooms and rooms (that aren't bedrooms), r=0.55. In theory, having enough information about a household could lead to infering some other unknown characteristic about it. 
 
 All [distributions](docs/household_distributions.xlsx) seem to remain constant over time within a small error (<1%).
 
 See [comparing](#comparing-survey-and-census-data) section to see the correlation between survey and census data.
 Download census data from [Nomisweb](https://www.nomisweb.co.uk).
 Distributions are the same for survey and census, for the variables tested.
-It is hard to compare certain variables because of the definitions - see [mapping](#mapping-survey-to-census)
+It is hard to compare certain variables because of the definitions - see [mapping](#mapping-survey-to-census).
 
 5 dimensions are required to create a population seed:
 
@@ -196,7 +196,7 @@ There is the option to add more variables to the seed or to have other input tab
 If using survey data with household_microsynth, make sure the column order is same as that in the code.     
 Column names changed for hhsize and counts to avoid problems when calling due to pre existing functions 'size' and 'count'.    
 
-Assigning couples in survey to either married or cohabiting in census randomly (50/50). In the England and Wales census, 77% of couples are married whilst only 23% are cohabiting. Using this doesnt make much difference compared to 50/50 split - 1% loss of states. 
+Assigning couples in survey to either married or cohabiting in census randomly (50/50). In the England and Wales census, 77% of couples are married whilst only 23% are cohabiting. Using this doesn't make much difference compared to a 50/50 split - 1% loss of states. 
 Additionally, changing the order of crosstabulation seems to make no change to the number of occupied states. The number of states will vary slightly on every run due to the random splitting of couples. I have set a seed for the sake of reproducibility.
 
 ### Tracking Transitions
