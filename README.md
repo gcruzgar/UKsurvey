@@ -257,6 +257,7 @@ In this example, we can see a snippet of the household composition for women bet
 Note: house reference person id (hrpid) is omitted here but will be shown when runing the code. Values of '-9' symbolise missing data.   
 
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.
+Check docs [metadata](docs/metadata) for information on variable values. Only a few listed, use UK Data Service for the full list.
 
 ### Mapping Survey to Census
 

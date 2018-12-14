@@ -1,0 +1,45 @@
+##
+Variable = w_hhtype_dv 
+Variable label = Composition of household, LFS-version
+
+Value = 1.0     Label = 1 male, aged 65+, no children
+Value = 2.0     Label = 1 female, age 60+, no children
+Value = 3.0     Label = 1 adult under pensionable age, no children
+Value = 4.0     Label = 1 adult, 1 child
+Value = 5.0     Label = 1 adult, 2 or more children
+Value = 6.0     Label = Couple both under pensionable age, no children
+Value = 8.0     Label = Couple 1 or more over pensionable age,no children
+Value = 10.0    Label = Couple with 1 child
+Value = 11.0    Label = Couple with 2 children
+Value = 12.0    Label = Couple with 3 or more children
+Value = 16.0    Label = 2 adults, not a couple, both under pensionable age, no children
+Value = 17.0    Label = 2 adults, not a couple, one or more over pensionable age, no children
+Value = 18.0    Label = 2 adults, not a couple, 1 or more children
+Value = 19.0    Label = 3 or more adults, no children, incl. at least one couple
+Value = 20.0    Label = 3 or more adults, 1-2 children, incl. at least one couple
+Value = 21.0    Label = 3 or more adults, >2 children, incl. at least one couple
+Value = 22.0    Label = 3 or more adults, no children, excl. any couples
+Value = 23.0    Label = 3 or more adults, 1 or more children, excl. any couples
+Value = -2.0    Label = refusal
+Value = -9.0    Label = missing
+Value = -8.0    Label = inapplicable
+Value = -7.0    Label = proxy
+Value = -1.0    Label = don't know
+
+##
+Variable = w_tenure_dv 
+Variable label = housing tenure
+
+Value = 1.0     Label = Owned outright
+Value = 2.0     Label = Owned with mortgage
+Value = 3.0     Label = Local authority rent
+Value = 4.0     Label = Housing assoc rented
+Value = 5.0     Label = Rented from employer
+Value = 6.0     Label = Rented private unfurnished
+Value = 7.0     Label = Rented private furnished
+Value = 8.0     Label = Other
+Value = -1.0    Label = don't know
+Value = -9.0    Label = missing
+Value = -8.0    Label = inapplicable
+Value = -7.0    Label = proxy
+Value = -2.0    Label = refusal
