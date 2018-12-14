@@ -152,13 +152,13 @@ Although the data can be accessed by anyone, it is technically safeguarded - req
 
 I initially did an overview of files present in the survey. Data is available for the previous British Household Panel Survey (BHPS), however, I have focused on Understanding Society waves only.
 
-As with any longitudinal study, members drop out every year. A list of individuals present throughout the entire study can be obtained with the 'longevity' function in [tracking events](scripts/tracking_events.py). The script selects an individual from the list of those present in all waves. It then prints the personal ID (pidp) and the status evolution for a given variable, such as employment.
+As with any longitudinal study, members drop out every year. A list of individuals present throughout the entire study can be obtained with the 'longevity' function in [track_ind](scripts/track_ind_.py). The script selects an individual from the list of those present in all waves. It then prints the personal ID (pidp) and the status evolution for a given variable, such as employment.     
 In general, we are interested in distributions but a consistent list of individuals is handy when tracking individual events. The idea would be to relate changes to a household with events on an individual level, and whether certain events trigger certain changes.
 
 It is also possible to obtain a list of household IDs (hidp) corresponding to each individual using [household stability](scripts/household_stability.py), however, this is not essential as something similar already exists in cross wave data files (xwaveid). It might still be useful, if looking to improve computational speed, as the list produced is smaller - 2.4MB (for individuals only present in all waves) compared to 22.7MB from the xwaveid file. WARNING: the code is very slow, it needs rewriting, takes over a day to run. The code can be altered to obtain household IDs for a given list of individuals (takes approximately 4 seconds per individual). A better solution is to use the [hh_list](scripts/track_hh.py) function, which creates a CSV file (9MB for all individuals, 4.6MB for unique households) by reading pidp and w_hidp columns from xwaveid.  
 
 There is quite an extensive documentation on the [Understanding Society](https://www.understandingsociety.ac.uk.) website, including data dictionaries.
-I compiled a list of useful variables in each file. __NEED TO ADD THIS TO GITHUB + METADATA?__      
+I compiled a list of useful variables in each file. __NEED TO ADD THIS TO GITHUB__      
 It is important to note that there is no location variable like the local authorities in census data. The highest resolution available is the region. There is more information, such as [output area classification](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6674), but this requires special licence access.     
 
 Some key questions to ask are:
@@ -202,7 +202,21 @@ Additionally, changing the order of crosstabulation seems to make no change to t
 
 ### Tracking Transitions
 
-Can track households over time using [track_hh.py](scripts/track_hh.py). This tracks the evolution of any chosen variable:
+Output of [track_ind.py](scripts/track_ind.py):
+```bash
+$ scripts/track_ind.py -p -
+Loading wave 1 data...
+Loading wave 2 data...
+Loading wave 3 data...
+Loading wave 4 data...
+Loading wave 5 data...
+Loading wave 6 data...
+Loading wave 7 data...
+
+Individual - started as 'in paid employment' and finished as 'retired'
+[2, 2, 2, 2, 2, 4, 4]
+```
+Can track households over time using [track_hh.py](scripts/track_hh.py). This is similar to track_ind.py but looks for household data rather than individual response data. The script tracks the evolution of any chosen variable:
 
 ```bash
 $ scripts/track_hh.py
