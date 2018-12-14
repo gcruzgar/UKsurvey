@@ -15,7 +15,8 @@ Things to do:
    + **2.3.** [Comparing Survey and Census Data](#comparing-survey-and-census-data)     
 - **3.** [Household Microsynthesis](#household-microsynthesis)
 - **4.** [Method](#method)
-    + **4.1.** [Mapping Survey to Census](#mapping-survey-to-census)   
+   + **4.1.** [Tracking Transitions](#tracking-transitions)
+   + **4.2.** [Mapping Survey to Census](#mapping-survey-to-census)   
 
 ## Introduction
 The objective of this project is to visualise the transitions that occur during the microsynthesis of population, as well as the events that trigger these transitions. This work is part of a bigger project aiming to create a framework for customisable population estimates (see [SPENSER](#spenser)). Here, understanding Society data is used to complement ONS census data. In the future, other datasets will be added. (consumer data, information on migration etc.)
@@ -199,6 +200,8 @@ Column names changed for hhsize and counts to avoid problems when calling due to
 Assigning couples in survey to either married or cohabiting in census randomly (50/50). In the England and Wales census, 77% of couples are married whilst only 23% are cohabiting. Using this doesnt make much difference compared to 50/50 split - 1% loss of states. 
 Additionally, changing the order of crosstabulation seems to make no change to the number of occupied states. The number of states will vary slightly on every run due to the random splitting of couples. I have set a seed for the sake of reproducibility.
 
+### Tracking Transitions
+
 Can track households over time using [track_hh.py](scripts/track_hh.py). This tracks the evolution of any chosen variable:
 
 ```bash
@@ -229,7 +232,7 @@ $ scripts/track_hrpid.py -s 2 -ab 30 44 hhtype_dv
 variable: _hhtype_dv
 
 Generating household list...
-sys:1: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import or set low_memory=False.
+sys:1: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import.
 sex: [2]
 
 age band: 30-44
@@ -250,7 +253,7 @@ hrpid
   -           11           11           11           11           20           20           20
 ```
 
-In this example, we can see a snippet of the household composition for women between 30 and 44 years old (at the start of the study). As expected, most households are stable and remain in the same state over time. However, some transitions are visible. For example, the first household started as a couple with 2 children, has several transitions and ends as 3 or more adults with no children.
+In this example, we can see a snippet of the household composition for women between 30 and 44 years old (at the start of the study). As expected, most households are stable and remain in the same state over time. However, some transitions are visible. For example, the first household started as a couple with 2 children, has several transitions and ends as 3 or more adults with no children.     
 Note: house reference person id (hrpid) is omitted here but will be shown when runing the code. Values of '-9' symbolise missing data.   
 
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.
