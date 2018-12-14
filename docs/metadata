@@ -43,3 +43,25 @@ Value = -9.0    Label = missing
 Value = -8.0    Label = inapplicable
 Value = -7.0    Label = proxy
 Value = -2.0    Label = refusal
+
+##
+Variable = w_jbstat
+Variable label = current economic activity
+
+Value = 1.0     Label = self employed
+Value = 2.0     Label = in paid employment (full or part-time)
+Value = 3.0     Label = unemployed
+Value = 4.0     Label = retired
+Value = 5.0     Label = on maternity leave
+Value = 6.0     Label = looking after family or home
+Value = 7.0     Label = full-time student
+Value = 8.0     Label = long term sick or disabled
+Value = 9.0     Label = on a government training scheme
+Value = 10.0    Label = unpaid worker in family business
+Value = 11.0    Label = working in an apprenticeship
+Value = 97.0    Label = doing something else
+Value = -1.0    Label = don't know
+Value = -9.0    Label = missing
+Value = -8.0    Label = inapplicable
+Value = -7.0    Label = proxy
+Value = -2.0    Label = refusal
