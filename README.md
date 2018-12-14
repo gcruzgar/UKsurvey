@@ -3,7 +3,6 @@
 Things to do:
 - keep Readme updated
 - could use ukcensusapi module to obtain census data
-- give examples for every script?
 - create python module 
 
 ## Table of contents
