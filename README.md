@@ -212,7 +212,7 @@ Household last present in wave 7.
 Initial household value: 3
 Final household value: 4
      pidp  a_hhsize  b_hhsize  c_hhsize  d_hhsize  e_hhsize  f_hhsize  g_hhsize
-0  280165        -9         3         3         3         3         4         4
+      0       -9         3         3         3         3         4         4
 ```
 So in the example above, the household was recruited in wave 2 and stayed for the rest of the study. The household size increased between wave 5 and wave 6. The same can be done for any household number and any variable in __hhsresp.tab__.
 
@@ -222,6 +222,36 @@ Changed track_hh so that -p is an optional argument to specify the pidp.
 Track_households.py takes two optional arguments -s and -b to specify a given sex or year of birth. It also has a positional argument to chose a variable of interest (write without the wave prefix 'w').
 
 Use [track_hrpid](scripts/track_hrpid.py) to track the reference person of each household. This is a more stable approach to tracking households as track_households.py might track a member that leaves the household.
+
+```bash
+$ scripts/track_hrpid.py -s 2 -ab 30 44 hhtype_dv
+
+variable: _hhtype_dv
+
+Generating household list...
+sys:1: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import or set low_memory=False.
+sex: [2]
+
+age band: 30-44
+households inside age band: 3414
+
+Extracting variable data...
+          a_hhtype_dv  b_hhtype_dv  c_hhtype_dv  d_hhtype_dv  e_hhtype_dv  f_hhtype_dv  g_hhtype_dv
+hrpid
+  -           11            4           20           20           20           19           19
+  -            5            5           -9           18            5            5            5
+  -            4            4            4            4            4            4            4
+  -           11           11           11           11           11           11           11
+  -           10           10           10           10           10           10           10
+  -           20           20           20           10           20           20           20
+  -            5           12           -9           12           11           10           -9
+  -            5            5            5            5            5           -9           -9
+  -            6            6            6            6            6            6            6
+  -           11           11           11           11           20           20           20
+```
+
+In this example, we can see a snippet of the household composition for women between 30 and 44 years old (at the start of the study). As expected, most households are stable and remain in the same state over time. However, some transitions are visible. For example, the first household started as a couple with 2 children, has several transitions and ends as 3 or more adults with no children.
+Note: house reference person id (hrpid) is omitted here but will be shown when runing the code. Values of '-9' symbolise missing data.   
 
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.
 
