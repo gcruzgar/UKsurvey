@@ -2,7 +2,11 @@
 import pandas as pd 
 import argparse
 
+
 def main ():
+
+    waves = [1,2,3,4,5,6,7]
+
     if args.var_name.startswith("_"): # variable to extract
         var_name = args.var_name    
     else:                             # catch variables without underscore
@@ -12,13 +16,15 @@ def main ():
     in_state = args.in_state          # value of initial state
     print("Initial state: %d\n" % in_state)
 
-    adf  = pd.read_csv("data/a_hhresp.tab", sep ='\t')
-    adf = adf[['a_hrpid', 'a'+var_name]].set_index('a_hrpid')
+    print("Loading household data...\n")
+    # household response data - only keep required variables (files are too big to store in memory)
+    var_dict = {}
+    for wave in waves:
+        waveletter = chr(96+wave) # 1 -> "a" etc
+        data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
+        var_dict[wave] = data[[waveletter+'_hrpid', waveletter+var_name]].set_index(waveletter+'_hrpid')
 
-    bdf  = pd.read_csv("data/b_hhresp.tab", sep ='\t')
-    bdf = bdf[['b_hrpid', 'b'+var_name]].set_index('b_hrpid')
-
-    ij_df = pd.concat([adf, bdf], axis=1, join='inner')
+    ij_df = pd.concat([var_dict[1], var_dict[2]], axis=1, join='inner')
 
     tdf = ij_df.loc[ij_df['a'+var_name] == in_state]
     t = tdf['b'+var_name].value_counts()
