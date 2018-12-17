@@ -55,7 +55,29 @@ def main ():
     print("\nPercentage stable households: %.2f%%" % (c/len(aw_is)*100))
     print("%d/%d households remained at value = %s" % (c, len(aw_is), in_state))
 
-    return transition_df, t_perc_df
+    # transitions from wave a to wave w
+    t_aw_df = pd.DataFrame()
+    t_aw_perc_df = pd.DataFrame()
+    for wave in range(2,8): 
+
+        ij_df = pd.concat([var_dict[1], var_dict[wave]], axis=1, join='inner') # inner join between wave 1 and wave w
+
+        w1 = 'a'
+        w2 = chr(96+wave)
+
+        is_df = ij_df.loc[ij_df[w1+var_name] == in_state]
+        t = is_df[w2+var_name].value_counts()   # frequency of state in w2 given state in_state in w1
+        t_aw_df[wave] = t
+
+        t_perc = t/sum(t) * 100
+        t_aw_perc_df[w1+w2] = t_perc
+
+    t_aw_perc_df.index.name = 'state'
+
+    print("\n%%hh transitions from intial state (%d) in wave a to state in w:" % in_state)    
+    print(t_aw_perc_df.round(2)) 
+
+    return transition_df, t_perc_df, t_aw_perc_df
 
 if __name__ == "__main__":
 
