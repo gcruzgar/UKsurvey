@@ -26,20 +26,20 @@ def main ():
     t_perc_df = pd.DataFrame()
     for wave in range(1,7):
         
-        ij_df = pd.concat([var_dict[wave], var_dict[wave+1]], axis=1, join='inner')
+        ij_df = pd.concat([var_dict[wave], var_dict[wave+1]], axis=1, join='inner') # inner join between wave w1 and w2
 
         w1 = chr(96+wave)
         w2 = chr(97+wave)
 
         is_df = ij_df.loc[ij_df[w1+var_name] == in_state]
-        t = is_df[w2+var_name].value_counts()
+        t = is_df[w2+var_name].value_counts()   # frequency of state in w2 given state in_state in w1
         transition_df[wave] = t
 
         t_perc = t/sum(t) * 100
         t_perc_df[wave] = t_perc
         
     print(t_perc_df)
-    
+
     return transition_df, t_perc_df
 
 if __name__ == "__main__":
