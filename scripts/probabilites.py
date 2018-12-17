@@ -12,7 +12,10 @@ def main ():
     print("\nvariable: %s" % var_name)
 
     in_state = args.in_state          # value of initial state
-    print("initial state: %d\n" % in_state)
+    print("initial state: %d" % in_state)
+
+    n = args.p
+    print("Plot %d transitions\n" % n)
 
     print("Loading household data...\n")
     # household response data - only keep required variables (files are too big to store in memory)
@@ -44,8 +47,20 @@ def main ():
     print("\n%%hh transitions from intial state (%d) in wave w to state in w+1:" % in_state)    
     print(t_perc_df.round(2))
 
-    # average transitions
+    # transitions at any time from given initial state 
+    all_waves = pd.concat([var_dict[1], var_dict[2], var_dict[3], var_dict[4], var_dict[5], var_dict[6], var_dict[7]], axis=1, join='inner')
+    aw_is = all_waves.loc[all_waves['a'+var_name] == in_state]
+    
+    # plot transitions
+    plt.figure()
+    plt.xlabel('Wave')
+    plt.ylabel('State')
+    plt.title("Household transitions example - %s" % var_name)
+    for hh in aw_is.index[0:n]:
+        plt.plot(range(1,8), aw_is.loc[hh])
+    plt.show()
 
+    # plot average transitions
     av_t = t_perc_df.mean(axis=1)
 
     plt.figure()
@@ -55,10 +70,6 @@ def main ():
     plt.ylabel('Frequency (%)')
     plt.title("Average probability of transitions between waves - %s" % var_name)
     plt.show()
-
-    # transitions at any time from given initial state 
-    all_waves = pd.concat([var_dict[1], var_dict[2], var_dict[3], var_dict[4], var_dict[5], var_dict[6], var_dict[7]], axis=1, join='inner')
-    aw_is = all_waves.loc[all_waves['a'+var_name] == in_state].drop('a'+var_name, axis=1)
 
     c=0
     for i in aw_is.index:
@@ -98,7 +109,9 @@ if __name__ == "__main__":
     parser.add_argument("var_name", type=str, nargs='?', default='_hhtype_dv',
         help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhtype_dv")   
     parser.add_argument("in_state", type=int, nargs='?', default = 3,
-        help="numerical value of initial state")     
+        help="numerical value of initial state")
+    parser.add_argument("-p", type=int, nargs='?', default = 3,
+        help="number of transitions to plot")     
     args = parser.parse_args()
      
     main()
