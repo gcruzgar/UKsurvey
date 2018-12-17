@@ -52,7 +52,7 @@ def main ():
         if (aw_is.loc[i] == in_state).all():
             c+=1 
 
-    print("\nPercentage stable households: %.2f%%" % (c/len(aw_is)*100))
+    print("\nPercentage stable households (present in all waves): %.2f%%" % (c/len(aw_is)*100))
     print("%d/%d households remained at value = %s" % (c, len(aw_is), in_state))
 
     # transitions from wave a to wave w
