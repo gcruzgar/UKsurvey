@@ -269,7 +269,7 @@ hrpid
 In this example, we can see a snippet of the household composition for women between 30 and 44 years old (at the start of the study). As expected, most households are stable and remain in the same state over time. However, some transitions are visible. For example, the first household started as a couple with 2 children, has several transitions and ends as 3 or more adults with no children.     
 Note: house reference person id (hrpid) is omitted here but will be shown when runing the code. Values of '-9' symbolise missing data.   
 
-[Probability](scripts/probabilites.py) of transitions given an initial state.
+[Probability](scripts/probabilites.py) of transitions given an initial state. This outputs a dataframe with the percentage of households in a final state at wave _w+1_ given an initial state in wave _w_. 
 
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.     
 Check docs [metadata](docs/metadata) for information on variable values. Only a few listed, use UK Data Service for the full list.
