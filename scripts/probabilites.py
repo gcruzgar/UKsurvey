@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import matplotlib.pyplot as plt
 import pandas as pd 
 import argparse
 
@@ -42,6 +43,18 @@ def main ():
     t_perc_df.index.name = 'state'
     print("\n%%hh transitions from intial state (%d) in wave w to state in w+1:" % in_state)    
     print(t_perc_df.round(2))
+
+    # average transitions
+
+    av_t = t_perc_df.mean(axis=1)
+
+    plt.figure()
+    plt.bar(t_perc_df.index[1:], av_t[1:])
+    plt.xlabel('State')
+    plt.xticks(t_perc_df.index[1:])
+    plt.ylabel('Frequency (%)')
+    plt.title("Average probability of transitions between waves - %s" % var_name)
+    plt.show()
 
     # transitions at any time from given initial state 
     all_waves = pd.concat([var_dict[1], var_dict[2], var_dict[3], var_dict[4], var_dict[5], var_dict[6], var_dict[7]], axis=1, join='inner')
