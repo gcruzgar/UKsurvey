@@ -17,12 +17,13 @@ def main ():
     # household response data - only keep required variables (files are too big to store in memory)
     var_dict = {}
     for wave in range(1,8):
-        
+
         waveletter = chr(96+wave) # 1 -> "a" etc
         data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
         var_dict[wave] = data[[waveletter+'_hrpid', waveletter+var_name]].set_index(waveletter+'_hrpid')
 
-    t_dict = {}
+    transition_df = pd.DataFrame()
+    t_perc_df = pd.DataFrame()
     for wave in range(1,7):
         
         ij_df = pd.concat([var_dict[wave], var_dict[wave+1]], axis=1, join='inner')
@@ -30,12 +31,16 @@ def main ():
         w1 = chr(96+wave)
         w2 = chr(97+wave)
 
-        tdf = ij_df.loc[ij_df[w1+var_name] == in_state]
-        t = tdf[w2+var_name].value_counts()
-        t_dict[wave] = t
+        is_df = ij_df.loc[ij_df[w1+var_name] == in_state]
+        t = is_df[w2+var_name].value_counts()
+        transition_df[wave] = t
 
         t_perc = t/sum(t) * 100
-        print(t_perc)
+        t_perc_df[wave] = t_perc
+        
+    print(t_perc_df)
+    
+    return transition_df, t_perc_df
 
 if __name__ == "__main__":
 
