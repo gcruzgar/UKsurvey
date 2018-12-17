@@ -11,7 +11,7 @@ def main ():
     print("\nvariable: %s" % var_name)
 
     in_state = args.in_state          # value of initial state
-    print("Initial state: %d\n" % in_state)
+    print("initial state: %d\n" % in_state)
 
     print("Loading household data...\n")
     # household response data - only keep required variables (files are too big to store in memory)
@@ -37,8 +37,10 @@ def main ():
         transition_df[wave] = t
 
         t_perc = t/sum(t) * 100
-        t_perc_df[wave] = t_perc
-        
+        t_perc_df[w1+w2] = t_perc
+
+    t_perc_df.index.name = 'state'
+    print("\n%%hh transitions from intial state (%d) in wave w to state in w+1:" % in_state)    
     print(t_perc_df.round(2))
 
     # transitions at any time from given initial state 
@@ -50,8 +52,8 @@ def main ():
         if (aw_is.loc[i] == in_state).all():
             c+=1 
 
-    print('\nPercentage stable households: %.2f%%' % (c/len(aw_is)*100))
-    print('%d/%d households remained at value = %s' % (c, len(aw_is), in_state))
+    print("\nPercentage stable households: %.2f%%" % (c/len(aw_is)*100))
+    print("%d/%d households remained at value = %s" % (c, len(aw_is), in_state))
 
     return transition_df, t_perc_df
 
