@@ -22,6 +22,7 @@ def main ():
         data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
         var_dict[wave] = data[[waveletter+'_hrpid', waveletter+var_name]].set_index(waveletter+'_hrpid')
 
+    # transitions from wave w to w+1
     transition_df = pd.DataFrame()
     t_perc_df = pd.DataFrame()
     for wave in range(1,7):
@@ -38,7 +39,18 @@ def main ():
         t_perc = t/sum(t) * 100
         t_perc_df[wave] = t_perc
         
-    print(t_perc_df)
+    print(t_perc_df.round(2))
+
+    # transitions at any time from given initial state 
+    all_waves = pd.concat([var_dict[1], var_dict[2], var_dict[3], var_dict[4], var_dict[5], var_dict[6], var_dict[7]], axis=1, join='inner')
+    aw_is = all_waves.loc[all_waves['a'+var_name] == in_state].drop('a'+var_name, axis=1)
+
+    c=0
+    for i in aw_is.index:
+        if (aw_is.loc[i] == in_state).all():
+            c+=1 
+
+    print('\nPercentage stable households: %.2f%%' % (c/len(aw_is.index)*100))
 
     return transition_df, t_perc_df
 
