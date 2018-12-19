@@ -319,6 +319,40 @@ state
 ```
 In this example, the initial state in wave a is 3 (_1 adult under pensionable age, no children_). The first table shows transitions from wave w to wave w+1, whilst the second table shows transitions from wave a to wave w. In this case, 88.7% of households remain at the same state in wave b, 80.4% in wave c and so on. 
 
+A table with probabilities of transition from state _i_ in wave _w_ to state _j_ in wave _w+1_ can be obtained using [tpm.py](scripts/tpm.py). It only requires the variable of interest. For example, using household composition (_hhtype_dv_):
+
+```bash
+$ scripts/tpm.py
+
+variable: _hhtype_dv
+Loading household data...
+
+sys:1: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import or set low_memory=False.
+Calculating average transition probabilities...
+final state       1      2      3      4      5      6      8      10     11     12     16     17     18     19     20     21     22     23
+initial state
+1              98.78   0.00   0.02   0.00   0.00   0.00   0.48   0.00   0.00   0.00   0.00   0.39   0.00   0.00   0.00   0.00   0.00   0.00
+2               0.05  98.65   0.00   0.02   0.00   0.00   0.23   0.00   0.00   0.00   0.00   0.85   0.06   0.06   0.00   0.00   0.05   0.00
+3               1.95   2.36  88.42   0.55   0.13   3.32   0.10   0.44   0.20   0.05   1.60   0.11   0.11   0.25   0.00   0.00   0.29   0.00
+4               0.00   0.12   1.94  80.59   3.21   0.19   0.00   3.01   0.89   0.07   7.63   0.29   1.34   0.31   0.00   0.00   0.25   0.02
+5               0.00   0.00   0.40   1.42  80.66   0.02   0.00   0.00   2.84   2.01   0.00   0.02  10.99   0.00   0.44   0.00   0.52   0.45
+6               0.00   0.00   1.81   0.00   0.00  83.30   6.05   5.77   0.23   0.08   0.34   0.01   0.00   2.10   0.21   0.00   0.00   0.00
+8               0.64   0.51   0.06   0.00   0.00   0.01  97.52   0.03   0.00   0.00   0.01   0.13   0.00   1.04   0.05   0.00   0.00   0.00
+10              0.00   0.00   0.60   1.07   0.09   1.02   0.08  77.30  11.75   0.22   0.12   0.00   0.20   6.02   1.48   0.00   0.00   0.05
+11              0.00   0.00   0.44   0.04   1.02   0.02   0.00   0.87  86.80   3.66   0.00   0.00   0.08   0.53   6.50   0.00   0.00   0.03
+12              0.02   0.00   0.32   0.07   1.11   0.00   0.00   0.10   1.04  87.05   0.00   0.00   0.25   0.00   6.01   0.02   0.00   3.98
+16              0.00   0.37  13.69   1.00   0.00   3.11   0.10   0.24   0.00   0.00  71.66   3.60   0.90   2.03   0.44   0.00   2.51   0.13
+17              1.69   6.54   0.00   0.00   0.00   0.00   0.96   0.00   0.00   0.00   0.00  87.43   0.17   0.81   0.00   0.00   1.08   0.18
+18              0.05   0.49   1.83   6.62   6.08   0.00   0.00   0.76   0.55   0.00   2.33   0.00  61.02   0.49   2.27   0.00   9.09   7.69
+19              0.02   0.00   0.49   0.02   0.00   7.63   4.19   0.78   0.07   0.00   0.57   0.37   0.00  82.89   2.30   0.00   0.47   0.07
+20              0.00   0.05   0.00   0.26   0.19   1.14   0.38   5.12   3.57   0.65   0.26   0.00   0.66  14.91  70.73   0.05   0.21   1.49
+21              0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00   9.03   0.00   0.00   0.00   0.00   5.19  57.12   0.00  27.38
+22              0.00   0.00   4.71   0.00   0.00   0.64   0.00   0.11   0.06   0.00  12.67   3.03   0.78   3.92   0.23   0.06  71.74   0.00
+23              0.00   0.00   0.53   0.73   0.67   0.13   0.06   0.53   0.94   3.60   0.00   0.41   5.84   0.00  12.57   1.01   5.06  66.97
+````
+
+This yields a table for _hhtype_dv_. Rows are the initial state at wave _w_ and columns the final state at wave _w+1_.
+
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.     
 Check docs [metadata](docs/metadata) for information on variable values. Only a few listed, use UK Data Service for the full list.
 
