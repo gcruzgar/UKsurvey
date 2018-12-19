@@ -59,6 +59,9 @@ def main ():
     tpm.index.name = 'final state'  
     tpm.columns.name = 'initial state'
     tpm = tpm.T # Transpose matrix
+    
+    # export table to csv
+    tpm.to_csv("data/w"+var_name+"-tpm.csv")
 
     print(tpm.round(2))
 
