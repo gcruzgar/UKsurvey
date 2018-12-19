@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import pandas as pd 
+import numpy as np
 import argparse
 
 def transitions(var_name, in_state, var_dict):
@@ -15,8 +16,8 @@ def transitions(var_name, in_state, var_dict):
         w1 = chr(96+wave)
         w2 = chr(97+wave)
 
-        is_df = ij_df.loc[ij_df[w1+var_name] == in_state]
-        t = is_df[w2+var_name].value_counts(sort=False)   # frequency of state in w2 given state in_state in w1
+        is_df = ij_df.loc[ij_df[w1+var_name] == in_state]   # frequency of state in w2 given state in_state in w1
+        t = is_df.groupby(w2+var_name)[w2+var_name].count()   
 
         t_perc_df[w1+w2] = t/sum(t) * 100
         
@@ -42,15 +43,21 @@ def main ():
         data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
         var_dict[wave] = data[[waveletter+'_hrpid', waveletter+var_name]].set_index(waveletter+'_hrpid')
 
+    # possible states
     states = var_dict[1]['a'+var_name].unique()
-
+    states = np.sort(states)
+    
     # transitions from wave w to wave w+1
     print("Calculating average transition probabilities...")
     tpm = pd.DataFrame()
     for in_state in states:
-        tpm[in_state] = transitions(var_name, in_state, var_dict)
-    tpm = tpm.fillna(value=0)
-    tpm.index.name = 'initial state'
+        t_ave = pd.DataFrame()
+        t_ave[in_state] = transitions(var_name, in_state, var_dict)
+        tpm = pd.concat([tpm, t_ave], axis=1)
+
+    tpm = tpm.fillna(value=0)         # display missing transitions as zero percentage
+    tpm = tpm.T                       # Transpose matrix
+    tpm.index.name = 'initial state'  # or final_state if not transposed
     print(tpm.round(2))
 
 if __name__ == "__main__":
