@@ -42,6 +42,7 @@ def main ():
 
         t_perc = t/sum(t) * 100
         t_perc_df[w1+w2] = t_perc
+    t_perc_df['average'] = t_perc_df.mean(axis=1)
 
     t_perc_df.index.name = 'state'
     print("\n%%hh transitions from intial state (%d) in wave w to state in w+1:" % in_state)    
