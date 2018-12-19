@@ -73,7 +73,7 @@ def main ():
     plt.show()
 
     # plot average transitions
-    av_t = t_perc_df.mean(axis=1)
+    av_t = t_perc_df['average']
 
     plt.figure()
     plt.bar(t_perc_df.index[1:], av_t[1:])
