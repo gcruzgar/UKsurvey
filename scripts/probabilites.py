@@ -21,8 +21,7 @@ def transitions(var_name, in_state, var_dict):
         t = is_df[w2+var_name].value_counts()   # frequency of state in w2 given state in_state in w1
         #transition_df[wave] = t
 
-        t_perc = t/sum(t) * 100
-        t_perc_df[w1+w2] = t_perc
+        t_perc_df[w1+w2] = t/sum(t) * 100
         
     t_perc_df = t_perc_df.fillna(value=0)
     t_perc_df['average'] = t_perc_df.mean(axis=1)
