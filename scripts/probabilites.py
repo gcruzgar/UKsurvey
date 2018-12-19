@@ -3,6 +3,36 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 import argparse
 
+def transitions(var_name, in_state, var_dict):
+    """
+    percentage distributions of transitions from in_state in wave w to any state in wave w+1
+    """
+
+    #transition_df = pd.DataFrame()
+    t_perc_df = pd.DataFrame()
+    for wave in range(1,7):
+        
+        ij_df = pd.concat([var_dict[wave], var_dict[wave+1]], axis=1, join='inner') # inner join between wave w1 and w2
+
+        w1 = chr(96+wave)
+        w2 = chr(97+wave)
+
+        is_df = ij_df.loc[ij_df[w1+var_name] == in_state]
+        t = is_df[w2+var_name].value_counts()   # frequency of state in w2 given state in_state in w1
+        #transition_df[wave] = t
+
+        t_perc = t/sum(t) * 100
+        t_perc_df[w1+w2] = t_perc
+        
+    t_perc_df = t_perc_df.fillna(value=0)
+    t_perc_df['average'] = t_perc_df.mean(axis=1)
+
+    t_perc_df.index.name = 'state'
+    print("\n%%hh transitions from intial state (%d) in wave w to state in w+1:" % in_state)    
+    print(t_perc_df.round(2))
+
+    return t_perc_df
+
 def main ():
 
     if args.var_name.startswith("_"): # variable to extract
@@ -26,29 +56,8 @@ def main ():
         data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
         var_dict[wave] = data[[waveletter+'_hrpid', waveletter+var_name]].set_index(waveletter+'_hrpid')
 
-    # transitions from wave w to w+1
-    transition_df = pd.DataFrame()
-    t_perc_df = pd.DataFrame()
-    for wave in range(1,7):
-        
-        ij_df = pd.concat([var_dict[wave], var_dict[wave+1]], axis=1, join='inner') # inner join between wave w1 and w2
-
-        w1 = chr(96+wave)
-        w2 = chr(97+wave)
-
-        is_df = ij_df.loc[ij_df[w1+var_name] == in_state]
-        t = is_df[w2+var_name].value_counts()   # frequency of state in w2 given state in_state in w1
-        transition_df[wave] = t
-
-        t_perc = t/sum(t) * 100
-        t_perc_df[w1+w2] = t_perc
-        
-    t_perc_df = t_perc_df.fillna(value=0)
-    t_perc_df['average'] = t_perc_df.mean(axis=1)
-
-    t_perc_df.index.name = 'state'
-    print("\n%%hh transitions from intial state (%d) in wave w to state in w+1:" % in_state)    
-    print(t_perc_df.round(2))
+    # transitions from wave w to wave w+1
+    t_perc_df = transitions(var_name, in_state, var_dict)
 
     # transitions at any time from given initial state 
     all_waves = pd.concat([var_dict[1], var_dict[2], var_dict[3], var_dict[4], var_dict[5], var_dict[6], var_dict[7]], axis=1, join='inner')
@@ -104,8 +113,6 @@ def main ():
 
     print("\n%%hh transitions from intial state (%d) in wave a to state in w:" % in_state)    
     print(t_aw_perc_df.round(2)) 
-
-    return transition_df, t_perc_df, t_aw_perc_df
 
 if __name__ == "__main__":
 
