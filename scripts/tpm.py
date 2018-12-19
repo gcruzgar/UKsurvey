@@ -59,17 +59,22 @@ def main ():
     tpm.index.name = 'final state'  
     tpm.columns.name = 'initial state'
     tpm = tpm.T # Transpose matrix
-    
-    # export table to csv
-    tpm.to_csv("data/w"+var_name+"-tpm.csv")
 
     print(tpm.round(2))
+
+    # export table to csv
+    if args.s:
+        out_dir = "data/w"+var_name+"-tpm.csv"
+        tpm.to_csv(out_dir)
+        print("\n Table saved to '%s'." % out_dir)
 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("var_name", type=str, nargs='?', default='_hhtype_dv',
-        help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhtype_dv")      
+        help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhtype_dv")
+    parser.add_argument("-s", action='store_true',
+        help = "save output to csv")      
     args = parser.parse_args()
      
     main()
