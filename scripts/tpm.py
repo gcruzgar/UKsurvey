@@ -55,9 +55,11 @@ def main ():
         t_ave[in_state] = transitions(var_name, in_state, var_dict)
         tpm = pd.concat([tpm, t_ave], axis=1)
 
-    tpm = tpm.fillna(value=0)         # display missing transitions as zero percentage
-    tpm = tpm.T                       # Transpose matrix
-    tpm.index.name = 'initial state'  # or final_state if not transposed
+    tpm = tpm.fillna(value=0) # display missing transitions as zero percentage
+    tpm.index.name = 'final state'  
+    tpm.columns.name = 'initial state'
+    tpm = tpm.T # Transpose matrix
+
     print(tpm.round(2))
 
 if __name__ == "__main__":
