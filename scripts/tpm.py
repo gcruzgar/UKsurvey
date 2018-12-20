@@ -26,34 +26,6 @@ def transitions(var_name, in_state, var_dict):
 
     return t_ave
 
-# def remap(table, column, mapping):
-#     """ Remaps to values in mapping and discards unmapped values """
-
-#     # first remove any values that are not keys in the mapping
-#     table = table[table[column].isin(mapping.keys())]
-#     # now map the values
-#     table[column].replace(mapping, inplace=True)
-    
-#     hhtype_map = {
-#         1: 0, 2: 0, 3: 0, # single occ
-#         4: 3, 5: 3, # single parent
-#         6: 1, 8: 1, 10: 1, 11: 1, 12: 1, 19: 1, 20: 1, 21: 1, # couples
-#         16: 4, 17:4, 18: 4, 22: 4, 23: 4 # mixed
-#     }
-
-#     tenure_map = { 1: 0, # 2 (owned) in census
-#       2: 1, # 3 (mortgaged) in census
-#       3: 2, 4: 2, # 5 (rented social) in census
-#       5: 3, 6: 3, 7: 3 # 6 (rented private) in census
-#     }
-
-#     # constrain within range then shift
-#     data = constrain(data, waveletter+'_hsrooms', 1, 6, shift=-1)
-#     data = constrain(data, waveletter+'_hsbeds', 1, 4, shift=-1)
-#     data = constrain(data, waveletter+'_hhsize', 1, 4, shift=-1)
-
-#     return table
-
 def main ():
 
     if args.var_name.startswith("_"): # variable to extract
