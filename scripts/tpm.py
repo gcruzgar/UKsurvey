@@ -4,6 +4,8 @@ import numpy as np
 import argparse
 from crosstabulation import remap, constrain
 
+pd.options.mode.chained_assignment = None # supress SettingWithCopyWarning - False positive when using remap
+
 def transitions(var_name, in_state, var_dict):
     """
     percentage distributions of transitions from in_state in wave w to any state in wave w+1
@@ -55,8 +57,6 @@ def census_map(data, var_name, wave):
             np.random.seed(9238456) # set seed to always get the same "random" numbers
             to_change = np.random.choice(couples, size = round(0.25*len(couples)), replace=False)
             data.loc[to_change, waveletter+var_name] = 2
-    else:
-        print("\nNo mapping available for %s\n" % var_name)
 
     return data
 
