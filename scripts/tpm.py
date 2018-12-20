@@ -65,6 +65,10 @@ def census_map(data, var_name, wave):
             data.loc[to_change, waveletter+var_name] = 2
 
     if var_name in var_con.keys():
+        
+        if var_name == '_hsbeds':
+            data[waveletter+'_hsbeds'] = np.maximum(data[waveletter+'_hsbeds'], 1)  # Census automatically turns 0 beds into 1
+
         data = constrain(data, waveletter+var_name, var_con[var_name][0], var_con[var_name][1], shift=-1)
 
     return data
