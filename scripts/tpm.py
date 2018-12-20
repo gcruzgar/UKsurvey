@@ -48,6 +48,12 @@ def census_map(data, var_name, wave):
         }
     }
 
+    var_con = {
+        '_hsrooms': [1,6],
+        '_hsbeds': [1,4],
+        '_hhsize': [1,4]
+    }
+
     if var_name in var_map.keys():
 
         data = remap(data, waveletter+var_name, var_map[var_name])
@@ -57,6 +63,9 @@ def census_map(data, var_name, wave):
             np.random.seed(9238456) # set seed to always get the same "random" numbers
             to_change = np.random.choice(couples, size = round(0.25*len(couples)), replace=False)
             data.loc[to_change, waveletter+var_name] = 2
+
+    if var_name in var_con.keys():
+        data = constrain(data, waveletter+var_name, var_con[var_name][0], var_con[var_name][1], shift=-1)
 
     return data
 
