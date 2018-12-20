@@ -65,9 +65,11 @@ def census_map(data, var_name, wave):
             data.loc[to_change, waveletter+var_name] = 2
 
     if var_name in var_con.keys():
-        
-        if var_name == '_hsbeds':
-            data[waveletter+'_hsbeds'] = np.maximum(data[waveletter+'_hsbeds'], 1)  # Census automatically turns 0 beds into 1
+
+        if var_name == '_hsbeds':  # Census automatically turns 0 beds into 1
+            data[waveletter+'_hsbeds'] = np.maximum(data[waveletter+'_hsbeds'], 1)  
+        if var_name == '_hsrooms': # Rooms excl. bedrooms -> to rooms incl. beds, i.e. total 
+            data[waveletter+'_hsrooms'] = data[waveletter+'_hsrooms'] + data[waveletter+'_hsbeds']
 
         data = constrain(data, waveletter+var_name, var_con[var_name][0], var_con[var_name][1], shift=-1)
 
@@ -88,7 +90,11 @@ def main ():
 
         waveletter = chr(96+wave) # 1 -> "a" etc
         data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
-        data = data[[waveletter+'_hrpid', waveletter+var_name]]
+        
+        if var_name != '_hsrooms':
+            data = data[[waveletter+'_hrpid', waveletter+var_name]]
+        else:
+            data = data[[waveletter+'_hrpid', waveletter+var_name, waveletter+'_hsbeds']]
 
         # mapping to census category values
         data = census_map(data, var_name, wave)
