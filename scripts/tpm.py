@@ -2,6 +2,7 @@
 import pandas as pd 
 import numpy as np
 import argparse
+from crosstabulation import remap, constrain
 
 def transitions(var_name, in_state, var_dict):
     """
@@ -26,6 +27,39 @@ def transitions(var_name, in_state, var_dict):
 
     return t_ave
 
+def census_map(data, var_name, wave):
+    """ map survey data to census"""
+
+    waveletter = chr(96+wave) # 1 -> "a" etc
+
+    var_map = {
+        '_hhtype_dv' : {
+            1: 0, 2: 0, 3: 0, # single occ
+            4: 3, 5: 3, # single parent
+            6: 1, 8: 1, 10: 1, 11: 1, 12: 1, 19: 1, 20: 1, 21: 1, # couples
+            16: 4, 17:4, 18: 4, 22: 4, 23: 4 # mixed
+        },
+        '_tenure_dv' : { 1: 0, # 2 (owned) in census
+            2: 1, # 3 (mortgaged) in census
+            3: 2, 4: 2, # 5 (rented social) in census
+            5: 3, 6: 3, 7: 3 # 6 (rented private) in census
+        }
+    }
+
+    if var_name in var_map.keys():
+
+        data = remap(data, waveletter+var_name, var_map[var_name])
+
+        if var_name == '_hhtype_dv':
+            couples = data.index[data[waveletter+var_name] == 1].tolist()
+            np.random.seed(9238456) # set seed to always get the same "random" numbers
+            to_change = np.random.choice(couples, size = round(0.25*len(couples)), replace=False)
+            data.loc[to_change, waveletter+var_name] = 2
+    else:
+        print("\nNo mapping available for %s\n" % var_name)
+
+    return data
+
 def main ():
 
     if args.var_name.startswith("_"): # variable to extract
@@ -41,7 +75,12 @@ def main ():
 
         waveletter = chr(96+wave) # 1 -> "a" etc
         data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
-        var_dict[wave] = data[[waveletter+'_hrpid', waveletter+var_name]].set_index(waveletter+'_hrpid')
+        data = data[[waveletter+'_hrpid', waveletter+var_name]]
+
+        # mapping to census category values
+        data = census_map(data, var_name, wave)
+        
+        var_dict[wave] = data.set_index(waveletter+'_hrpid')
 
     # possible states
     states = var_dict[1]['a'+var_name].unique()
