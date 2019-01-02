@@ -155,7 +155,6 @@ In general, we are interested in distributions but a consistent list of individu
 It is also possible to obtain a list of household IDs (hidp) corresponding to each individual using [household stability](scripts/household_stability.py), however, this is not essential as something similar already exists in cross wave data files (xwaveid). It might still be useful, if looking to improve computational speed, as the list produced is smaller - 2.4MB (for individuals only present in all waves) compared to 22.7MB from the xwaveid file. WARNING: the code is very slow, it needs rewriting, takes over a day to run. The code can be altered to obtain household IDs for a given list of individuals (takes approximately 4 seconds per individual). A better solution is to use the [hh_list](scripts/track_hh.py) function, which creates a CSV file (9MB for all individuals, 4.6MB for unique households) by reading pidp and w_hidp columns from xwaveid.  
 
 There is quite an extensive documentation on the [Understanding Society](https://www.understandingsociety.ac.uk.) website, including data dictionaries.
-I compiled a list of useful variables in each file. __NEED TO ADD THIS TO GITHUB__      
 It is important to note that there is no location variable like the local authorities in census data. The highest resolution available is the region. There is more information, such as [output area classification](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6674), but this requires special licence access.     
 
 Some key questions to ask are:
@@ -163,12 +162,11 @@ Some key questions to ask are:
    - What is the stability of households over time? (how many remain the same)  
    - Can we track an individual or a household over time?
 
-It is computationally intensive to check all individual transitions. This is more so for households as _hipd_ is wave independent. Therefore, I looked at the overall distributions. I used [household distributions](scripts/household_distributions.py) to obtain counts of the required variable - could be anything from household composition to whether the house is in an urban or rural area. I then save these counts on excel, normalise to account for decrease in total housholds, and plot the distributions. This process could be automised on python but I find it easier to track on Excel. Also added correlations between each variable. Household size and composition is the pair with the highest correlation, r=0.72, followed by number of bedrooms and rooms (that aren't bedrooms), r=0.55. In theory, having enough information about a household could lead to infering some other unknown characteristic about it. 
+It is computationally intensive to check all individual transitions. This is more so for households as _hipd_ is wave independent. Therefore, I looked at the overall distributions. I used [household distributions](scripts/household_distributions.py) to obtain counts of the required variable - could be anything from household composition to whether the house is in an urban or rural area. I then save these counts on excel, normalise to account for decrease in total housholds, and plot the distributions. This process could be automised on python, e.g. [quick_stats.py](scripts/quick_stats.py) but I find it easier to track on Excel. Also added correlations between each variable. Household size and composition is the pair with the highest correlation, r=0.72, followed by number of bedrooms and rooms (that aren't bedrooms), r=0.55. In theory, having enough information about a household could lead to infering some other unknown characteristic about it. 
 
-All [distributions](docs/household_distributions.xlsx) seem to remain constant over time within a small error (<1%).
-
-See [comparing](#comparing-survey-and-census-data) section to see the correlation between survey and census data.
-Download census data from [Nomisweb](https://www.nomisweb.co.uk).
+All [distributions](docs/household_distributions.xlsx) seem to remain constant over time within a small error (<1%).     
+See [comparing](#comparing-survey-and-census-data) section to see the correlation between survey and census data.     
+Download census data from [Nomisweb](https://www.nomisweb.co.uk).     
 Distributions are the same for survey and census, for the variables tested.
 It is hard to compare certain variables because of the definitions - see [mapping](#mapping-survey-to-census).
 
@@ -180,11 +178,11 @@ It is hard to compare certain variables because of the definitions - see [mappin
 - number of bedrooms     
 - household composition      
 
-A table with the frequency of each possible 5-dimensional state can be obtained using [crosstabulation](scripts/crosstabulation.py). The program can take any number of waves as input and outputs one table per wave (in CSV format). The outputs of this script can be used as the seed in household_microsynth.
+A table with the frequency of each possible 5-dimensional state can be obtained using [crosstabulation](scripts/crosstabulation.py). The program can take any number of waves as input and outputs one table per wave (in CSV format). The outputs of this script can be used as the seed in [household_microsynth](https://github.com/nismod/household_microsynth).
 
 Note: reading in wave f produces a pandas warning due to mixed types in columns (395,396,399,400), these columns are dates and are not used in the crosstabulation so just ignore. Whenever you read in the file for wave f, this error will appear unless you specify the column types dtype={'column_name': dtype}. (Note: setting dtype=object will silence the warning, but will not make it more memory efficient. Alternatively, use pd.options.mode.chained_assignment = None)
 
-There is still a diference between rooms in survey and census even after mapping. Perhaps the remap is not possible as it requires information we do not have, however, the distributions are quite close. It is just important to keep the different definitions in mind when look at any outputs produced by the data. 
+There is still a diference between rooms in survey and census even after mapping. Perhaps the remap is not possible as it requires information we do not have, however, the distributions are quite close. It is just important to keep the different definitions in mind when looking at any outputs produced by the data. 
 
 Constraints: make it impossible to occupy non-sensical states such as 3 people living in a 1 person household.    
 This is different from improbable states. There is a high number of unoccupied states in the seed. Need to give these states a small occupation to differentitate from impossible states. 
