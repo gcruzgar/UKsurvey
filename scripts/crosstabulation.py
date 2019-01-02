@@ -13,6 +13,8 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
+pd.options.mode.chained_assignment = None # supress SettingWithCopyWarning - False positive when using remap
+
 data_root_dir = Path("./data")
 
 def remap(table, column, mapping):
