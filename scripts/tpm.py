@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 import argparse
 from common import remap, constrain, transitions
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 pd.options.mode.chained_assignment = None # supress SettingWithCopyWarning - False positive when using remap
 
@@ -99,6 +101,11 @@ def main ():
     tpm = tpm.T # Transpose matrix
 
     print(tpm.round(2))
+
+    # plot probabilities
+    ax = sns.heatmap(tpm, linewidth=.5, cmap="GnBu", annot=True, cbar_kws={'label':'Percentage (%)'})
+    ax.set_title('Average Transition Probabilities')
+    plt.show()
 
     # export table to csv
     if args.s:
