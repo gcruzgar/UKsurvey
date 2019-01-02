@@ -347,9 +347,29 @@ initial state
 21              0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00   0.00   9.03   0.00   0.00   0.00   0.00   5.19  57.12   0.00  27.38
 22              0.00   0.00   4.71   0.00   0.00   0.64   0.00   0.11   0.06   0.00  12.67   3.03   0.78   3.92   0.23   0.06  71.74   0.00
 23              0.00   0.00   0.53   0.73   0.67   0.13   0.06   0.53   0.94   3.60   0.00   0.41   5.84   0.00  12.57   1.01   5.06  66.97
-````
+```
 
-This yields a table for _hhtype_dv_. Rows are the initial state at wave _w_ and columns the final state at wave _w+1_.
+This yields a table for _hhtype_dv_. Rows are the initial state at wave _w_ and columns the final state at wave _w+1_.     
+The script contains an optional flag '-r' to remap the chosen variable in order to match census definitions.  
+
+```bash
+$ scripts/tpm.py -r hsrooms
+
+variable: _hsrooms
+remap selected
+Loading household data...
+
+sys:1: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import.
+Calculating average transition probabilities...
+final state        0      1      2      3      4      5
+initial state
+0              61.99  22.14   4.95   0.00   3.84   4.99
+1               0.67  91.86   3.86   1.74   1.01   0.87
+2               0.10   1.18  93.44   2.82   1.58   0.87
+3               0.04   0.47   1.51  94.63   2.13   1.22
+4               0.06   0.30   0.83   1.76  94.87   2.18
+5               0.01   0.19   0.45   0.87   1.44  97.03
+```
 
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.     
 Check docs [metadata](docs/metadata) for information on variable values. Only a few listed, use UK Data Service for the full list.
