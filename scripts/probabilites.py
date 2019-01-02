@@ -24,7 +24,8 @@ def main ():
     for wave in range(1,8):
 
         waveletter = chr(96+wave) # 1 -> "a" etc
-        data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
+        data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')                
+        data = data.loc[data[waveletter+var_name]>=0] # Drop any missing values
         var_dict[wave] = data[[waveletter+'_hrpid', waveletter+var_name]].set_index(waveletter+'_hrpid')
 
     # transitions from wave w to wave w+1
