@@ -211,6 +211,8 @@ Loading wave 7 data...
 Individual 0 started as 'in paid employment' and finished as 'retired'
 [2, 2, 2, 2, 2, 4, 4]
 ```
+The individual can be changed using the '_-p_' flag and the variable has to be changed manually in the code.
+
 Can track households over time using [track_hh.py](scripts/track_hh.py). This is similar to track_ind.py but looks for household data rather than individual response data. The script tracks the evolution of any chosen variable:
 
 ```bash
@@ -226,14 +228,14 @@ Final household value: 4
      pidp  a_hhsize  b_hhsize  c_hhsize  d_hhsize  e_hhsize  f_hhsize  g_hhsize
       0       -9         3         3         3         3         4         4
 ```
-So in the example above, the household was recruited in wave 2 and stayed for the rest of the study. The household size increased between wave 5 and wave 6. The same can be done for any household number and any variable in __hhsresp.tab__.
+So in the example above, the household was recruited in wave 2 and stayed for the rest of the study. The household size increased between wave 5 and wave 6. The same can be done for any household number and any variable in _hhsresp.tab_.
 
 Updated tracking to display several households at the same time and option to filter through demographics, such as gender. Use track_hh.py if interested in a specific household and [track_households.py](scripts/track_households.py) for groups of individuals with similar characteristics. 
 
 Changed track_hh so that -p is an optional argument to specify the pidp.
 Track_households.py takes two optional arguments -s and -b to specify a given sex or year of birth. It also has a positional argument to chose a variable of interest (write without the wave prefix 'w').
 
-Use [track_hrpid](scripts/track_hrpid.py) to track the reference person of each household. This is a more stable approach to tracking households as track_households.py might track a member that leaves the household.
+Use [track_hrpid](scripts/track_hrpid.py) to track the reference person of each household. This is a more stable approach to tracking households as track_households.py might track a member that leaves the household. It has the same arguments except -ab instead of -b to denote an age band with two inputs (lower and upper margins).
 
 ```bash
 $ scripts/track_hrpid.py -s 2 -ab 30 44 hhtype_dv
@@ -265,7 +267,7 @@ hrpid
 In this example, we can see a snippet of the household composition for women between 30 and 44 years old (at the start of the study). As expected, most households are stable and remain in the same state over time. However, some transitions are visible. For example, the first household started as a couple with 2 children, has several transitions and ends as 3 or more adults with no children.     
 Note: house reference person id (hrpid) is omitted here but will be shown when runing the code. Values of '-9' symbolise missing data.   
 
-[Probability](scripts/probabilites.py) of transitions given an initial state. This outputs a dataframe with the percentage of households in a final state at wave _w+1_ given an initial state in wave _w_. 
+[Probability](scripts/probabilites.py) of transitions given an initial state. This outputs a dataframe with the percentage of households in a final state at wave _w+1_ given an initial state in wave _w_. It also prints a table for transitions from wave _a_ to wave _w_.
 
 ```bash
 $ scripts/probabilites.py
@@ -348,8 +350,8 @@ initial state
 ```
 
 This yields a table for _hhtype_dv_. Rows are the initial state at wave _w_ and columns the final state at wave _w+1_.     
-The script contains an optional flag '-r' to remap the chosen variable in order to match census definitions.  
 
+The script contains an optional flag '-r' to remap the chosen variable in order to match census definitions:  
 ```bash
 $ scripts/tpm.py -r hsrooms
 
@@ -370,7 +372,7 @@ initial state
 ```
 
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.     
-Check docs [metadata](docs/metadata) for information on variable values. Only a few listed, use UK Data Service for the full list.
+Check docs [metadata](docs/metadata) for information on variable values. Only a few listed, use [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/series/series?id=2000053) for the full list.
 
 ### Mapping Survey to Census
 
