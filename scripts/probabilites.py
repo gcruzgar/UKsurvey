@@ -75,8 +75,8 @@ def main ():
         w1 = 'a'
         w2 = chr(96+wave)
 
-        is_df = ij_df.loc[ij_df[w1+var_name] == in_state]
-        t = is_df[w2+var_name].value_counts()   # frequency of state in w2 given state in_state in w1
+        is_df = ij_df.loc[ij_df[w1+var_name] == in_state]  
+        t = is_df.groupby(w2+var_name)[w2+var_name].count() # frequency of state in w2 given state in_state in w1
         t_aw_df[wave] = t
 
         t_perc = t/sum(t) * 100
