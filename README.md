@@ -180,6 +180,32 @@ It is hard to compare certain variables because of the definitions - see [mappin
 
 A table with the frequency of each possible 5-dimensional state can be obtained using [crosstabulation](scripts/crosstabulation.py). The program can take any number of waves as input and outputs one table per wave (in CSV format). The outputs of this script can be used as the seed in [household_microsynth](https://github.com/nismod/household_microsynth).
 
+Output of crosstabulation.py (as well as csv files with the tables):
+```bash
+$ scripts/crosstabulation.py 1 2 3 4 5 6 7
+Processed wave 1: 29915 households
+Number of occupied states: 574
+
+Processed wave 2: 30367 households
+Number of occupied states: 550
+
+Processed wave 3: 27631 households
+Number of occupied states: 527
+
+Processed wave 4: 25554 households
+Number of occupied states: 514
+
+Processed wave 5: 23999 households
+Number of occupied states: 513
+
+sys:1: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import.
+Processed wave 6: 24296 households
+Number of occupied states: 515
+
+Processed wave 7: 22854 households
+Number of occupied states: 496
+```
+
 Note: reading in wave f produces a pandas warning due to mixed types in columns (395,396,399,400), these columns are dates and are not used in the crosstabulation so just ignore. Whenever you read in the file for wave f, this error will appear unless you specify the column types dtype={'column_name': dtype}. (Note: setting dtype=object will silence the warning, but will not make it more memory efficient. Alternatively, use pd.options.mode.chained_assignment = None)
 
 There is still a diference between rooms in survey and census even after mapping. Perhaps the remap is not possible as it requires information we do not have, however, the distributions are quite close. It is just important to keep the different definitions in mind when looking at any outputs produced by the data. 
