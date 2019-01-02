@@ -81,6 +81,9 @@ def main ():
         if args.r:
             data = census_map(data, var_name, wave)
         
+        # Drop any missing values
+        data=data.loc[data[waveletter+var_name]>=0]
+        
         var_dict[wave] = data.set_index(waveletter+'_hrpid')
 
     # possible states
