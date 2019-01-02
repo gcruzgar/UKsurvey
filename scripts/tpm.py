@@ -82,7 +82,9 @@ def main ():
     else:                             # catch variables without underscore
         var_name = '_'+args.var_name
     print("\nvariable: %s" % var_name)
-       
+    if args.r:
+        print("remap selected")   
+        
     # household response data - only keep required variables (files are too big to store in memory)
     print("Loading household data...\n")
     var_dict = {}
@@ -97,7 +99,8 @@ def main ():
             data = data[[waveletter+'_hrpid', waveletter+var_name, waveletter+'_hsbeds']]
 
         # mapping to census category values
-        data = census_map(data, var_name, wave)
+        if args.r:
+            data = census_map(data, var_name, wave)
         
         var_dict[wave] = data.set_index(waveletter+'_hrpid')
 
@@ -132,7 +135,9 @@ if __name__ == "__main__":
     parser.add_argument("var_name", type=str, nargs='?', default='_hhtype_dv',
         help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhtype_dv")
     parser.add_argument("-s", action='store_true',
-        help = "save output to csv")      
+        help= "save output to csv")
+    parser.add_argument("-r", action='store_true',
+        help= "remap variable to census definitions" )      
     args = parser.parse_args()
      
     main()
