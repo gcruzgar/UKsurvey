@@ -1,3 +1,5 @@
+# Understanding Society
+
 ##
 Variable = w_hhtype_dv 
 Variable label = Composition of household, LFS-version
@@ -65,3 +67,45 @@ Value = -9.0    Label = missing
 Value = -8.0    Label = inapplicable
 Value = -7.0    Label = proxy
 Value = -2.0    Label = refusal
+
+# Census
+"Tenure": {
+    "0": "All categories: Tenure",
+    "1": "Owned or shared ownership: Total",
+    "2": "Owned: Owned outright",
+    "3": "Owned: Owned with a mortgage or loan or shared ownership",
+    "4": "Rented or living rent free: Total",
+    "5": "Rented: Social rented",
+    "6": "Rented: Private rented or living rent free"
+},
+"Composition": {
+    "0": "All categories: Household type",
+    "1": "One person household",
+    "2": "Married or same-sex civil partnership couple household",
+    "3": "Cohabiting couple household",
+    "4": "Lone parent household",
+    "5": "Multi-person household"
+},
+"Occupants": {
+    "0": "All categories: Household size",
+    "1": "1 person in household",
+    "2": "2 people in household",
+    "3": "3 people in household",
+    "4": "4 or more people in household"
+},
+"Rooms": {
+    "0": "All categories: Number of rooms",
+    "1": "1 room",
+    "2": "2 rooms",
+    "3": "3 rooms",
+    "4": "4 rooms",
+    "5": "5 rooms",
+    "6": "6 or more rooms"
+},
+"Bedrooms": {
+    "0": "All categories: Number of bedrooms",
+    "1": "1 bedroom",
+    "2": "2 bedrooms",
+    "3": "3 bedrooms",
+    "4": "4 or more bedrooms"
+}
