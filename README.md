@@ -266,7 +266,7 @@ variable: _hhsize
 
 Generating household list...
 Extracting variable data...
-sys:1: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import or set low_memory=False.
+sys:1: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import.
      pidp  a_hhsize  b_hhsize  c_hhsize  d_hhsize  e_hhsize  f_hhsize  g_hhsize
 0     -       -9         3         3         3         3         4         4
 ```
@@ -316,46 +316,52 @@ $ scripts/probabilites.py
 
 variable: _hhtype_dv
 initial state: 3
+Plot 3 transitions
 
 Loading household data...
+
+sys:1: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import.
 
 %hh transitions from intial state (3) in wave w to state in w+1:
           ab     bc     cd     de     ef     fg  average
 state
-3      88.68  88.05  88.78  88.84  88.00  88.17    88.42
-6       3.30   3.13   3.00   3.22   3.84   3.45     3.32
-2       2.29   2.66   2.53   2.26   2.09   2.32     2.36
 1       1.60   2.00   2.10   2.49   1.88   1.66     1.95
-16      1.53   1.46   1.34   1.15   2.22   1.87     1.60
-10      0.63   0.63   0.54   0.23   0.30   0.29     0.44
+2       2.29   2.66   2.53   2.26   2.09   2.32     2.36
+3      88.68  88.05  88.78  88.84  88.00  88.17    88.42
 4       0.59   0.77   0.62   0.46   0.30   0.54     0.55
-11      0.21   0.37   0.11   0.15   0.09   0.29     0.20
 5       0.21   0.13   0.04   0.12   0.04   0.25     0.13
-22      0.21   0.20   0.36   0.35   0.34   0.29     0.29
+6       3.30   3.13   3.00   3.22   3.84   3.45     3.32
+8       0.14   0.20   0.07   0.15   0.04   0.00     0.10
+10      0.63   0.63   0.54   0.23   0.30   0.29     0.44
+11      0.21   0.37   0.11   0.15   0.09   0.29     0.20
+12      0.14   0.07   0.04   0.00   0.04   0.04     0.05
+16      1.53   1.46   1.34   1.15   2.22   1.87     1.60
+17      0.10   0.07   0.14   0.08   0.17   0.12     0.11
 18      0.21   0.03   0.18   0.08   0.09   0.08     0.11
 19      0.17   0.17   0.14   0.27   0.47   0.29     0.25
-12      0.14   0.07   0.04   0.00   0.04   0.04     0.05
-8       0.14   0.20   0.07   0.15   0.04   0.00     0.10
-17      0.10   0.07   0.14   0.08   0.17   0.12     0.11
+22      0.21   0.20   0.36   0.35   0.34   0.29     0.29
+
+Percentage stable households (present in all waves): 54.53%
+788/1445 households remained at value = 3
 
 %hh transitions from intial state (3) in wave a to state in w:
           ab     ac     ad     ae     af     ag
 state
-3      88.68  80.43  73.59  68.64  62.12  58.35
-6       3.30   4.41   5.54   5.87   6.61   6.35
-2       2.29   4.92   7.33   9.14  10.74  12.81
 1       1.60   3.57   5.33   7.34   9.52  10.80
-16      1.53   1.67   2.18   1.66   1.96   2.06
-10      0.63   1.59   1.92   2.04   2.33   2.34
+2       2.29   4.92   7.33   9.14  10.74  12.81
+3      88.68  80.43  73.59  68.64  62.12  58.35
 4       0.59   0.95   1.22   1.37   1.38   1.34
-11      0.21   0.28   0.44   0.76   0.90   1.61
 5       0.21   0.16   0.22   0.38   0.42   0.33
-22      0.21   0.48   0.22   0.28   0.21   0.11
+6       3.30   4.41   5.54   5.87   6.61   6.35
+8       0.14   0.40   0.65   0.85   1.22   1.45
+10      0.63   1.59   1.92   2.04   2.33   2.34
+11      0.21   0.28   0.44   0.76   0.90   1.61
+12      0.14   0.24   0.22   0.24   0.37   0.45
+16      1.53   1.67   2.18   1.66   1.96   2.06
+17      0.10   0.40   0.57   0.52   0.90   0.78
 18      0.21   0.28   0.26   0.28   0.32   0.22
 19      0.17   0.12   0.22   0.33   0.53   0.67
-12      0.14   0.24   0.22   0.24   0.37   0.45
-8       0.14   0.40   0.65   0.85   1.22   1.45
-17      0.10   0.40   0.57   0.52   0.90   0.78
+22      0.21   0.48   0.22   0.28   0.21   0.11
 ```
 In this example, the initial state in wave a is 3 (_1 adult under pensionable age, no children_). The first table shows transitions from wave w to wave w+1, whilst the second table shows transitions from wave a to wave w. In this case, 88.7% of households remain at the same state in wave b, 80.4% in wave c and so on. 
 
