@@ -3,27 +3,7 @@
 import pandas as pd 
 import argparse
 import sys
-
-def track_hh(pidp, waves, var_name, hidp_df, var_dict):
-    """ 
-    Track households over time. Read the hidps for a hh and extract their corresponding values of hh_var.
-    Outputs the values for the chosen variable for any given number of waves. 
-    """
-
-    hh_row = hidp_df.loc[hidp_df['pidp'] == pidp] # household the individual is a member off in each wave 
-    
-    track_vals = []
-    for wave in waves:
-        waveletter = chr(96+wave) # 1 -> "a" etc    
-        hh_var = var_dict[wave]
-
-        # extract value for the hh at each wave   
-        w_val = hh_var.loc[hh_var[waveletter+'_hidp'] == hh_row[waveletter+'_hidp'].item(), waveletter+var_name].values
-        if w_val.size == 0: #if the household wasn't present in a wave, set it's value to '-9'
-            w_val = [-9]
-        track_vals.extend(w_val)  
-    
-    return track_vals
+from common import track_hh
 
 def main ():
 

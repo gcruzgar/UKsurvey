@@ -12,25 +12,11 @@ Things to do:
 """
 import pandas as pd 
 from random import sample
+from common import longevity
 
 # name of files/waves to compare
 filelist = ["a_indall.tab", "b_indall.tab", "c_indall.tab", 
 "d_indall.tab", "e_indall.tab", "f_indall.tab", "g_indall.tab"]
-
-def longevity(filelist):
-    """ List of individuals that are present in all waves """
-    pidp_dic = {}
-    wc=1
-    for name in filelist:
-        print("Loading wave %d data..." % wc)
-        df = pd.read_csv(name, sep='\t')
-        pidp_dic[str(wc)] = df['pidp']
-        wc+=1
-    
-    id_int = set(pidp_dic['2']).intersection(set(pidp_dic['1']))
-    for n in range(3,len(filelist)+1):
-        id_int = set(pidp_dic[str(n)]).intersection(id_int)
-    return id_int
 
 if 'id_list' not in vars():
     print("Generating id_list...")

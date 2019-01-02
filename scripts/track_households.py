@@ -5,44 +5,7 @@ The variable of interest can be specified as well as whether to filter results b
 """
 import pandas as pd 
 import argparse
-
-def hh_list():
-    """
-    Generate a dataframe with the w_hidp corresponding to each pidp, 
-    as well as the sex and year of birth for filtering purposes.
-    """
-    print("Generating household list...")
-    data = pd.read_csv('data/xwaveid.tab', sep ='\t')
-    data = data.loc[data['fwintvd_dv'] != -21.0]  # drop any entries with no data from UKHLS. 
-
-    # only save households ids and variables needed for filtering
-    hidp_list = data[['pidp', 'sex', 'birthy', 'a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp']]
-  
-    # only need one row per household. Drop duplicates caused by multiple members sharing a household.
-    hidp_list = hidp_list.drop_duplicates(subset=['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
-
-    return hidp_list
-
-def track_hh(pidp, waves, var_name, hidp_list, var_dict):
-    """ 
-    Track households over time. Read the hidps for a hh and extract their corresponding values of hh_var.
-    Outputs the values for the chosen variable for any given number of waves. 
-    """
-
-    hh_row = hidp_list.loc[hidp_list['pidp'] == pidp] # household the individual is a member off in each wave 
-    
-    track_vals = []
-    for wave in waves:
-        waveletter = chr(96+wave) # 1 -> "a" etc    
-
-        hh_var = var_dict[wave]
-           
-        w_val = hh_var.loc[hh_var[waveletter+'_hidp'] == hh_row[waveletter+'_hidp'].item(), waveletter+var_name].values #extract value for the hh at that wave
-        if w_val.size == 0: #if the household wasn't present in a wave, set it's value to '-9'
-            w_val = [-9]
-        track_vals.extend(w_val)  
-    
-    return track_vals
+from common import hh_list, track_hh
 
 def main():
 

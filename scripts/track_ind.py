@@ -14,27 +14,13 @@ Things to do:
 import argparse
 import pandas as pd 
 from random import sample
-
-def longevity(filelist):
-    """ List of individuals that are present in all waves """
-    pidp_dic = {}
-    wc=1
-    for name in filelist:
-        print("Loading wave %d data..." % wc)
-        df = pd.read_csv('data/'+name, sep='\t')
-        pidp_dic[str(wc)] = df['pidp']
-        wc+=1
-    
-    id_int = set(pidp_dic['2']).intersection(set(pidp_dic['1']))
-    for n in range(3,len(filelist)+1):
-        id_int = set(pidp_dic[str(n)]).intersection(id_int)
-    return id_int
+from common import longevity
 
 def track_event(filelist, var_key, possible_status, pidp = None):
     """ Compare the state of an individual at different times. 
     Will choose an individual at random if one is not specified. """
     
-    if pidp == None:
+    if pidp == None: # the pidp shown in github is 612201967
         if 'id_list' not in globals():
             print("id_list not found. Generating list...")
             id_list = longevity(filelist)

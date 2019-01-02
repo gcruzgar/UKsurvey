@@ -2,32 +2,9 @@
 import pandas as pd 
 import numpy as np
 import argparse
-from crosstabulation import remap, constrain
+from common import remap, constrain, transitions
 
 pd.options.mode.chained_assignment = None # supress SettingWithCopyWarning - False positive when using remap
-
-def transitions(var_name, in_state, var_dict):
-    """
-    percentage distributions of transitions from in_state in wave w to any state in wave w+1
-    """
-
-    t_perc_df = pd.DataFrame()
-    for wave in range(1,7):
-        
-        ij_df = pd.concat([var_dict[wave], var_dict[wave+1]], axis=1, join='inner') # inner join between wave w1 and w2
-
-        w1 = chr(96+wave)
-        w2 = chr(97+wave)
-
-        is_df = ij_df.loc[ij_df[w1+var_name] == in_state]   # frequency of state in w2 given state in_state in w1
-        t = is_df.groupby(w2+var_name)[w2+var_name].count()   
-
-        t_perc_df[w1+w2] = t/sum(t) * 100
-        
-    t_perc_df = t_perc_df.fillna(value=0)
-    t_ave = t_perc_df.mean(axis=1)
-
-    return t_ave
 
 def census_map(data, var_name, wave):
     """ map survey data to census"""
@@ -113,7 +90,7 @@ def main ():
     tpm = pd.DataFrame()
     for in_state in states:
         t_ave = pd.DataFrame()
-        t_ave[in_state] = transitions(var_name, in_state, var_dict)
+        t_ave[in_state] = transitions(var_name, in_state, var_dict)[1]
         tpm = pd.concat([tpm, t_ave], axis=1)
 
     tpm = tpm.fillna(value=0) # display missing transitions as zero percentage

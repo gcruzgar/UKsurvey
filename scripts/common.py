@@ -1,6 +1,7 @@
 """
 Common functions used in scripts
 """
+import pandas as pd
 
 def remap(table, column, mapping):
     """ Remaps to values in mapping and discards unmapped values """
@@ -51,6 +52,8 @@ def hh_list():
     # only need one row per household. Drop duplicates caused by multiple members sharing a household.
     hidp_list = hidp_list.drop_duplicates(subset=['a_hidp', 'b_hidp', 'c_hidp', 'd_hidp', 'e_hidp', 'f_hidp', 'g_hidp'])
 
+    #hidp_list.to_csv('data/xwave_hh_list.csv', index=False)
+
     return hidp_list
 
 def track_hh(pidp, waves, var_name, hidp_list, var_dict):
@@ -73,3 +76,27 @@ def track_hh(pidp, waves, var_name, hidp_list, var_dict):
         track_vals.extend(w_val)  
     
     return track_vals
+
+def transitions(var_name, in_state, var_dict):
+    """
+    percentage distributions of transitions from in_state in wave w to any state in wave w+1
+    """
+
+    t_perc_df = pd.DataFrame()
+    for wave in range(1,7):
+        
+        ij_df = pd.concat([var_dict[wave], var_dict[wave+1]], axis=1, join='inner') # inner join between wave w1 and w2
+
+        w1 = chr(96+wave)
+        w2 = chr(97+wave)
+
+        is_df = ij_df.loc[ij_df[w1+var_name] == in_state]   # frequency of state in w2 given state in_state in w1
+        t = is_df.groupby(w2+var_name)[w2+var_name].count()   
+
+        t_perc_df[w1+w2] = t/sum(t) * 100
+        
+    t_perc_df = t_perc_df.fillna(value=0)
+    t_ave = t_perc_df.mean(axis=1) # used in tpm
+    t_perc_df['average'] = t_perc_df.mean(axis=1)
+
+    return t_perc_df, t_ave

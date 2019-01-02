@@ -12,29 +12,11 @@ import argparse
 import pandas as pd 
 import numpy as np
 from pathlib import Path
+from common import remap, constrain
 
 pd.options.mode.chained_assignment = None # supress SettingWithCopyWarning - False positive when using remap
 
 data_root_dir = Path("./data")
-
-def remap(table, column, mapping):
-    """ Remaps to values in mapping and discards unmapped values """
-    # first remove any values that are not keys in the mapping
-    table = table[table[column].isin(mapping.keys())]
-    # now map the values
-    table[column].replace(mapping, inplace=True)
-    return table
-
-def constrain(table, column, minval, maxval, shift=0):
-    """ Constrains values like so:
-        - removes rows with values < minval
-        - caps column values at maxval
-        - shift values by shift (e.g. to allow for 0 to mean 1 bedroom)
-    """
-    table = table[table[column] >= minval]
-    table.loc[table[column] > maxval, column] = maxval
-    table[column] = table[column] + shift
-    return table
 
 def contingency_table(wave):
 
