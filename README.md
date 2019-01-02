@@ -14,8 +14,9 @@ Things to do:
    + **2.3.** [Comparing Survey and Census Data](#comparing-survey-and-census-data)     
 - **3.** [Household Microsynthesis](#household-microsynthesis)
 - **4.** [Method](#method)
-   + **4.1.** [Tracking Transitions](#tracking-transitions)
-   + **4.2.** [Mapping Survey to Census](#mapping-survey-to-census)   
+   + **4.1.** [Population Seed](#population-seed)
+   + **4.2.** [Tracking Transitions](#tracking-transitions)
+   + **4.3.** [Mapping Survey to Census](#mapping-survey-to-census)   
 
 ## Introduction
 The objective of this project is to visualise the transitions that occur during the microsynthesis of population, as well as the events that trigger these transitions. This work is part of a bigger project aiming to create a framework for customisable population estimates (see [SPENSER](#spenser)). Here, understanding Society data is used to complement ONS census data. In the future, other datasets will be added. (consumer data, information on migration etc.)
@@ -165,10 +166,12 @@ Some key questions to ask are:
 It is computationally intensive to check all individual transitions. This is more so for households as _hipd_ is wave independent. Therefore, I looked at the overall distributions. I used [household distributions](scripts/household_distributions.py) to obtain counts of the required variable - could be anything from household composition to whether the house is in an urban or rural area. I then save these counts on excel, normalise to account for decrease in total housholds, and plot the distributions. This process could be automised on python, e.g. [quick_stats.py](scripts/quick_stats.py) but I find it easier to track on Excel. Also added correlations between each variable. Household size and composition is the pair with the highest correlation, r=0.72, followed by number of bedrooms and rooms (that aren't bedrooms), r=0.55. In theory, having enough information about a household could lead to infering some other unknown characteristic about it. 
 
 All [distributions](docs/household_distributions.xlsx) seem to remain constant over time within a small error (<1%).     
-See [comparing](#comparing-survey-and-census-data) section to see the correlation between survey and census data.     
+See [comparing](#comparing-survey-and-census-data) section to see the correlation between survey and census data.
 Download census data from [Nomisweb](https://www.nomisweb.co.uk).     
 Distributions are the same for survey and census, for the variables tested.
 It is hard to compare certain variables because of the definitions - see [mapping](#mapping-survey-to-census).
+
+### Population Seed
 
 5 dimensions are required to create a population seed:
 
