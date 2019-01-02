@@ -243,7 +243,7 @@ Additionally, changing the order of crosstabulation seems to make no change to t
 
 Output of [track_ind.py](scripts/track_ind.py):
 ```bash
-$ scripts/track_ind.py -p 0
+$ scripts/track_ind.py -p -
 Loading wave 1 data...
 Loading wave 2 data...
 Loading wave 3 data...
@@ -252,7 +252,7 @@ Loading wave 5 data...
 Loading wave 6 data...
 Loading wave 7 data...
 
-Individual 0 started as 'in paid employment' and finished as 'retired'
+Individual - started as 'in paid employment' and finished as 'retired'
 [2, 2, 2, 2, 2, 4, 4]
 ```
 The individual can be changed using the '_-p_' flag and the variable has to be changed manually in the code.
@@ -261,16 +261,14 @@ Can track households over time using [track_hh.py](scripts/track_hh.py). This is
 
 ```bash
 $ scripts/track_hh.py
+pidp: -
+variable: _hhsize
+
 Generating household list...
-Extracting _hhsize...
-scripts/track_hh.py:77: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import or set low_memory=False.
-  main()
-Household first present in wave 2.
-Household last present in wave 7.
-Initial household value: 3
-Final household value: 4
+Extracting variable data...
+sys:1: DtypeWarning: Columns (395,396,399,400) have mixed types. Specify dtype option on import or set low_memory=False.
      pidp  a_hhsize  b_hhsize  c_hhsize  d_hhsize  e_hhsize  f_hhsize  g_hhsize
-      0       -9         3         3         3         3         4         4
+0     -       -9         3         3         3         3         4         4
 ```
 So in the example above, the household was recruited in wave 2 and stayed for the rest of the study. The household size increased between wave 5 and wave 6. The same can be done for any household number and any variable in _hhsresp.tab_.
 
