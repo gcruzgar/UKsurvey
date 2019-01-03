@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 import argparse
 from common import transitions
+import seaborn as sns
 
 def main ():
 
@@ -14,9 +15,6 @@ def main ():
 
     in_state = args.in_state          # value of initial state
     print("initial state: %d" % in_state)
-
-    n = args.p
-    print("Plot %d transitions\n" % n)
 
     print("Loading household data...\n")
     # household response data - only keep required variables (files are too big to store in memory)
@@ -30,32 +28,23 @@ def main ():
 
     # transitions from wave w to wave w+1
     t_perc_df = transitions(var_name, in_state, var_dict)[0]
-    t_perc_df.index.name = 'state'
+    t_perc_df.index.name = 'final state'
     print("\n%%hh transitions from intial state (%d) in wave w to state in w+1:" % in_state)    
     print(t_perc_df.round(2))
 
     # transitions at any time from given initial state 
     all_waves = pd.concat([var_dict[1], var_dict[2], var_dict[3], var_dict[4], var_dict[5], var_dict[6], var_dict[7]], axis=1, join='inner')
     aw_is = all_waves.loc[all_waves['a'+var_name] == in_state]
-    
-    # plot transitions
-    plt.figure()
-    plt.xlabel('Wave')
-    plt.ylabel('State')
-    plt.title("Household transitions example - %s" % var_name)
-    for hh in aw_is.index[0:n]:
-        plt.plot(range(1,8), aw_is.loc[hh])
-    plt.show()
 
     # plot average transitions
-    av_t = t_perc_df['average']
+    av_t = t_perc_df['average'].drop(in_state)
 
     plt.figure()
-    plt.bar(t_perc_df.index, av_t)
+    plt.bar(av_t.index, av_t)
     plt.xlabel('State')
-    plt.xticks(t_perc_df.index)
+    plt.xticks(av_t.index)
     plt.ylabel('Frequency (%)')
-    plt.title("Average probability of transitions between waves - %s" % var_name)
+    plt.title("Average probability of transitions between waves \n%s - initial state = %d" % (var_name[1:], in_state))
     plt.show()
 
     c=0
@@ -84,10 +73,16 @@ def main ():
         t_aw_perc_df[w1+w2] = t_perc
 
     t_aw_perc_df = t_aw_perc_df.fillna(value=0)
-    t_aw_perc_df.index.name = 'state'
+    t_aw_perc_df.index.name = 'final state'
 
     print("\n%%hh transitions from intial state (%d) in wave a to state in w:" % in_state)    
     print(t_aw_perc_df.round(2)) 
+
+    # plot probabilities
+    ax = sns.heatmap(t_aw_perc_df.drop(in_state).round(2), annot=True, linewidth=.5, cmap="GnBu", cbar_kws={'label':'Percentage (%)'})
+    ax.set_xlabel('wave')
+    ax.set_title('Transitions probabilities  - %s \ninitial state = %d' % (var_name[1:], in_state))
+    plt.show()
 
 if __name__ == "__main__":
 
@@ -95,9 +90,7 @@ if __name__ == "__main__":
     parser.add_argument("var_name", type=str, nargs='?', default='_hhtype_dv',
         help="variable of interest to extract. must be in hhresp.tab. type without wave prefix 'w', e.g. _hhtype_dv")   
     parser.add_argument("in_state", type=int, nargs='?', default = 3,
-        help="numerical value of initial state")
-    parser.add_argument("-p", type=int, nargs='?', default = 3,
-        help="number of transitions to plot")     
+        help="numerical value of initial state")    
     args = parser.parse_args()
      
     main()
