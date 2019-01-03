@@ -107,7 +107,7 @@ def main ():
 
     # plot probabilities
     ax = sns.heatmap(tpm, linewidth=.5, cmap="GnBu", annot=True, cbar_kws={'label':'Percentage (%)'})
-    ax.set_title('Average Transition Probabilities')
+    ax.set_title('Average Transition Probabilities - %s' % var_name[1:])
     plt.show()
 
     # export table to csv
