@@ -104,4 +104,4 @@ def transitions(var_name, in_state, var_dict):
     t_ave = t_perc_df.mean(axis=1)
     t_perc_df['average'] = t_ave
 
-    return t_df, t_ave
+    return t_perc_df, t_ave
