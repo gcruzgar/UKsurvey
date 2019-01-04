@@ -82,7 +82,7 @@ def transitions(var_name, in_state, var_dict):
     percentage distributions of transitions from in_state in wave w to any state in wave w+1
     """
 
-    t_perc_df = pd.DataFrame()
+    t_df = pd.DataFrame()
     for wave in range(1,7):
         
         ij_df = pd.concat([var_dict[wave], var_dict[wave+1]], axis=1, join='inner') # inner join between wave w1 and w2
@@ -93,10 +93,15 @@ def transitions(var_name, in_state, var_dict):
         is_df = ij_df.loc[ij_df[w1+var_name] == in_state]   # frequency of state in w2 given state in_state in w1
         t = is_df.groupby(w2+var_name)[w2+var_name].count()
 
-        t_perc_df = pd.concat([t_perc_df, (t/sum(t) * 100)], axis=1)
-        
-    t_perc_df = t_perc_df.fillna(value=0)
-    t_ave = t_perc_df.mean(axis=1) # used in tpm
-    t_perc_df['average'] = t_perc_df.mean(axis=1)
+        t_df = pd.concat([t_df, t], axis=1)
 
-    return t_perc_df, t_ave
+    t_df = t_df.dropna(axis=1, how='all') # drop empty columns
+    t_df = t_df.fillna(value=0)           # fill remaining missing values wiht zeros  
+
+    t_perc_df = (t_df / t_df.sum()) *100
+
+    # row average
+    t_ave = t_perc_df.mean(axis=1)
+    t_perc_df['average'] = t_ave
+
+    return t_df, t_ave
