@@ -67,6 +67,7 @@ def main ():
     # household response data - only keep required variables (files are too big to store in memory)
     print("Loading household data...\n")
     var_dict = {}
+    states = []
     for wave in range(1,8):
 
         waveletter = chr(96+wave) # 1 -> "a" etc
@@ -86,9 +87,11 @@ def main ():
         
         var_dict[wave] = data.set_index(waveletter+'_hrpid')
 
-    # possible states
-    states = var_dict[1]['a'+var_name].unique()
-    states = np.sort(states)
+        # Possible states to cycle through
+        s = var_dict[wave][waveletter+var_name].unique()
+        states.extend(s)
+
+    states = set(states)
     
     # transitions from wave w to wave w+1
     print("Calculating average transition probabilities...")
