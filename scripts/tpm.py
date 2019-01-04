@@ -94,7 +94,8 @@ def main ():
     print("Calculating average transition probabilities...")
     tpm = pd.DataFrame()
     for in_state in states:
-        tpm[in_state] = transitions(var_name, in_state, var_dict)[1]
+        t_ave = transitions(var_name, in_state, var_dict)[1]
+        tpm = pd.concat([tpm, t_ave], axis=1)
 
     tpm = tpm.fillna(value=0) # display missing transitions as zero percentage
     tpm.index.name = 'final state'  

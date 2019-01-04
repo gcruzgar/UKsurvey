@@ -91,9 +91,9 @@ def transitions(var_name, in_state, var_dict):
         w2 = chr(97+wave)
 
         is_df = ij_df.loc[ij_df[w1+var_name] == in_state]   # frequency of state in w2 given state in_state in w1
-        t = is_df.groupby(w2+var_name)[w2+var_name].count()   
+        t = is_df.groupby(w2+var_name)[w2+var_name].count()
 
-        t_perc_df[w1+w2] = t/sum(t) * 100
+        t_perc_df = pd.concat([t_perc_df, (t/sum(t) * 100)], axis=1)
         
     t_perc_df = t_perc_df.fillna(value=0)
     t_ave = t_perc_df.mean(axis=1) # used in tpm
