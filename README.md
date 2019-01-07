@@ -422,7 +422,7 @@ initial state
 This matrix is also given in the form of a heatmap for easier visualisation.
 
 ![hsrooms tpm](img/tpm_hsrooms_r.png)    
-**Figure 8.** Transition probability matrix of total number of rooms. Each square displays the average percentage of housholds that started in the state shown in the y-axis and ended in the state shown in the x-axis.
+**Figure 8.** Transition probability matrix for the total number of rooms. Each square displays the average percentage of households that started in the state shown in the y-axis and ended in the state shown in the x-axis. This example uses census definitions.
 
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.     
 Check docs [metadata](docs/metadata) for information on variable values. Only a few listed, use [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/series/series?id=2000053) for the full list.
