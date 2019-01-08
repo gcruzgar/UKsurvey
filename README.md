@@ -424,6 +424,8 @@ This matrix is also given in the form of a heatmap for easier visualisation.
 ![hsrooms tpm](img/tpm_hsrooms_r.png)    
 **Figure 8.** Transition probability matrix for the total number of rooms. Each square displays the average percentage of households that started in the state shown in the y-axis and ended in the state shown in the x-axis. This example uses census definitions.
 
+Note that results obtained with this method will approximate the true probability if an infinite number of households is used. This means that low density states are innacurate. For example, if there is only one household in a state, it will produce a 100% probability for that specific transition. This issue can be solved by capping states, such as considering a household size of 4 to mean 4 or more.   
+
 Check docs [readme](docs/README.md) for information on distributions and graphs shown in this file.     
 Check docs [metadata](docs/metadata) for information on variable values. Only a few listed, use [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/series/series?id=2000053) for the full list.
 
