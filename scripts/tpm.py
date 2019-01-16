@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+
 import pandas as pd 
 import numpy as np
 import argparse
+from pathlib import Path
 from common import remap, constrain, transitions
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -37,12 +39,6 @@ def census_map(data, var_name, wave):
 
         data = remap(data, waveletter+var_name, var_map[var_name])
 
-        if var_name == '_hhtype_dv':
-            couples = data.index[data[waveletter+var_name] == 1].tolist()
-            np.random.seed(9238456) # set seed to always get the same "random" numbers
-            to_change = np.random.choice(couples, size = round(0.25*len(couples)), replace=False)
-            data.loc[to_change, waveletter+var_name] = 2
-
     if var_name in var_con.keys():
 
         if var_name == '_hsbeds':  # Census automatically turns 0 beds into 1
@@ -71,7 +67,8 @@ def main ():
     for wave in range(1,8):
 
         waveletter = chr(96+wave) # 1 -> "a" etc
-        data = pd.read_csv('data/'+waveletter+'_hhresp.tab', sep ='\t')
+        datadir = Path("data/UKDA-6614-tab/tab/ukhls_w%d" % wave)
+        data = pd.read_csv(datadir / (waveletter+'_hhresp.tab'), sep ='\t')
         
         if var_name != '_hsrooms':
             data = data[[waveletter+'_hrpid', waveletter+var_name]]
@@ -103,7 +100,9 @@ def main ():
     tpm = tpm.fillna(value=0) # display missing transitions as zero percentage
     tpm.index.name = 'final state'  
     tpm.columns.name = 'initial state'
+    assert np.allclose(np.sum(tpm), 100.0)
     tpm = tpm.T # Transpose matrix
+
 
     print(tpm.round(2))
 
