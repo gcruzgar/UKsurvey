@@ -6,6 +6,7 @@ Things to do:
 ## Table of contents
 - **1.** [Introduction](#introduction)    
    + **1.1.** [SPENSER](#spenser)      
+   + **1.2.** [Use within SPENSER](#use-within-spenser) 
 - **2.** [Data](#data)
    + **2.1.** [Understanding Society](#understanding-society)       
    + **2.2.** [Census](#census)       
@@ -21,6 +22,12 @@ The objective of this project is to visualise the transitions that occur during 
 
 ### SPENSER 
 Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a synthetic population estimation and projection model which uses dynamic microsimulation. It provides the framework for estimates of population which are dynamic and high resolution (at household level); and a comprehensive set of tools for user customisable scenario projections. This project is in development by the University of Leeds.
+
+### Use within SPENSER
+UKsurvey produces aggregated survey data which serves as input to microsimulation in the SPENSER project.    
+crosstab outputs a 5 dimensional matrix which acts as a population seed in household microsynthesis.    
+tpm generates a transition probability matrix, i.e. a table with probabilities of transition from one state to another. This is used to determine whether a transition occurs during microsynthesis.    
+In general, this project results in inputs for neworder's dynamic microsimulation environment as well as the quasi dynamic household microsimulation in SPENSER's microsimulation.    
 
 ## Data
 ### Understanding Society
