@@ -1,9 +1,7 @@
 # UKsurvey
 
 Things to do:
-- keep Readme updated
-- could use ukcensusapi module to obtain census data
-- create python module 
+- add summary of how data is used in the wider project 
 
 ## Table of contents
 - **1.** [Introduction](#introduction)    
