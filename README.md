@@ -25,10 +25,12 @@ Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a syn
 
 ### Use within SPENSER
 Several scripts are available in this project to manipulate the data in Understanding Society. These may be used to track individual events (through individuals or households) for behavioural investigation, for example whether ceratin events are linked. On top of this, scripts can be used to produce aggregated survey data for statistical studies or as input in population microsynthesis.    
-UKsurvey produces aggregated survey data which serves as input to microsimulation in the SPENSER project.    
-crosstab outputs a 5 dimensional matrix which acts as a population seed in household microsynthesis.    
-tpm generates a transition probability matrix, i.e. a table with probabilities of transition from one state to another. This is used to determine whether a transition occurs during microsynthesis.    
-In general, this project results in inputs for neworder's dynamic microsimulation environment as well as the quasi dynamic household microsimulation in SPENSER's microsimulation.    
+UKsurvey produces aggregated survey data which serves as input to microsimulation in the SPENSER project. Outputs already in use:
+  
++ [crosstab](scripts/crosstab.py) outputs a 5 dimensional matrix which acts as a population seed in household microsynthesis.    
++ [tpm](scripts/tpm.py) generates a transition probability matrix, i.e. a table with probabilities of transition from one state to another. This is used to determine whether a transition occurs during microsynthesis.    
+
+In general, this project can feed inputs for neworder's dynamic microsimulation environment as well as the quasi dynamic household microsimulation in SPENSER's microsimulation.    
 
 ## Data
 ### Understanding Society
