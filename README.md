@@ -24,13 +24,13 @@ The objective of this project is to visualise the transitions that occur during 
 Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a synthetic population estimation and projection model which uses dynamic microsimulation. It provides the framework for estimates of population which are dynamic and high resolution (at household level); and a comprehensive set of tools for user customisable scenario projections. This project is in development by the University of Leeds.
 
 ### Use within SPENSER
-Several scripts are available in this project to manipulate the data in Understanding Society. These may be used to track events (through [individuals](scripts/track_ind.py) or [households](scripts/track_hrpid.py)) for behavioural investigation, for example whether ceratin events are linked. On top of this, scripts can be used to produce aggregated survey data for statistical studies (e.g. [probabilities](scripts/probabilities.py)) or as input in population microsynthesis.    
+Several scripts are available in this project to manipulate the data in Understanding Society. These may be used to track events (through [individuals](scripts/track_ind.py) or [households](scripts/track_hrpid.py)) for behavioural investigation, for example whether certain events are linked. On top of this, scripts can be used to produce aggregated survey data for statistical studies (e.g. [probabilities](scripts/probabilities.py)) or as input in population microsynthesis.    
 UKsurvey produces aggregated survey data which serves as input to microsimulation in the SPENSER project. Outputs already in use:
   
 + [crosstab](scripts/crosstab.py) outputs a 5 dimensional matrix which acts as a population seed in household microsynthesis.    
 + [tpm](scripts/tpm.py) generates a transition probability matrix, i.e. a table with probabilities of transition from one state to another. This is used to determine whether a transition occurs during microsynthesis.    
 
-In general, this project can feed inputs for neworder's dynamic microsimulation environment as well as the quasi dynamic household microsimulation in SPENSER's microsimulation.    
+In general, this project can feed inputs for [neworder](https://github.com/virgesmith/neworder)'s dynamic microsimulation environment as well as the [quasi dynamic household microsimulation](https://github.com/virgesmith/humanleague) in SPENSER.    
 
 ## Data
 ### Understanding Society
