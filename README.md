@@ -18,13 +18,13 @@ Things to do:
    + **4.3.** [Mapping Survey to Census](#mapping-survey-to-census)   
 
 ## Introduction
-The objective of this project is to visualise the transitions that occur during the microsynthesis of population, as well as the events that trigger these transitions. This work is part of a bigger project aiming to create a framework for customisable population estimates (see [SPENSER](#spenser)). Here, understanding Society data is used to complement ONS census data. In the future, other datasets will be added. (consumer data, information on migration etc.)
+The objective of this project is to visualise the transitions that occur during the microsynthesis of population, as well as the events that trigger these transitions. This work is part of a bigger project aiming to create a framework for customisable population estimates (see [SPENSER](#spenser)). Here, understanding Society data is used to complement ONS census data. In the future, other datasets will be added (consumer data, information on migration etc.).
 
 ### SPENSER 
-Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a synthetic population estimation and projection model which uses dynamic microsimulation. It provides the framework for estimates of population which are dynamic and high resolution (at household level); and a comprehensive set of tools for user customisable scenario projections. This project is in development by the University of Leeds.
+Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a synthetic population estimation and projection model which uses dynamic microsimulation. It provides the framework for estimates of population which are dynamic and high resolution (at household level); and a comprehensive set of tools for user customisable scenario projections. This project is in development by the University of Leeds in conjunction with the Alan Turing Institute.
 
 ### Use within SPENSER
-Several scripts are available in this project to manipulate the data in Understanding Society. These may be used to track events (through [individuals](scripts/track_ind.py) or [households](scripts/track_hrpid.py)) for behavioural investigation, for example whether certain events are linked. On top of this, scripts can be used to produce aggregated survey data for statistical studies (e.g. [probabilities](scripts/probabilities.py)) or as input in population microsynthesis.    
+Several scripts are available in this project to allow manipulation of data in Understanding Society. These may be used to track events (through [individuals](scripts/track_ind.py) or [households](scripts/track_hrpid.py)) for behavioural investigation, for example whether certain events are linked. On top of this, the scripts can be used to produce aggregated survey data for statistical studies (e.g. [probabilities](scripts/probabilities.py)) or as input in population microsynthesis.    
 UKsurvey produces aggregated survey data which serves as input to microsimulation in the SPENSER project. Outputs already in use:
   
 + [crosstab](scripts/crosstab.py) outputs a 5 dimensional matrix which acts as a population seed in household microsynthesis.    
@@ -76,7 +76,7 @@ There is another subfolder with cross wave data. It consists of three files:
 |xivdata   | Substantive data from responding adults (16+)        |
 |xwaveid   | Individual and household identifiers across all waves|
 
-Cross wave files contain data from every wave, however, the files are small compared to __indresp__ and don't seem to have anything useful for microsynthesis - other than the identifiers in __xwaveid__.
+Cross wave files contain data from every wave, however, the files are small compared to **indresp** and don't seem to have anything useful for microsynthesis - other than the identifiers in **xwaveid**.
 
 There is considerable attrition in this survey, this is partially compensated by introducing new households in each wave, however, there is a net 23% decrease in housholds over the first 7 years. This decrease is shown in figure 1, as well as an example of data available in the survey, in this case whether a household is in an urban or rural area. 
 
@@ -122,7 +122,7 @@ Note that the number of categories has been expaned here compared to what is use
 ![Household Composition](img/composition.png)
 **Figure 7.** Percentage distribution of household composition. r-squared = 0.931.
 
-Although the number of households is large (order 10,000s for survey and 10,000,000s for census), the coefficients of determination shown are based on the number of categories, which is quite small, so the values might be inflated.
+Although the number of households is large (order 10,000s for survey and 10,000,000s for census), the coefficients of determination shown are based on the number of categories, which is quite small, so the r-scores might be inflated.
 
 ## Household Microsynthesis
 
@@ -146,7 +146,7 @@ Another thing to consider is that population microsynthesis requires an initial 
 
 Once an initial state is set, there are several methods to move the population forward in time. A common technique is to have a [transition probability matrix](scripts/tpm.py) (tpm), in which each element, _bij_, is the probability of being in state _j_ given that state _i_ was occupied in the previous time period. Monte Carlo simulation can then be used - a random number is generated and compared to the corresponding value in the tpm to determine whether the event is triggered. This process is repeated for every individual in the population.
 
-Combining survey and census data is challenging due to the many ways variables can be defined, especially those relating to behaviours or to household composition. Even the definition of what a room is differs. These differences shouldn't affect microsynthesis, however, it is important to keep in mind that the results displayed will have slightly different interpretations.
+Combining survey and census data is challenging due to the many ways variables can be defined, especially those relating to behaviours or to household composition. Even the definition of what a room is differs. These differences shouldn't affect microsynthesis, however, it is important to keep in mind that the results obtained from each dataset will require slightly different interpretations.
 
 An example of [household microsynthesis software](https://github.com/nismod/household_microsynth).
 
@@ -163,10 +163,10 @@ I initially did an overview of files present in the survey. Data is available fo
 As with any longitudinal study, members drop out every year. A list of individuals present throughout the entire study can be obtained with the 'longevity' function in [track_ind](scripts/track_ind_.py). The script selects an individual from the list of those present in all waves. It then prints the personal ID (pidp) and the status evolution for a given variable, such as employment.     
 In general, we are interested in distributions but a consistent list of individuals is handy when tracking individual events. The idea would be to relate changes to a household with events on an individual level, and whether certain events trigger certain changes.
 
-It is also possible to obtain a list of household IDs (hidp) corresponding to each individual using [household stability](scripts/household_stability.py), however, this is not essential as something similar already exists in cross wave data files (xwaveid). It might still be useful, if looking to improve computational speed, as the list produced is smaller - 2.4MB (for individuals only present in all waves) compared to 22.7MB from the xwaveid file. WARNING: the code is very slow, it needs rewriting, takes over a day to run. The code can be altered to obtain household IDs for a given list of individuals (takes approximately 4 seconds per individual). A better solution is to use the [hh_list](scripts/track_hh.py) function, which creates a CSV file (9MB for all individuals, 4.6MB for unique households) by reading pidp and w_hidp columns from xwaveid.  
+It is also possible to obtain a list of household IDs (hidp) corresponding to each individual using [household stability](scripts/household_stability.py), however, this is not essential as something similar already exists in cross wave data files (xwaveid). It might still be useful, if looking to improve computational speed, as the list produced is smaller - 2.4MB (for only individuals present in all waves) compared to 22.7MB from the xwaveid file. WARNING: the code is very slow, it needs rewriting, takes over a day to run. The code can be altered to obtain household IDs for a given list of individuals (takes approximately 4 seconds per individual). A better solution is to use the [hh_list](scripts/track_hh.py) function, which creates a CSV file (9MB for all individuals, 4.6MB for unique households) by reading pidp and w_hidp columns from xwaveid.  
 
 There is quite an extensive documentation on the [Understanding Society](https://www.understandingsociety.ac.uk.) website, including data dictionaries.
-It is important to note that there is no location variable like the local authorities in census data. The highest resolution available is the region. There is more information, such as [output area classification](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6674), but this requires special licence access.     
+It is important to note that there is no location variable like the local authorities in census data. The highest resolution available is the region. There is more information, such as [output area classification](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6674), but this requires special licence access.   
 
 Some key questions to ask are:
    - What are the triggers that cause a household to change?    
@@ -238,16 +238,15 @@ Example of first lines in a table generated by code:
 
 There is still a diference between rooms in survey and census even after mapping. Perhaps the remap is not possible as it requires information we do not have, however, the distributions are quite close. It is just important to keep the different definitions in mind when looking at any outputs produced by the data. 
 
-Constraints: make it impossible to occupy non-sensical states such as 3 people living in a 1 person household.    
-This is different from improbable states. There is a high number of unoccupied states in the seed. Need to give these states a small occupation to differentiate from impossible states. 
+Constraints: make it impossible to occupy non-sensical states such as 3 people living in a 1 person household. This is different from improbable states. There is a high number of unoccupied states in the seed; it is necessary to give these states a small occupation to differentiate them from impossible states. 
 
 There is the option to add more variables to the seed or to have other input tables. Dwelling type would be interesting but variable is stored in a different file (hhsamp instead of hhresp) so will make code slower.
 
 If using survey data with household_microsynth, make sure the column order is same as that in the code.     
 Column names changed for hhsize and counts to avoid problems when calling due to pre existing functions 'size' and 'count'.    
 
-Assigning couples in survey to either married or cohabiting in census randomly (50/50). In the England and Wales census, 77% of couples are married whilst only 23% are cohabiting. Using this doesn't make much difference compared to a 50/50 split - 1% loss of states. 
-Additionally, changing the order of crosstabulation seems to make no change to the number of occupied states. The number of states will vary slightly on every run due to the random splitting of couples. I have set a seed for the sake of reproducibility.
+The code assigns couples in survey to either married or cohabiting in census randomly (50/50). In the England and Wales census, 77% of couples are married whilst only 23% are cohabiting. Using this doesn't make much difference compared to a 50/50 split - 1% loss of states. Another option would be to have an individual category for couples.     
+Additionally, changing the order of crosstabulation seems to make no change to the number of occupied states. The number of states will vary slightly on every run due to the random splitting of couples. I have set a seed for the sake of reproducibility. Note random splitting might be replaced in the future.
 
 ### Tracking Transitions
 
@@ -443,7 +442,7 @@ Check docs [metadata](docs/metadata) for information on variable values. Only a 
 
 The categories and definitions used to describe households differ between survey and census data. This means a remapping of data is needed in order to compare between both sources, as well as to use programs, such as [household_microsynth](https://github.com/nismod/household_microsynth), initially made for census inputs.
 
-The first step is to filter the negative values. These are codes for "missing" (-9), "inapplicable" (-8) etc. and need to be dropped before any further preprocessing. This is especially important when combining data because artificial values could be created. For example, to determine the total number of rooms in a house we could add the bedrooms (e.g. -9 bedrooms) and other rooms (e.g. 10 rooms) in a house, however, one of the two values could be missing thus the sum will be erroneous (-9 + 10 = 1 total rooms). 
+The first step is to filter the negative values. These are codes for "missing" (-9), "inapplicable" (-8) etc. and need to be dropped before any further preprocessing. This is especially important when combining data because artificial values could be created. For example, to determine the total number of rooms in a house we could add the bedrooms (e.g. missing or -9 bedrooms) and other rooms (e.g. 10 rooms) in a house, however, one of the two values could be missing thus the sum will be erroneous (-9 + 10 = 1 total rooms). 
 
 The census gives the total number of rooms in a household, whilst the survey gives the number of rooms excluding bedrooms. Therefore,  a new column, _rooms_, must be generated by adding bedrooms, _hsbeds_, and other rooms, _hsrooms_.
 
