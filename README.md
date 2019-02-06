@@ -32,6 +32,13 @@ Several scripts are made available in this project to allow manipulation of data
 In general, this project feeds inputs to [neworder](https://github.com/virgesmith/neworder)'s dynamic microsimulation environment as well as the [quasi dynamic household microsimulation](https://github.com/virgesmith/humanleague) in SPENSER, ultimately serving as a key tool to produce population estimates at household level. The project serves as a demonstration of the use of current software in SPENSER with a different data set, confirming the validity of integrating new datasets as a complement of national census.
 
 ## Data
+### Census
+
+The UK Census is the most accurate representation of UK population data available, thus it is often used for population microsynthesis. However, it only occurs once every 10 years and lacks behavioural and consumer data. This is why it is important to complement census with other datasets. The Office for National Statistics (ONS) produces a national population census every 10 years. ONS gives free access to the latest one - currently 2011.     
+
+Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk).    
+See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for a `python` and `R` wrapper.
+
 ### Understanding Society
 
 Understanding Society is a longitudinal study of the behaviour of ~40,000 households across the UK.
@@ -83,13 +90,6 @@ There is considerable attrition in this survey, this is partially compensated by
 **Figure 1.** Number of households in urban or rural areas. The number of houses decreases as the study goes on. The average split is 76% urban and 24% rural - standard deviation ~ 1.5%. 
 
 More information on the survey can be found here: https://www.understandingsociety.ac.uk.
-
-### Census
-
-The UK Census is the most accurate representation of UK population data available, thus is often used for population microsynthesis. However, it only occurs once every 10 years and lacks behavioural and consumer data. This is why it is important to complement census with other datasets. The Office for National Statistics (ONS) produces a national population census every 10 years. ONS gives free access to the latest one - currently 2011.     
-
-Data can be obtained directly from [Nomisweb](https://www.nomisweb.co.uk).    
-See [UKCensusAPI](https://github.com/virgesmith/UKCensusAPI) for a `python` and `R` wrapper.
 
 ### Comparing Survey and Census Data
 
