@@ -6,7 +6,7 @@ Things to do:
 ## Table of contents
 - **1.** [Introduction](#introduction)    
    + **1.1.** [SPENSER](#spenser)      
-   + **1.2.** [Use within SPENSER](#use-within-spenser) 
+   + **1.2.** [Output Overview](#output-overview) 
 - **2.** [Data](#data)
    + **2.1.** [Census](#census)      
    + **2.2.** [Understanding Society](#understanding-society)        
@@ -23,7 +23,7 @@ The objective of this project is to visualise the transitions that occur during 
 ### SPENSER 
 Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a synthetic population estimation and projection model which uses dynamic microsimulation. It provides the framework for estimates of population which are dynamic and high resolution (at household level); and a comprehensive set of tools for user customisable scenario projections. This project is in development by the University of Leeds in conjunction with the Alan Turing Institute.
 
-### Use within SPENSER
+### Output Overview
 Several scripts are made available in this project to allow manipulation of data in Understanding Society. These may be used to track events (through [individuals](scripts/track_ind.py) or [households](scripts/track_hrpid.py)) for behavioural investigation, for example whether certain events are linked. On top of this, the scripts can be used to produce aggregated survey data for statistical studies (e.g. [probabilities](scripts/probabilities.py)) or as input in population microsynthesis. UKsurvey currently produces aggregated survey data which serves as input to microsimulation in the SPENSER project. Outputs already in use:
   
 + [crosstab](scripts/crosstab.py) outputs a 5 dimensional matrix which acts as a population seed in household microsynthesis.    
