@@ -18,7 +18,7 @@ Things to do:
    + **4.3.** [Mapping Survey to Census](#mapping-survey-to-census)   
 
 ## Introduction
-The objective of this project is to visualise the transitions that occur during the microsynthesis of population, as well as the events that trigger these transitions. This work is part of a bigger project aiming to create a framework for customisable population estimates (see [SPENSER](#spenser)). The project also serves as proof that SPENSER can work with data other than the national census. Here, Understanding Society data is used to complement ONS census data. In the future, other datasets will be added (consumer data, information on migration etc.).
+The objective of this project is to visualise the transitions that occur during the microsynthesis of population, as well as the events that trigger these transitions. This work is part of a bigger project aiming to create a framework for customisable population estimates (see [SPENSER](#spenser)). The project also serves as proof that SPENSER is not limited to using national census data. Here, Understanding Society data is used to complement ONS census data. In the future, other datasets will be added (consumer data, information on migration etc.).
 
 ### SPENSER 
 Synthetic Population Estimation and Scenario Projection Model (SPENSER) is a synthetic population estimation and projection model which uses dynamic microsimulation. It provides the framework for estimates of population which are dynamic and high resolution (at household level); and a comprehensive set of tools for user customisable scenario projections. This project is in development by the University of Leeds in conjunction with the Alan Turing Institute.
