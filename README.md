@@ -1,7 +1,6 @@
 # UKsurvey
 
-Things to do:
-- add summary of how data is used in the wider project 
+UKsurvey contains information on the Understanding society survey dataset. It serves as a starting point for manipulation of the dataset, offering several scripts to track events as well as to generate a population seed and a transition probability matrix for household microsimulation.   
 
 ## Table of contents
 - **1.** [Introduction](#introduction)    
@@ -15,7 +14,8 @@ Things to do:
 - **4.** [Method](#method)
    + **4.1.** [Population Seed](#population-seed)
    + **4.2.** [Tracking Transitions](#tracking-transitions)
-   + **4.3.** [Mapping Survey to Census](#mapping-survey-to-census)   
+   + **4.3.** [Transition Probability Matrix](#transition-probability-matrix)
+   + **4.4.** [Mapping Survey to Census](#mapping-survey-to-census)   
 
 ## Introduction
 The objective of this project is to visualise the transitions that occur during the microsynthesis of population, as well as the events that trigger these transitions. This work is part of a bigger project aiming to create a framework for customisable population estimates (see [SPENSER](#spenser)). The project also serves as proof that SPENSER is not limited to using national census data. Here, Understanding Society data is used to complement ONS census data. In the future, other datasets will be added (consumer data, information on migration etc.).
@@ -373,6 +373,7 @@ final state
 ```
 In this example, the initial state in wave a is 3 (_1 adult under pensionable age, no children_). The first table shows transitions from wave w to wave w+1, whilst the second table shows transitions from wave a to wave w. In this case, 88.7% of households remain at the same state in wave b, 80.4% in wave c and so on. 
 
+### Transition Probability Matrix
 A table with probabilities of transition from state _i_ in wave _w_ to state _j_ in wave _w+1_ can be obtained using [tpm.py](scripts/tpm.py). It only requires the variable of interest. For example, using household composition (_hhtype_dv_):
 
 ```bash
