@@ -55,12 +55,19 @@ def contingency_table(wave):
     }
     data = remap(data, waveletter+'_hhtype_dv', hhtype_map)
 
-    """ randomly assigning couples to married or cohabiting couples """
-    couples = data.index[data[waveletter+'_hhtype_dv'] == 1].tolist()
-    np.random.seed(9238456) # set seed to always get the same "random" numbers
-    to_change = np.random.choice(couples, size = round(0.25*len(couples)), replace=False)
-    data.loc[to_change, waveletter+'_hhtype_dv'] = 2
-        
+    # """ randomly assigning couples to married or cohabiting couples """
+    # couples = data.index[data[waveletter+'_hhtype_dv'] == 1].tolist()
+    # np.random.seed(9238456) # set seed to always get the same "random" numbers
+    # to_change = np.random.choice(couples, size = round(0.25*len(couples)), replace=False)
+    # data.loc[to_change, waveletter+'_hhtype_dv'] = 2
+
+    # check whether couples are married or cohabiting
+    marital_data = pd.read_csv(data_root_dir / ("UKDA-6614-tab/tab/ukhls_w" + str(wave)) / (waveletter + '_indall.tab'), sep = '\t')[['pidp', waveletter+'_mastat_dv']]
+    couples = data.loc[data[waveletter+'_hhtype_dv'] == 1, [waveletter+'_hhtype_dv', waveletter+'_hidp', waveletter+'_hrpid']]
+    couples = couples.merge(marital_data, how='left', left_on=waveletter+'_hrpid', right_on='pidp').set_index(couples.index)
+    to_change = couples.index[couples[waveletter+'_mastat_dv']==10.0].to_list()
+    data.loc[to_change, waveletter+'_hhtype_dv'] = 2    
+
     #data[waveletter+'_tenure_dv'].replace(tenure_map, inplace=True)
 
     a = data[waveletter+'_hhtype_dv']
