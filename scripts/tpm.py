@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 
-import pandas as pd 
-import numpy as np
+import warnings
 import argparse
-from pathlib import Path
-from common import remap, constrain, transitions
-import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd 
 import seaborn as sns
+from pathlib import Path
+import matplotlib.pyplot as plt
+from common import remap, constrain, transitions
 
 pd.options.mode.chained_assignment = None # supress SettingWithCopyWarning - False positive when using remap
+#warnings.filterwarnings(action='ignore') # ignore all warnings. Use at own risk
 
 def census_map(data, var_name, wave):
     """ map survey data to census"""
+
+    datadir = Path("data/UKDA-6614-tab/tab/ukhls_w%d" % wave)
 
     waveletter = chr(96+wave) # 1 -> "a" etc
 
@@ -38,6 +42,15 @@ def census_map(data, var_name, wave):
     if var_name in var_map.keys():
 
         data = remap(data, waveletter+var_name, var_map[var_name])
+        if var_name == '_hhtype_dv':
+
+            # check whether couples are married or cohabiting
+            marital_data = pd.read_csv(datadir / (waveletter + '_indall.tab'), sep = '\t')
+            marital_data = marital_data[['pidp', waveletter+'_mastat_dv']]
+            couples = data.loc[data[waveletter+'_hhtype_dv'] == 1, [waveletter+'_hhtype_dv', waveletter+'_hidp', waveletter+'_hrpid']]
+            couples = couples.merge(marital_data, how='left', left_on=waveletter+'_hrpid', right_on='pidp').set_index(couples.index)
+            to_change = couples.index[couples[waveletter+'_mastat_dv']==10.0].to_list()
+            data.loc[to_change, waveletter+'_hhtype_dv'] = 2
 
     if var_name in var_con.keys():
 
@@ -47,7 +60,7 @@ def census_map(data, var_name, wave):
             data[waveletter+'_hsrooms'] = data[waveletter+'_hsrooms'] + data[waveletter+'_hsbeds']
 
         data = constrain(data, waveletter+var_name, var_con[var_name][0], var_con[var_name][1], shift=-1)
-
+    
     return data
 
 def main ():
@@ -68,6 +81,7 @@ def main ():
 
         waveletter = chr(96+wave) # 1 -> "a" etc
         datadir = Path("data/UKDA-6614-tab/tab/ukhls_w%d" % wave)
+        #datadir = Path("data/")
         data = pd.read_csv(datadir / (waveletter+'_hhresp.tab'), sep ='\t')
         
         if var_name != '_hsrooms':
