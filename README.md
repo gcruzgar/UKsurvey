@@ -465,6 +465,8 @@ A more complex mapping is needed for household composition as the categories don
 |Mixed              | 2 adults, not a couple, one or more over pensionable age, no children; 2 adults, not a couple, 1 or more children; 2 adults, not a couple, 1 or more children; 3 or more adults, no children, excl. any couples; 3 or more adults, 1 or more children, excl any couples
 
 <nowiki>*<nowiki> Understanding Society doesn't differentiate between married and cohabiting couples in the _hhtype_ variable, thus it is not possible to match accurately. A random 50-50 split yields a number of occupied states ~2% higher the assigning half the categories to married and half to cohabiting couples. The actual split in England and Wales is around 77% married or same sex civil partnership and 23% cohabiting couples, however, this will vary from one local authority to the next. Could also combine "Couples" into a single category.
+
+Update: _tpm.py_ now reads the marital status from _indall.tab_ to check whether a couple is married or cohabiting. 
     
 The survey gives values for each individual but the census gives distributions. In the case of sizes, these are capped, thus the same needs to be done to survey data, with the final number, _n_, being interpreted as _n or more_:
 
