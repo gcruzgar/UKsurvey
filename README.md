@@ -29,7 +29,7 @@ Several scripts are made available in this project to allow manipulation of data
 + [crosstab](scripts/crosstab.py) outputs a 5 dimensional matrix which acts as a population seed in household microsynthesis.    
 + [tpm](scripts/tpm.py) generates a transition probability matrix, i.e. a table with probabilities of transition from one state to another. This is used to determine whether a transition occurs during microsynthesis.    
 
-In general, this project feeds inputs to [neworder](https://github.com/virgesmith/neworder)'s dynamic microsimulation environment as well as the [quasi dynamic household microsimulation](https://github.com/virgesmith/humanleague) in SPENSER, ultimately acting as a key tool to produce population estimates at household level. The project serves as a demonstration of the use of current software in SPENSER with a different data set, confirming the validity of integrating new datasets as a complement of national census.
+In general, this project feeds inputs to [neworder](https://github.com/virgesmith/neworder)'s dynamic microsimulation environment as well as the [quasi dynamic household microsimulation](https://github.com/virgesmith/humanleague) in SPENSER, ultimately acting as a key tool to produce population estimates at household level. The project serves as a demonstration of the use of current software in SPENSER with a different data set, confirming the validity of integrating new datasets as a complement of national census. It is also the first addition of longitudinal study data to SPENSER, increasing the potential customisation of scenarios.
 
 ## Data
 ### Census
