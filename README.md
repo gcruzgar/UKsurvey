@@ -1,6 +1,6 @@
 # UKsurvey
 
-UKsurvey contains information on the Understanding society survey dataset. It serves as a starting point for manipulation of the dataset, offering several scripts to track events as well as to generate a population seed and a transition probability matrix for household microsimulation.   
+UKsurvey contains information on the Understanding society survey dataset. It serves as a starting point for manipulation of the dataset, offering several scripts to track events as well as to generate a population seed and a transition probability matrix for household microsimulation. Check the [impact story](docs/SPENSER_impact_story.pdf) for a summary of this project.   
 
 ## Table of contents
 - **1.** [Introduction](#introduction)    
